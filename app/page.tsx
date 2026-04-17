@@ -1,10 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import React, { useEffect, useState, useSyncExternalStore } from "react";
+
+import { HIGHLIGHT_SLUGS } from "@/lib/highlights";
+import { langStore, themeStore, type Lang } from "@/lib/stores/uiStore";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-type Lang = "ko" | "en";
 type TechItem = { name: string; desc: string };
 type TechCategory = { category: string; items: TechItem[] };
 type ProjectDetail = {
@@ -19,6 +22,10 @@ type Project = {
   details: string[];
   hasDetail?: boolean;
   hasRN076Evidence?: boolean;
+  /** 프로젝트 하단에 노출할 하이라이트 상세 페이지 slug. 지정 시 "자세히 보기" 링크가 렌더됩니다. */
+  highlightSlug?: string;
+  /** 프로젝트 하단 스크린샷/영상 placeholders 영역의 설명 라벨. 지정 시 placeholders 위에 노출됩니다. */
+  screenshotsLabel?: string;
 };
 type ExperienceData = {
   company: string;
@@ -51,8 +58,6 @@ type Translation = {
   statsLabels: { commits: string; cicd: string; branches: string };
   cicdValue: string;
   branchesValue: string;
-  viewCodeLabel: string;
-  privateRepoNote: string;
   evidenceAddHint: string;
   rn076EvidenceLabel: string;
   conventionEvidenceLabel: string;
@@ -75,24 +80,15 @@ const SKILLS = [
   { name: "Storybook", color: "#FF4785" },
 ];
 
-const HIGHLIGHT_LINKS = [
-  "https://github.com/JEHEO/store5000/issues/1",
-  "#",
-];
+/**
+ * 하이라이트 카드 클릭 시 이동할 내부 상세 페이지 경로.
+ * `lib/highlights.ts` 의 HIGHLIGHTS 순서와 인덱스로 정렬되어 있습니다.
+ */
+const HIGHLIGHT_HREFS = HIGHLIGHT_SLUGS.map((slug) => `/highlights/${slug}`);
 
 const PORTFOLIO_LINKS = {
   github: "https://github.com/JEHEO/PORTFOLIO_2020",
   demo: "https://jeheo.github.io/PORTFOLIO_2020/",
-};
-
-/**
- * TODO: Replace "#" with actual GitHub directory URLs for each project.
- * Example: "https://github.com/org/repo/tree/main/src/features/dashboard"
- */
-const PROJECT_CODE_LINKS = {
-  bomulsen: "#", // TODO: GitHub URL for Bomulsen core logic
-  gopang: "#",   // TODO: GitHub URL for GOPANG core logic
-  nextjs: "#",   // TODO: GitHub URL for Next.js project src/
 };
 
 /**
@@ -263,8 +259,6 @@ const T: Record<Lang, Translation> = {
     statsLabels: { commits: "누적 커밋", cicd: "CI/CD 파이프라인", branches: "브랜치 전략" },
     cicdValue: "전 파이프라인 성공",
     branchesValue: "bugfix / feature 브랜치 전략",
-    viewCodeLabel: "코드 보기",
-    privateRepoNote: "비공개 저장소 · URL 설정 후 활성화",
     evidenceAddHint: "스크린샷을 public/evidence/ 에 저장 후 src를 교체하세요",
     rn076EvidenceLabel: "RN 0.76 업그레이드 증거",
     conventionEvidenceLabel: "팀 컨벤션 증거",
@@ -279,13 +273,24 @@ const T: Record<Lang, Translation> = {
           tag: "프론트 메인 담당",
           sub: "국내 랜덤박스 플랫폼",
           details: [
+            // Overview — 범위 · 규모 · 플랫폼 대응
             "jQuery 기반 노후 서비스를 React Native로 전면 리뉴얼",
             "회원 수 7,700% 성장(약 13.7만 명) 전 과정 프론트엔드 관리",
-            "이벤트/프로모션 페이지를 React로 전환하여 동적 인터랙션 및 재사용성 강화",
             "Google Play 16kb 정책 대응을 위한 RN 버전업(v0.70 → v0.76) 및 OS 환경 대응",
+            // Infrastructure — 공통 기반
+            "RESTful API 기반 서버-클라이언트 통신 구현 — 공통 HTTP 클라이언트로 인증 · 파라미터 직렬화 · 응답 핸들링 · 인증 스토리지 동기화를 일원화",
+            // Feature: 보물함
+            "보물함 화면 개발 — 탭·검색·필터·정렬·잠금 토글이 결합된 복합 리스트 UI 및 페이지네이션 구현",
+            "아이템 상태별 버튼 매트릭스 설계 — 배송·거래·분해·환급 액션 분기 처리",
+            "거래취소·포인트 환급 등 위험한 액션을 위한 공통 확인 모달 플로우 구현",
+            // Feature: 월간 이벤트 WebView
+            "월간 이벤트/프로모션 페이지 개발 — 앱 내 WebView에 React 기반 반응형 UI를 띄워 다양한 단말·해상도에서 일관된 경험 제공",
+            // Operations
             "관리자 페이지 개발 및 유지보수",
           ],
           hasRN076Evidence: true,
+          highlightSlug: "bomulsen-treasure-box",
+          screenshotsLabel: "월간 이벤트 WebView (React · 반응형) — 스크린샷 · 영상",
         },
         {
           title: "GOPANG — 신규 제작",
@@ -304,6 +309,8 @@ const T: Record<Lang, Translation> = {
             "Atomic Design Pattern 도입으로 코드 유지보수성 및 일관성 확보",
             "Storybook 활용한 컴포넌트 주도 개발(CDD) 환경 구축",
             "Next.js App Router 기반 아키텍처 설계 및 SSR 사용자 경험 최적화",
+            "GitHub Actions 기반 CI/CD 파이프라인 구축 — lint · type check · build 자동화 및 Vercel 자동 배포 연동",
+            "Claude Code 기반 AI 페어 프로그래밍 워크플로우 정착 — CLAUDE.md로 프로젝트 컨텍스트 문서화, 커스텀 커맨드(/review · /lint-check)와 코드 생성 템플릿 5종(Component · Hook · Screen · ViewModel · RouteHandler)으로 컨벤션 자동 준수 · 리뷰 · 린트까지 에이전트가 일관되게 수행",
           ],
           hasDetail: true,
         },
@@ -319,6 +326,16 @@ const T: Record<Lang, Translation> = {
         title: "프론트엔드 팀 컨벤션 수립",
         description: "실질적 파트 리더로서 코드 리뷰 프로세스와 Atomic Design 도입을 통해 협업 효율을 30% 개선했습니다.",
         tags: ["Leadership", "Process"],
+      },
+      {
+        title: "보물함 화면 — 복합 상태 리스트 설계",
+        description: "탭 · 검색 · 필터 · 정렬 · 잠금 토글이 동시에 작동하는 단일 화면에서 11종 상태코드 × 타입코드 × 잠금 여부 버튼 매트릭스와 6종 모달을 하나의 패턴으로 정리한 과정을 기록했습니다.",
+        tags: ["Technical", "State Machine", "UX"],
+      },
+      {
+        title: "AI 기반 개발 워크플로우 설계",
+        description: "Claude Code 를 팀 워크플로우에 통합해 컨벤션 준수 · 셀프 리뷰 · 린트/타입 체크를 에이전트가 일관되게 수행하도록 설계했습니다.",
+        tags: ["AI", "Automation", "Process"],
       },
     ],
   },
@@ -351,8 +368,6 @@ const T: Record<Lang, Translation> = {
     statsLabels: { commits: "Total Commits", cicd: "CI/CD Pipeline", branches: "Branch Strategy" },
     cicdValue: "All Pipelines Passing",
     branchesValue: "bugfix / feature branch strategy",
-    viewCodeLabel: "View Code",
-    privateRepoNote: "Private repo · Set URL to activate",
     evidenceAddHint: "Save screenshots to public/evidence/ and replace the src value",
     rn076EvidenceLabel: "RN 0.76 Upgrade Evidence",
     conventionEvidenceLabel: "Team Convention Evidence",
@@ -367,13 +382,24 @@ const T: Record<Lang, Translation> = {
           tag: "Frontend Lead",
           sub: "Domestic random-box platform",
           details: [
+            // Overview — scope · scale · platform
             "Fully migrated legacy jQuery service to React Native",
             "Managed frontend through 7,700% member growth (~137K users)",
-            "Migrated event/promo pages to React for dynamic interactions and reusability",
             "Upgraded RN (v0.70 → v0.76) to meet Google Play 16KB policy; handled OS compatibility",
+            // Infrastructure — shared foundation
+            "Implemented RESTful API-based client-server integration — unified a shared HTTP client covering auth, parameter serialization, response handling, and auth-storage sync",
+            // Feature: Treasure Box
+            "Built the Treasure Box screen — a complex list UI combining tab, search, filter, sort, and a lock toggle with pagination",
+            "Designed an item-level button matrix branching Ship / Trade / Dismantle / Refund actions by state",
+            "Built a shared confirm-modal flow for irreversible actions like trade-cancel and point refund",
+            // Feature: Monthly event WebView
+            "Built monthly event / promo pages as React-based responsive UIs loaded in an in-app WebView — consistent experience across devices and resolutions",
+            // Operations
             "Developed and maintained the admin dashboard",
           ],
           hasRN076Evidence: true,
+          highlightSlug: "bomulsen-treasure-box",
+          screenshotsLabel: "Monthly Event WebView (React · responsive) — screenshots / videos",
         },
         {
           title: "GOPANG — New Build",
@@ -392,6 +418,8 @@ const T: Record<Lang, Translation> = {
             "Adopted Atomic Design Pattern to improve maintainability and consistency",
             "Set up Component-Driven Development (CDD) environment with Storybook",
             "Designed App Router architecture; optimized SSR user experience",
+            "Built a CI/CD pipeline with GitHub Actions — automated lint, type check, and build; integrated Vercel auto-deploy",
+            "Established a Claude Code-powered AI pair-programming workflow — documented project context in CLAUDE.md, defined custom commands (/review · /lint-check), and maintained 5 code-generation templates (Component · Hook · Screen · ViewModel · RouteHandler) so the agent consistently enforces conventions, performs reviews, and runs lint checks",
           ],
           hasDetail: true,
         },
@@ -407,6 +435,16 @@ const T: Record<Lang, Translation> = {
         title: "Establishing Frontend Team Conventions",
         description: "As acting tech lead, improved collaboration efficiency by 30% through code review processes and Atomic Design adoption.",
         tags: ["Leadership", "Process"],
+      },
+      {
+        title: "Treasure Box Screen — Complex State List Design",
+        description: "Documented how I unified the 11-state × type-code × lock-flag button matrix and six distinct modals into one pattern on a screen where tab, search, filter, sort, and a lock toggle all operate at once.",
+        tags: ["Technical", "State Machine", "UX"],
+      },
+      {
+        title: "Designing an AI-Powered Dev Workflow",
+        description: "Integrated Claude Code into the team workflow so the agent consistently enforces conventions, runs self-reviews, and executes lint / type checks.",
+        tags: ["AI", "Automation", "Process"],
       },
     ],
   },
@@ -534,32 +572,6 @@ const SkillBadge = ({ name, color }: { name: string; color: string }) => {
     </div>
   );
 };
-
-// ─── GitHub Code Button ───────────────────────────────────────────────────────
-
-function GithubCodeBtn({ href, label, privateNote }: { href: string; label: string; privateNote: string }) {
-  const isPlaceholder = !href || href === "#";
-  return (
-    <a
-      href={isPlaceholder ? undefined : href}
-      target={isPlaceholder ? undefined : "_blank"}
-      rel="noreferrer"
-      aria-disabled={isPlaceholder}
-      title={isPlaceholder ? privateNote : undefined}
-      className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-medium transition-all ${
-        isPlaceholder
-          ? "cursor-default border-zinc-200 text-zinc-300 dark:border-zinc-800 dark:text-zinc-600"
-          : "border-zinc-200 text-zinc-600 hover:border-blue-400 hover:text-blue-500 dark:border-zinc-700 dark:text-zinc-400"
-      }`}
-    >
-      <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" />
-      </svg>
-      {label}
-      {isPlaceholder && <span className="ml-0.5 text-[10px] opacity-60">🔒</span>}
-    </a>
-  );
-}
 
 // ─── Project Detail Components ────────────────────────────────────────────────
 
@@ -813,43 +825,7 @@ function TopNav({ lang, isDark, onToggleLang, onToggleTheme, t }: {
   );
 }
 
-// ─── localStorage 스토어 (useSyncExternalStore 용) ────────────────────────────
-// SSR snapshot은 서버 기본값을 반환하고, 클라이언트에서는 localStorage를 직접 읽어
-// hydration mismatch 없이 초기값을 동기화합니다.
-
-const langStore = {
-  get: (): Lang => {
-    const s = localStorage.getItem("lang");
-    return s === "en" ? "en" : "ko";
-  },
-  set: (lang: Lang) => {
-    localStorage.setItem("lang", lang);
-    window.dispatchEvent(new Event("lang-update"));
-  },
-  subscribe: (cb: () => void) => {
-    window.addEventListener("lang-update", cb);
-    return () => window.removeEventListener("lang-update", cb);
-  },
-};
-
-const themeStore = {
-  get: (): boolean => {
-    const s = localStorage.getItem("theme");
-    return s === "dark" || (!s && window.matchMedia("(prefers-color-scheme: dark)").matches);
-  },
-  set: (dark: boolean) => {
-    localStorage.setItem("theme", dark ? "dark" : "light");
-    window.dispatchEvent(new Event("theme-update"));
-  },
-  subscribe: (cb: () => void) => {
-    window.addEventListener("theme-update", cb);
-    return () => window.removeEventListener("theme-update", cb);
-  },
-};
-
 // ─── Main Page ────────────────────────────────────────────────────────────────
-
-const PROJECT_LINKS = [PROJECT_CODE_LINKS.bomulsen, PROJECT_CODE_LINKS.gopang, PROJECT_CODE_LINKS.nextjs];
 
 export default function Home() {
   // useSyncExternalStore: 서버는 getServerSnapshot(기본값), 클라이언트는 getSnapshot(localStorage) 사용
@@ -898,8 +874,11 @@ export default function Home() {
           <SectionTitle>{t.highlightsLabel}</SectionTitle>
           <div className="grid gap-4">
             {t.highlights.map((item, idx) => (
-              <a key={idx} href={HIGHLIGHT_LINKS[idx]} target="_blank" rel="noreferrer"
-                className="group relative rounded-xl border border-zinc-200 p-5 transition-all hover:border-blue-500/50 hover:bg-blue-50/30 dark:border-zinc-800 dark:hover:bg-blue-900/10">
+              <Link
+                key={idx}
+                href={HIGHLIGHT_HREFS[idx] ?? "#"}
+                className="group relative rounded-xl border border-zinc-200 p-5 transition-all hover:border-blue-500/50 hover:bg-blue-50/30 dark:border-zinc-800 dark:hover:bg-blue-900/10"
+              >
                 <div className="mb-2 flex gap-2">
                   {item.tags.map((tag) => (
                     <span key={tag} className="text-[10px] font-bold uppercase tracking-tight text-blue-500">#{tag}</span>
@@ -913,7 +892,7 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </Section>
@@ -947,13 +926,12 @@ export default function Home() {
                 {/* Project header */}
                 <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
                   <h4 className="text-base font-bold text-zinc-900 transition-colors group-hover:text-blue-500 dark:text-white">{project.title}</h4>
-                  <div className="flex items-center gap-2">
-                    <GithubCodeBtn href={PROJECT_LINKS[pIdx]} label={t.viewCodeLabel} privateNote={t.privateRepoNote} />
-                    <span className="rounded border border-zinc-200 px-2 py-0.5 text-[10px] font-bold uppercase text-zinc-400 dark:border-zinc-800">{project.tag}</span>
-                  </div>
+                  <span className="rounded border border-zinc-200 px-2 py-0.5 text-[10px] font-bold uppercase text-zinc-400 dark:border-zinc-800">{project.tag}</span>
                 </div>
                 <p className="mb-4 text-sm font-medium text-zinc-500">{project.sub}</p>
-                <ul className="mb-6 space-y-2 text-sm text-zinc-600 dark:text-zinc-300">
+                <ul
+                  className={`${project.highlightSlug ? "mb-3" : "mb-6"} space-y-2 text-sm text-zinc-600 dark:text-zinc-300`}
+                >
                   {project.details.map((detail, dIdx) => (
                     <li key={dIdx} className="flex gap-2">
                       <span className="text-zinc-400">•</span>
@@ -962,7 +940,25 @@ export default function Home() {
                   ))}
                 </ul>
 
+                {/* Per-project highlight link */}
+                {project.highlightSlug && (
+                  <Link
+                    href={`/highlights/${project.highlightSlug}`}
+                    className="mb-6 inline-flex items-center text-xs font-medium text-blue-500 transition-colors hover:text-blue-600"
+                  >
+                    {t.viewMore}
+                    <svg className="ml-1 h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </Link>
+                )}
+
                 {/* Screenshot placeholders */}
+                {project.screenshotsLabel && (
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-zinc-400">
+                    {project.screenshotsLabel}
+                  </p>
+                )}
                 <div className="flex gap-3 overflow-x-auto pb-4">
                   {[1, 2, 3].map((i) => (
                     <div key={i} className="h-48 w-28 shrink-0 rounded-lg border border-zinc-200 bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800" />
