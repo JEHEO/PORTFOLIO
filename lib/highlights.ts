@@ -47,10 +47,10 @@ export const HIGHLIGHTS: Highlight[] = [
         {
           heading: "문제 정의 (Problem)",
           body: [
-            "신 아키텍처(Fabric / TurboModules) 도입 범위 판단",
-            "다수의 네이티브 서드파티 라이브러리 호환성 확보",
-            "Hermes 엔진 전환에 따른 메모리 · cold start 회귀 여부 검증",
+            "서드파티 라이브러리 호환성 이슈 — RN 버전과 맞지 않아 빌드/런타임 에러를 내는 항목 대응",
             "RN 0.71 → 0.76 사이 Gradle · Xcode 빌드 설정 변경 누적 대응",
+            "상단 status bar · 하단 home indicator 영역까지 콘텐츠가 채워져 안전 영역(safe area) 이 침범되는 회귀 이슈",
+            "iOS 에서 한 Modal 이 닫히자마자 다음 Modal 을 열면 두 번째 팝업이 렌더되지 않는 스태킹 타이밍 경합",
           ],
         },
         {
@@ -58,15 +58,15 @@ export const HIGHLIGHTS: Highlight[] = [
           body: [
             "RN Upgrade Helper 를 기준으로 0.70 → 0.76 구간을 단계별 diff 로 분해, 파일 단위로 체크리스트화",
             "호환되지 않는 라이브러리는 patch-package 로 임시 패치 후 업스트림에 이슈 리포트",
-            "Hermes 프로파일러로 리스트 · 이미지 위주 화면의 heap snapshot 을 측정해 회귀 가드",
             "스테이징 환경에서 핵심 유저 플로우(로그인 · 결제 · 박스 오픈) 회귀 테스트 후 단계적 롤아웃",
+            "안전 영역 이슈 — `react-native-safe-area-context` 의 `useSafeAreaInsets` 로 상단·하단 inset 값을 측정해 루트 화면에 일관 적용, status bar · home indicator 영역 겹침 제거",
+            "iOS 팝업 연속 오픈 이슈 — 이전 Modal 의 `onDismiss` 콜백 안에서 다음 Modal 을 열도록 오케스트레이션해 스태킹 타이밍 경합 해소",
           ],
         },
         {
           heading: "결과 (Result)",
           body: [
             "Play Store 16KB ELF alignment 정책 통과 · 정식 업로드 성공",
-            "Hermes 엔진 전환으로 cold start · 평균 메모리 사용량 개선",
             "크래시율 무변화 상태로 100% 유저 롤아웃 완료",
           ],
         },
@@ -89,10 +89,10 @@ export const HIGHLIGHTS: Highlight[] = [
         {
           heading: "Problem",
           body: [
-            "Decide how aggressively to adopt the new architecture (Fabric / TurboModules)",
-            "Ensure compatibility across many native third-party libraries",
-            "Verify no memory / cold-start regressions from switching to Hermes",
+            "Third-party library compatibility — handling libraries that broke at build or runtime under the new RN version",
             "Absorb accumulated Gradle / Xcode build config changes between 0.71 and 0.76",
+            "Regression where content overflowed into the status bar and home indicator areas, breaking the safe-area layout",
+            "On iOS, opening a second Modal immediately after the previous one closed caused the second popup to fail to render (stacking timing race)",
           ],
         },
         {
@@ -100,15 +100,15 @@ export const HIGHLIGHTS: Highlight[] = [
           body: [
             "Broke the 0.70 → 0.76 jump into step-wise diffs using RN Upgrade Helper and a per-file checklist",
             "Applied temporary fixes via patch-package for incompatible libs and reported upstream",
-            "Measured heap snapshots on list- and image-heavy screens using the Hermes profiler as a regression guard",
             "Ran critical user-flow regression tests (login · payment · box open) on staging, then rolled out in phases",
+            "Safe-area regression — adopted `react-native-safe-area-context`'s `useSafeAreaInsets` consistently across every root screen, using the top/bottom inset values to eliminate status-bar and home-indicator overlap",
+            "iOS chained-popup bug — orchestrated consecutive Modals by opening the next one inside the previous one's `onDismiss` callback, resolving the stacking timing race",
           ],
         },
         {
           heading: "Result",
           body: [
             "Passed the Play Store 16KB ELF alignment policy · successful production upload",
-            "Improved cold-start and average memory usage after switching to Hermes",
             "Rolled out to 100% of users with no increase in crash rate",
           ],
         },
@@ -312,7 +312,101 @@ export const HIGHLIGHTS: Highlight[] = [
     },
   },
 
-  // ─── 04. AI 기반 개발 워크플로우 설계 (NEW) ───────────────────────────────
+  // ─── 04. 디자인-엔지니어링 크로스 스킬 (NEW) ───────────────────────────────
+  {
+    slug: "design-engineering-crosskill",
+    tags: ["Design", "Frontend", "Collaboration"],
+    ko: {
+      title: "디자인-엔지니어링 크로스 스킬",
+      meta: "2012 – 현재 · 시각디자인 전공 → 프론트엔드 리드",
+      summary:
+        "시각디자인 전공자로 시작해 웹디자인기능사 · SQL 개발자 · 정보처리기사 · 컴퓨터공학 학사까지 의도적인 전환 경로를 밟았고, 지금은 디자인 시스템 · Figma 프로토타입 · 1인 UI/UX 담당까지 수행하는 프론트엔드 개발자로 일하고 있습니다.",
+      sections: [
+        {
+          heading: "배경 (Context)",
+          body: "2014년 충청대학 시각디자인을 졸업했지만 웹 퍼블리싱 현장에서 '디자인을 구현하는 쪽' 의 언어가 더 잘 맞는다고 느꼈습니다. 이후 웹디자인기능사(2020) → SQL 개발자(2023) → 정보처리기사(2024) → 학점은행제 컴퓨터공학 학사(2024) 순서로, 취미 전환이 아닌 '정식 자격 · 학위로 프론트엔드 엔지니어 포지션을 증명' 하는 경로를 선택했습니다.",
+        },
+        {
+          heading: "실무에서 어떻게 작용하는가 (How it shows up in my work)",
+          body: [
+            "디자이너·기획자 미팅에서 '구현 가능성' 과 'UX 의도' 를 동시에 번역 — 시안 리뷰 단계에서 인터랙션 · 상태 변화 · 엣지 케이스까지 같이 정의",
+            "디자인 시스템·토큰·컴포넌트 분리 기준을 함께 설계 — 구현 시점이 아니라 설계 시점에 Atomic Design 경계를 그음",
+            "GOPANG — 인도네시아향 React 웹앱 전체를 디자인 · 퍼블리싱 · 구현 모두 1인으로 엔드투엔드 구축 (관리자 페이지 포함)",
+            "Figma 프로토타입 · 상호작용 스펙을 스스로 작성해 개발자/디자이너 간 핑퐁 횟수 감소",
+            "타이포그래피·여백·컬러 팔레트에 대한 기준을 코드 레벨(Tailwind 토큰, CSS 변수) 로 변환",
+          ],
+        },
+        {
+          heading: "정식 자격으로 증명한 엔지니어링 (Formal engineering credentials)",
+          body: [
+            "정보처리기사 (2024.12, 한국산업인력공단) — 소프트웨어 설계·DB·네트워크·운영체제 등 CS 기초 자격 국가 표준",
+            "SQL 개발자 (2023.10, 한국데이터산업진흥원) — 관계형 모델·SQL 작성·성능 기초",
+            "웹디자인기능사 (2020.12, 한국산업인력공단) — HTML/CSS/JS 및 디자인 툴 실무 자격",
+            "컴퓨터공학 학사 (2023.08 – 2024.10, 학점은행제, 4.13 / 4.5) — 알고리즘·자료구조·시스템 프로그래밍 등 학사 수준 커리큘럼 이수",
+          ],
+        },
+        {
+          heading: "결과 (Result)",
+          body: [
+            "디자인 리뷰 · 개발 리뷰가 분리되지 않고, 같은 자리에서 이뤄지는 협업 루프 정착",
+            "관리자 페이지 등 '디자이너 리소스가 부족한 영역' 을 자체 소화 — 전체 일정 단축",
+            "신규 피처 기획 시 '구현 가능한 디자인' 을 빠르게 제안해 시안 폐기율 감소",
+            "시각 디자인 감각과 CS 기초 자격을 함께 갖춰 디자인·엔지니어링 어느 쪽 조직에 배치돼도 컨텍스트 스위치 비용이 낮음",
+          ],
+        },
+        {
+          heading: "회고 (Takeaway)",
+          body: "'디자인도 할 줄 아는 프론트엔드' 는 자칫 구현 깊이를 희생하는 포지션으로 읽히기 쉬워서, 정반대 방향 — 정식 자격 · 학위로 엔지니어링 정체성을 명확히 — 을 선택했습니다. 지금은 디자인 감각을 보유하되, 그것이 '엔지니어링 품질' 을 대체하지 않고 강화한다는 조합으로 포지셔닝하고 있습니다.",
+        },
+      ],
+    },
+    en: {
+      title: "Design–Engineering Cross-Skill",
+      meta: "2012 – present · Design major → frontend lead",
+      summary:
+        "I started as a Visual Communication Design major and chose an intentional path into engineering — Craftsman Web Design, SQL Developer, Engineer Information Processing, and a Bachelor in Computer Science. Today I work as a frontend engineer who also owns design systems, Figma prototypes, and solo UI/UX ownership for admin surfaces.",
+      sections: [
+        {
+          heading: "Context",
+          body: "I graduated in Visual Communication Design from Chungcheong University in 2014, but in the field I found I fit better on the 'implementation' side of the design/dev seam. From there I took a formal route — Craftsman Web Design (2020) → SQL Developer (2023) → Engineer Information Processing (2024) → a BEng in Computer Science through Korea's Academic Credit Bank System (2024) — not as a hobby switch, but to formally certify a frontend engineer identity.",
+        },
+        {
+          heading: "How it shows up in my work",
+          body: [
+            "In design reviews I translate between 'what's buildable' and 'what the UX intends' at the same time — interactions, state transitions, and edge cases are defined alongside the mock",
+            "I co-define design tokens, systems, and component boundaries at the design phase — Atomic Design boundaries get drawn before code, not during",
+            "GOPANG — solo end-to-end build of the Indonesian React web app (design · publishing · implementation, including the admin dashboard)",
+            "I build Figma prototypes and interaction specs myself, cutting the dev/design ping-pong loop",
+            "Typography, spacing, and palette judgments translate directly into code-level tokens (Tailwind, CSS variables)",
+          ],
+        },
+        {
+          heading: "Formal engineering credentials",
+          body: [
+            "Engineer Information Processing (Dec 2024, HRD Korea) — Korea's national CS foundation license covering software design, DB, networking, and OS",
+            "SQL Developer / SQLD (Oct 2023, Korea Data Agency) — relational modeling, SQL authoring, and performance basics",
+            "Craftsman Web Design (Dec 2020, HRD Korea) — HTML/CSS/JS and design-tool practice",
+            "B.Eng. in Computer Science (Aug 2023 – Oct 2024, Academic Credit Bank System, GPA 4.13 / 4.5) — algorithms, data structures, systems programming, and the rest of the bachelor-level curriculum",
+          ],
+        },
+        {
+          heading: "Result",
+          body: [
+            "Design review and engineering review happen in the same conversation rather than as separate passes",
+            "'Design-resource-limited' surfaces like admin dashboards are absorbed in-house, shortening total timelines",
+            "Faster feasibility feedback at the idea stage — fewer mocks scrapped",
+            "I fit either into a design-leaning team or an engineering-leaning team with low context-switch cost",
+          ],
+        },
+        {
+          heading: "Takeaway",
+          body: "A 'designer who can code' positioning often sacrifices engineering depth. I chose the opposite — formal credentials and a BEng to cement the engineering identity first. Design sensibility doesn't replace engineering quality; it reinforces it.",
+        },
+      ],
+    },
+  },
+
+  // ─── 05. AI 기반 개발 워크플로우 설계 (NEW) ───────────────────────────────
   {
     slug: "ai-workflow",
     tags: ["AI", "Automation", "Process"],

@@ -1,33 +1,25 @@
 "use client";
 
+/**
+ * Highlight 상세 페이지.
+ *
+ * - 콘텐츠 데이터는 `lib/highlights.ts` 의 HIGHLIGHTS 에서 slug 로 조회합니다.
+ * - 네비게이션/토글은 홈 페이지와 별도로 경량 TopBar 를 사용합니다(뒤로가기 중심).
+ */
+
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import React, { useEffect, useSyncExternalStore } from "react";
+import React from "react";
 
+import { ArrowLeftIcon, MoonIcon, SunIcon } from "@/components/icons";
+import {
+  toggleLang as doToggleLang,
+  toggleTheme as doToggleTheme,
+  useIsDark,
+  useLang,
+} from "@/hooks/useUiState";
 import { findHighlight, type HighlightSection } from "@/lib/highlights";
-import { langStore, themeStore, type Lang } from "@/lib/stores/uiStore";
-
-// ─── Icons (root 페이지와 동일한 라인 아이콘) ───────────────────────────────
-
-const SunIcon = () => (
-  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-    <circle cx="12" cy="12" r="5" />
-    <path
-      strokeLinecap="round"
-      d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
-    />
-  </svg>
-);
-const MoonIcon = () => (
-  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-  </svg>
-);
-const ArrowLeftIcon = () => (
-  <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-  </svg>
-);
+import type { Lang } from "@/lib/stores/uiStore";
 
 // ─── i18n copy (디테일 페이지 전용 짧은 텍스트) ─────────────────────────────
 
@@ -55,8 +47,8 @@ function Section({ section }: { section: HighlightSection }) {
       </h2>
       {isList ? (
         <ul className="space-y-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
-          {(section.body as string[]).map((item, i) => (
-            <li key={i} className="flex gap-2">
+          {(section.body as string[]).map((item) => (
+            <li key={item} className="flex gap-2">
               <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-blue-500" />
               <span>{item}</span>
             </li>
@@ -97,6 +89,7 @@ function TopBar({
         </Link>
         <div className="flex items-center gap-2">
           <button
+            type="button"
             onClick={onToggleLang}
             aria-label="Toggle language"
             className="flex h-7 w-14 items-center justify-center rounded-full border border-zinc-200 text-[11px] font-bold text-zinc-600 transition-all hover:border-blue-400 hover:text-blue-500 dark:border-zinc-700 dark:text-zinc-400"
@@ -104,6 +97,7 @@ function TopBar({
             {lang === "ko" ? "EN" : "KO"}
           </button>
           <button
+            type="button"
             onClick={onToggleTheme}
             aria-label="Toggle dark mode"
             className="flex h-7 w-7 items-center justify-center rounded-full border border-zinc-200 text-zinc-600 transition-all hover:border-blue-400 hover:text-blue-500 dark:border-zinc-700 dark:text-zinc-400"
@@ -123,25 +117,30 @@ export default function HighlightDetailPage() {
   const slug = params?.slug ?? "";
   const highlight = findHighlight(slug);
 
-  const lang = useSyncExternalStore(langStore.subscribe, langStore.get, () => "ko" as Lang);
-  const isDark = useSyncExternalStore(themeStore.subscribe, themeStore.get, () => false);
+  const lang = useLang();
+  const isDark = useIsDark();
 
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDark);
-  }, [isDark]);
-
-  const toggleTheme = () => themeStore.set(!isDark);
-  const toggleLang = () => langStore.set(lang === "ko" ? "en" : "ko");
+  const onToggleTheme = () => doToggleTheme(isDark);
+  const onToggleLang = () => doToggleLang(lang);
 
   // 존재하지 않는 slug — 간단한 404 UI
   if (!highlight) {
     const c = COPY[lang];
     return (
       <div className="min-h-screen bg-zinc-50 font-sans dark:bg-black">
-        <TopBar lang={lang} isDark={isDark} onToggleLang={toggleLang} onToggleTheme={toggleTheme} />
+        <TopBar
+          lang={lang}
+          isDark={isDark}
+          onToggleLang={onToggleLang}
+          onToggleTheme={onToggleTheme}
+        />
         <main className="mx-auto max-w-3xl px-8 pt-28 pb-20">
-          <h1 className="mb-3 text-2xl font-bold text-zinc-900 dark:text-white">{c.notFoundTitle}</h1>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400">{c.notFoundBody}</p>
+          <h1 className="mb-3 text-2xl font-bold text-zinc-900 dark:text-white">
+            {c.notFoundTitle}
+          </h1>
+          <p className="text-sm text-zinc-500 dark:text-zinc-400">
+            {c.notFoundBody}
+          </p>
         </main>
       </div>
     );
@@ -151,7 +150,12 @@ export default function HighlightDetailPage() {
 
   return (
     <div className="min-h-screen bg-zinc-50 font-sans dark:bg-black">
-      <TopBar lang={lang} isDark={isDark} onToggleLang={toggleLang} onToggleTheme={toggleTheme} />
+      <TopBar
+        lang={lang}
+        isDark={isDark}
+        onToggleLang={onToggleLang}
+        onToggleTheme={onToggleTheme}
+      />
 
       <main className="mx-auto max-w-3xl px-8 pt-28 pb-20">
         {/* ── Hero ── */}

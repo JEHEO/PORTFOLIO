@@ -15,15 +15,24 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/*
+ * 다크모드는 class-based (`html.dark`) 로만 토글합니다.
+ * prefers-color-scheme 기반 자동 전환은 themeStore 초기값에서 처리하며,
+ * 여기서는 `.dark` 클래스가 붙었을 때만 팔레트를 바꿔 JS 토글과 충돌을 없앱니다.
+ */
+html.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /*
+   * Geist 폰트(layout.tsx에서 주입) 를 우선 사용하고,
+   * 시스템 폰트로 폴백합니다. 기존 `Arial, Helvetica, sans-serif` 는
+   * Geist 를 덮어쓰는 버그를 유발했습니다.
+   */
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
