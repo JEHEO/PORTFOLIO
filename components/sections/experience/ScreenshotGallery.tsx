@@ -23,6 +23,7 @@ import type {
   ScreenshotGroup,
   ScreenshotItem,
 } from "@/lib/types/portfolio";
+import { asset } from "@/lib/utils/asset-path";
 
 import { Lightbox } from "./Lightbox";
 
@@ -63,6 +64,8 @@ function Thumbnail({ item }: { item: ScreenshotItem }) {
   // 카드 영역을 꽉 채우도록 object-cover. 비율이 다르면 가장자리가 잘릴 수 있음.
   const className =
     "pointer-events-none h-full w-full rounded-xl border border-zinc-200 bg-zinc-50 object-cover shadow-lg dark:border-zinc-700 dark:bg-zinc-900";
+  const src = asset(item.src)!;
+  const poster = asset(item.poster);
   if (item.video) {
     return (
       <video
@@ -71,16 +74,16 @@ function Thumbnail({ item }: { item: ScreenshotItem }) {
         muted
         loop
         playsInline
-        poster={item.poster}
+        poster={poster}
         aria-label={item.alt}
       >
-        <source src={item.src} type={guessVideoType(item.src)} />
+        <source src={src} type={guessVideoType(item.src)} />
       </video>
     );
   }
   return (
     <img
-      src={item.src}
+      src={src}
       alt={item.alt}
       loading="lazy"
       draggable={false}
@@ -271,6 +274,8 @@ function Cylinder({
 function ScrollThumbnail({ item }: { item: ScreenshotItem }) {
   const className =
     "pointer-events-none h-full w-auto rounded-xl border border-zinc-200 bg-zinc-50 object-contain dark:border-zinc-700 dark:bg-zinc-900";
+  const src = asset(item.src)!;
+  const poster = asset(item.poster);
   if (item.video) {
     return (
       <video
@@ -279,16 +284,16 @@ function ScrollThumbnail({ item }: { item: ScreenshotItem }) {
         muted
         loop
         playsInline
-        poster={item.poster}
+        poster={poster}
         aria-label={item.alt}
       >
-        <source src={item.src} type={guessVideoType(item.src)} />
+        <source src={src} type={guessVideoType(item.src)} />
       </video>
     );
   }
   return (
     <img
-      src={item.src}
+      src={src}
       alt={item.alt}
       loading="lazy"
       draggable={false}

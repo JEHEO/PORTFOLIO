@@ -19,6 +19,7 @@ import React, { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
 import type { ScreenshotItem } from "@/lib/types/portfolio";
+import { asset } from "@/lib/utils/asset-path";
 
 const SWIPE_THRESHOLD_PX = 50;
 
@@ -135,6 +136,8 @@ export function Lightbox({
   if (typeof document === "undefined") return null;
 
   const hasMulti = items.length > 1;
+  const src = asset(item.src)!;
+  const poster = asset(item.poster);
 
   const content = (
     <div
@@ -202,15 +205,15 @@ export function Lightbox({
             controls
             autoPlay
             playsInline
-            poster={item.poster}
+            poster={poster}
             aria-label={item.alt}
           >
-            <source src={item.src} type={guessVideoType(item.src)} />
+            <source src={src} type={guessVideoType(item.src)} />
           </video>
         ) : (
           <img
             key={item.src}
-            src={item.src}
+            src={src}
             alt={item.alt}
             draggable={false}
             className="max-h-[90vh] max-w-[92vw] rounded-lg object-contain shadow-2xl"

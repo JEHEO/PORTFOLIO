@@ -6,11 +6,13 @@
  * - `src` 가 비어 있으면 점선 박스 + 사용자용 "준비 중" 라벨이 보입니다.
  * - 개발자 메모(`hint`) 는 UI 에 노출되지 않고 `title` 속성으로만 남깁니다
  *   → 내부 파일 경로가 외부에 보이지 않습니다.
+ * - GitHub Pages basePath 대응을 위해 src 는 `asset()` 으로 래핑합니다.
  */
 
 import React from "react";
 
 import type { EvidenceItem } from "@/lib/data/project-detail";
+import { asset } from "@/lib/utils/asset-path";
 
 export function EvidencePlaceholder({
   label,
@@ -25,7 +27,7 @@ export function EvidencePlaceholder({
           {label}
         </p>
         <img
-          src={src}
+          src={asset(src)}
           alt={label}
           className="w-full rounded-lg border border-zinc-200 dark:border-zinc-700"
         />
