@@ -42,14 +42,14 @@ function Section({ section }: { section: HighlightSection }) {
   const isList = Array.isArray(section.body);
   return (
     <section className="space-y-3">
-      <h2 className="text-xs font-semibold uppercase tracking-widest text-blue-500">
+      <h2 className="text-xs font-semibold uppercase tracking-widest text-accent-500">
         {section.heading}
       </h2>
       {isList ? (
         <ul className="space-y-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
           {(section.body as string[]).map((item) => (
             <li key={item} className="flex gap-2">
-              <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-blue-500" />
+              <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-accent-500" />
               <span>{item}</span>
             </li>
           ))}
@@ -82,7 +82,7 @@ function TopBar({
       <div className="mx-auto flex max-w-3xl items-center justify-between px-8 py-3">
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 text-xs font-medium text-zinc-600 transition-colors hover:text-blue-500 dark:text-zinc-400"
+          className="inline-flex items-center gap-1.5 text-xs font-medium text-zinc-600 transition-colors hover:text-accent-500 dark:text-zinc-400"
         >
           <ArrowLeftIcon />
           {backLabel}
@@ -92,7 +92,7 @@ function TopBar({
             type="button"
             onClick={onToggleLang}
             aria-label="Toggle language"
-            className="flex h-7 w-14 items-center justify-center rounded-full border border-zinc-200 text-[11px] font-bold text-zinc-600 transition-all hover:border-blue-400 hover:text-blue-500 dark:border-zinc-700 dark:text-zinc-400"
+            className="flex h-7 w-14 items-center justify-center rounded-full border border-zinc-200 text-[11px] font-bold text-zinc-600 transition-all hover:border-accent-400 hover:text-accent-500 dark:border-zinc-700 dark:text-zinc-400"
           >
             {lang === "ko" ? "EN" : "KO"}
           </button>
@@ -100,7 +100,7 @@ function TopBar({
             type="button"
             onClick={onToggleTheme}
             aria-label="Toggle dark mode"
-            className="flex h-7 w-7 items-center justify-center rounded-full border border-zinc-200 text-zinc-600 transition-all hover:border-blue-400 hover:text-blue-500 dark:border-zinc-700 dark:text-zinc-400"
+            className="flex h-7 w-7 items-center justify-center rounded-full border border-zinc-200 text-zinc-600 transition-all hover:border-accent-400 hover:text-accent-500 dark:border-zinc-700 dark:text-zinc-400"
           >
             {isDark ? <SunIcon /> : <MoonIcon />}
           </button>
@@ -162,7 +162,7 @@ export function HighlightDetailClient({ slug }: { slug: string }) {
             {highlight.tags.map((tag) => (
               <span
                 key={tag}
-                className="text-[10px] font-bold uppercase tracking-tight text-blue-500"
+                className="text-[10px] font-bold uppercase tracking-tight text-accent-500"
               >
                 #{tag}
               </span>
@@ -190,7 +190,7 @@ export function HighlightDetailClient({ slug }: { slug: string }) {
         <div className="mt-16 border-t border-zinc-200 pt-8 dark:border-zinc-800">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-600 transition-colors hover:text-blue-500 dark:text-zinc-400"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-600 transition-colors hover:text-accent-500 dark:text-zinc-400"
           >
             <ArrowLeftIcon />
             {COPY[lang].back}

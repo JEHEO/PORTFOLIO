@@ -22,7 +22,7 @@ export function ContactSection({ t }: { t: Translation }) {
               href={link.href}
               target={isExternal ? "_blank" : undefined}
               rel={isExternal ? "noreferrer" : undefined}
-              className="group flex items-center justify-between gap-3 rounded-lg border border-zinc-200 bg-white px-4 py-3 text-sm transition-all hover:border-blue-500/50 hover:bg-blue-50/30 dark:border-zinc-800 dark:bg-zinc-900/50 dark:hover:bg-blue-900/10"
+              className="group flex items-center justify-between gap-3 rounded-lg border border-zinc-200 bg-white px-4 py-3 text-sm transition-all hover:border-accent-500/50 hover:bg-accent-50/30 dark:border-zinc-800 dark:bg-zinc-900/50 dark:hover:bg-accent-900/10"
             >
               <div>
                 <p className="font-semibold text-zinc-900 dark:text-white">
@@ -34,7 +34,7 @@ export function ContactSection({ t }: { t: Translation }) {
                   </p>
                 )}
               </div>
-              <ArrowRightIcon className="h-3.5 w-3.5 text-zinc-400 transition-all group-hover:translate-x-0.5 group-hover:text-blue-500" />
+              <ArrowRightIcon className="h-3.5 w-3.5 text-zinc-400 transition-all group-hover:translate-x-0.5 group-hover:text-accent-500" />
             </a>
           );
         })}

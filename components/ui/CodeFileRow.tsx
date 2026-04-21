@@ -49,7 +49,7 @@ export function CodeFileRow({
         className={`inline-flex shrink-0 items-center gap-1 rounded-lg border px-3 py-1.5 text-xs font-medium transition-all ${
           isPlaceholder
             ? "cursor-default border-zinc-200 text-zinc-300 dark:border-zinc-800 dark:text-zinc-600"
-            : "border-zinc-200 text-zinc-600 hover:border-blue-400 hover:text-blue-500 dark:border-zinc-700 dark:text-zinc-400"
+            : "border-zinc-200 text-zinc-600 hover:border-accent-400 hover:text-accent-500 dark:border-zinc-700 dark:text-zinc-400"
         }`}
       >
         <GitHubIcon />

@@ -19,9 +19,9 @@ export function ImpactStrip({ t }: { t: Translation }) {
         {t.impactMetrics.map((m) => (
           <div
             key={m.label}
-            className="rounded-xl border border-zinc-200 bg-white p-5 transition-all hover:border-blue-500/50 dark:border-zinc-800 dark:bg-zinc-900/50 dark:hover:border-blue-500/40"
+            className="rounded-xl border border-zinc-200 bg-white p-5 transition-all hover:border-accent-500/50 dark:border-zinc-800 dark:bg-zinc-900/50 dark:hover:border-accent-500/40"
           >
-            <p className="mb-1 font-mono text-2xl font-bold text-blue-500">
+            <p className="mb-1 font-mono text-2xl font-bold text-accent-500">
               {m.value}
             </p>
             <p className="text-sm font-semibold text-zinc-900 dark:text-white">

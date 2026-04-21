@@ -30,7 +30,7 @@ export function HeaderSection({ t }: { t: Translation }) {
         {t.roleSub && (
           <>
             <span className="text-zinc-300 dark:text-zinc-600">·</span>
-            <p className="text-xs font-medium uppercase tracking-widest text-blue-500">
+            <p className="text-xs font-medium uppercase tracking-widest text-accent-500">
               {t.roleSub}
             </p>
           </>
@@ -43,7 +43,7 @@ export function HeaderSection({ t }: { t: Translation }) {
         {titleLine2 && (
           <>
             <br />
-            <span className="text-blue-500 dark:text-blue-400">
+            <span className="text-accent-500 dark:text-accent-400">
               {titleLine2}
             </span>
           </>
@@ -59,7 +59,7 @@ export function HeaderSection({ t }: { t: Translation }) {
           <div className="flex flex-wrap items-center gap-3">
             <a
               href={`mailto:${PROFILE.email}`}
-              className="transition-colors hover:text-blue-500"
+              className="transition-colors hover:text-accent-500"
             >
               {PROFILE.email}
             </a>
@@ -69,7 +69,7 @@ export function HeaderSection({ t }: { t: Translation }) {
               target="_blank"
               rel="noreferrer"
               aria-label="GitHub profile"
-              className="inline-flex items-center gap-1 transition-colors hover:text-blue-500"
+              className="inline-flex items-center gap-1 transition-colors hover:text-accent-500"
             >
               <GitHubIcon className="h-3.5 w-3.5" />
               <span className="font-mono text-xs">
@@ -80,10 +80,10 @@ export function HeaderSection({ t }: { t: Translation }) {
         </div>
 
         {/* 구직 상태 chip — 펄스 도트로 "현재 활성" 시그널 */}
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-3 py-1.5 text-xs font-medium text-blue-700 ring-1 ring-blue-500/20 dark:bg-blue-950/40 dark:text-blue-300 dark:ring-blue-500/30">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-50 px-3 py-1.5 text-xs font-medium text-accent-700 ring-1 ring-accent-500/20 dark:bg-accent-950/40 dark:text-accent-300 dark:ring-accent-500/30">
           <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-500 opacity-60" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-blue-500" />
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-500 opacity-60" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-500" />
           </span>
           {t.availability}
         </span>

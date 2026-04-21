@@ -21,6 +21,7 @@ import { ContactSection } from "@/components/sections/ContactSection";
 import { EducationSection } from "@/components/sections/EducationSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { HeaderSection } from "@/components/sections/HeaderSection";
+import { IntroSection } from "@/components/sections/IntroSection";
 import { HighlightsSection } from "@/components/sections/HighlightsSection";
 import { ImpactStrip } from "@/components/sections/ImpactStrip";
 import { LegacyPortfolioSection } from "@/components/sections/LegacyPortfolioSection";
@@ -53,6 +54,7 @@ export default function Home() {
       />
 
       <main className="mx-auto max-w-3xl px-8 pt-28 pb-20">
+        <IntroSection />
         <HeaderSection t={t} />
         <AboutSection t={t} />
         <ImpactStrip t={t} />

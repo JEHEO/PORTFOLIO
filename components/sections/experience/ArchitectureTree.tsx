@@ -19,7 +19,7 @@ export function ArchitectureTree({
         <p className="mb-2 text-zinc-400">src/</p>
         {architecture.map((dir) => (
           <div key={dir.label} className="mb-2 ml-3">
-            <p className="font-semibold text-blue-500">{dir.label}</p>
+            <p className="font-semibold text-accent-500">{dir.label}</p>
             {dir.items.map((item) => (
               <p
                 key={item}

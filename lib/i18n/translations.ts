@@ -264,6 +264,11 @@ export const T: Record<Lang, Translation> = {
                   src: "/experience/bomulsen/event_06.png",
                   alt: "월간 이벤트 화면 06",
                 },
+                {
+                  src: "/experience/bomulsen/event_07.mp4",
+                  alt: "월간 이벤트 WebView 인터랙션 영상 03",
+                  video: true,
+                },
               ],
             },
           ],
@@ -651,6 +656,11 @@ export const T: Record<Lang, Translation> = {
                 {
                   src: "/experience/bomulsen/event_06.png",
                   alt: "Monthly event screen 06",
+                },
+                {
+                  src: "/experience/bomulsen/event_07.mp4",
+                  alt: "Monthly event WebView interaction 03",
+                  video: true,
                 },
               ],
             },

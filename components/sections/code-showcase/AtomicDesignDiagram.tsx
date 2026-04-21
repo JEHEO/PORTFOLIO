@@ -41,7 +41,7 @@ const LAYERS = [
 export function AtomicDesignDiagram({ desc }: { desc: string }) {
   return (
     <div className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900/50">
-      <p className="mb-4 text-[10px] font-bold uppercase tracking-widest text-blue-500">
+      <p className="mb-4 text-[10px] font-bold uppercase tracking-widest text-accent-500">
         Atomic Design
       </p>
       <p className="mb-4 text-xs text-zinc-500 dark:text-zinc-400">{desc}</p>

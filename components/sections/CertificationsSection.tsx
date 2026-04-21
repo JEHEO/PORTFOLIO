@@ -31,7 +31,7 @@ function CertificationCell({ item }: { item: CertificationItem }) {
       href={item.href}
       target="_blank"
       rel="noreferrer"
-      className="block transition-colors hover:text-blue-600 dark:hover:text-blue-400"
+      className="block transition-colors hover:text-accent-600 dark:hover:text-accent-400"
     >
       {content}
     </a>

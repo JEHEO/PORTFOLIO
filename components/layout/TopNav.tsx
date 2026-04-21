@@ -41,7 +41,7 @@ export function TopNav({
       <div className="mx-auto flex max-w-3xl items-center justify-between px-8 py-3">
         <a
           href="#top"
-          className="text-sm font-bold text-zinc-900 transition-colors hover:text-blue-500 dark:text-white"
+          className="text-sm font-bold text-zinc-900 transition-colors hover:text-accent-500 dark:text-white"
         >
           {PROFILE.name}
         </a>
@@ -61,7 +61,7 @@ export function TopNav({
             type="button"
             onClick={onToggleLang}
             aria-label="Toggle language"
-            className="flex h-7 w-14 items-center justify-center rounded-full border border-zinc-200 text-[11px] font-bold text-zinc-600 transition-all hover:border-blue-400 hover:text-blue-500 dark:border-zinc-700 dark:text-zinc-400"
+            className="flex h-7 w-14 items-center justify-center rounded-full border border-zinc-200 text-[11px] font-bold text-zinc-600 transition-all hover:border-accent-400 hover:text-accent-500 dark:border-zinc-700 dark:text-zinc-400"
           >
             {lang === "ko" ? "EN" : "KO"}
           </button>
@@ -69,7 +69,7 @@ export function TopNav({
             type="button"
             onClick={onToggleTheme}
             aria-label="Toggle dark mode"
-            className="flex h-7 w-7 items-center justify-center rounded-full border border-zinc-200 text-zinc-600 transition-all hover:border-blue-400 hover:text-blue-500 dark:border-zinc-700 dark:text-zinc-400"
+            className="flex h-7 w-7 items-center justify-center rounded-full border border-zinc-200 text-zinc-600 transition-all hover:border-accent-400 hover:text-accent-500 dark:border-zinc-700 dark:text-zinc-400"
           >
             {isDark ? <SunIcon /> : <MoonIcon />}
           </button>

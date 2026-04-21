@@ -11,7 +11,7 @@ export const SectionTitle = ({
   children: React.ReactNode;
 }) => (
   <div className="mb-8 flex items-center gap-3">
-    <div className="h-4 w-0.5 shrink-0 rounded-full bg-blue-500" />
+    <div className="h-4 w-0.5 shrink-0 rounded-full bg-accent-500" />
     <h2 className="text-xs font-semibold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
       {children}
     </h2>

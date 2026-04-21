@@ -25,7 +25,7 @@ export function TechStackGrid({
       <div className="sm:columns-2 sm:gap-x-8">
         {stack.map((cat) => (
           <div key={cat.category} className="mb-6 break-inside-avoid">
-            <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-blue-500">
+            <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-accent-500">
               {cat.category}
             </p>
             <div className="space-y-1.5">

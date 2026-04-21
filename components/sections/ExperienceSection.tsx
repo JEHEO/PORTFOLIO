@@ -18,7 +18,7 @@ import { Section, SectionTitle } from "@/components/ui/Section";
 import { StatBadge } from "@/components/ui/StatBadge";
 import {
   EVIDENCE_CONVENTION,
-  EVIDENCE_RN076,
+  // EVIDENCE_RN076, // RN 0.76 증거 섹션 보류 중 (아래 주석 블록 참조)
   PROJECT_DETAIL,
 } from "@/lib/data/project-detail";
 import type { Project, Translation } from "@/lib/types/portfolio";
@@ -36,7 +36,7 @@ function ProjectCard({
     <article className="group">
       {/* 프로젝트 번호 구분선 */}
       <div className="mb-5 flex items-center gap-3">
-        <span className="font-mono text-[11px] font-bold text-blue-500">
+        <span className="font-mono text-[11px] font-bold text-accent-500">
           {String(index + 1).padStart(2, "0")}
         </span>
         <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
@@ -44,7 +44,7 @@ function ProjectCard({
 
       {/* 프로젝트 헤더 */}
       <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
-        <h4 className="text-base font-bold text-zinc-900 transition-colors group-hover:text-blue-500 dark:text-white">
+        <h4 className="text-base font-bold text-zinc-900 transition-colors group-hover:text-accent-500 dark:text-white">
           {project.title}
         </h4>
         <span className="rounded border border-zinc-200 px-2 py-0.5 text-[10px] font-bold uppercase text-zinc-400 dark:border-zinc-800">
@@ -77,14 +77,14 @@ function ProjectCard({
         </div>
       )}
 
-      {/* RN 0.76 업그레이드 증거 (보물선 프로젝트) */}
-      {project.hasRN076Evidence && (
+      {/* RN 0.76 업그레이드 증거 (보물선 프로젝트) — 증거 스크린샷 준비 전까지 보류 */}
+      {/* {project.hasRN076Evidence && (
         <EvidenceSection
           sectionLabel={t.rn076EvidenceLabel}
           items={EVIDENCE_RN076}
           pendingLabel={t.evidencePendingLabel}
         />
-      )}
+      )} */}
 
       {/* Next.js 프로젝트 상세 — 디스클로저로 접을 수 있게 */}
       {project.hasDetail && <NextJsProjectDetail t={t} />}
@@ -96,9 +96,9 @@ function NextJsProjectDetail({ t }: { t: Translation }) {
   return (
     <details className="group/detail mt-4">
       {/* CTA 스타일 summary — 눈에 띄도록 블루 액센트 카드로 */}
-      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-xl border border-blue-500/40 bg-blue-50/60 p-5 transition-all hover:border-blue-500 hover:bg-blue-50 dark:border-blue-500/30 dark:bg-blue-950/20 dark:hover:border-blue-500/60 dark:hover:bg-blue-950/30 [&::-webkit-details-marker]:hidden">
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-xl border border-accent-500/40 bg-accent-50/60 p-5 transition-all hover:border-accent-500 hover:bg-accent-50 dark:border-accent-500/30 dark:bg-accent-950/20 dark:hover:border-accent-500/60 dark:hover:bg-accent-950/30 [&::-webkit-details-marker]:hidden">
         <div className="flex items-center gap-4">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-500 text-white shadow-sm">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent-500 text-white shadow-sm">
             <svg
               className="h-5 w-5"
               fill="none"
@@ -115,15 +115,15 @@ function NextJsProjectDetail({ t }: { t: Translation }) {
             </svg>
           </div>
           <div className="min-w-0">
-            <p className="text-sm font-bold text-blue-700 dark:text-blue-300">
+            <p className="text-sm font-bold text-accent-700 dark:text-accent-300">
               {t.projectDetailLabel}
             </p>
-            <p className="mt-0.5 text-xs leading-relaxed text-blue-600/70 dark:text-blue-400/70">
+            <p className="mt-0.5 text-xs leading-relaxed text-accent-600/70 dark:text-accent-400/70">
               {t.projectDetailHint}
             </p>
           </div>
         </div>
-        <ArrowRightIcon className="h-5 w-5 shrink-0 rotate-90 text-blue-500 transition-transform group-open/detail:rotate-[270deg]" />
+        <ArrowRightIcon className="h-5 w-5 shrink-0 rotate-90 text-accent-500 transition-transform group-open/detail:rotate-[270deg]" />
       </summary>
       <div className="mt-4 space-y-4 rounded-xl border border-zinc-200 bg-zinc-50/50 p-5 dark:border-zinc-800 dark:bg-zinc-900/30">
         {/* Stats — CI/CD · Branches 2종. 증거 스크린샷은 Atomic Design · CI/CD 그룹에 포함됨 */}
