@@ -53,7 +53,7 @@ export default function Home() {
         t={t}
       />
 
-      <main className="mx-auto max-w-3xl px-8 pt-28 pb-20">
+      <main className="mx-auto max-w-3xl px-4 pt-28 pb-20">
         {/* <IntroSection /> */}
         <HeaderSection t={t} />
         <AboutSection t={t} />

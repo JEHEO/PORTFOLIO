@@ -64,7 +64,7 @@ export function IntroSection() {
   }, []);
 
   return (
-    <section className="relative -mx-8 mb-16 flex min-h-[calc(100vh-6rem)] flex-col items-center justify-center overflow-hidden px-8">
+    <section className="relative -mx-4 mb-16 flex min-h-[calc(100vh-6rem)] flex-col items-center justify-center overflow-hidden px-4">
       {/* 고래 — hue wrapper + bob wrapper 2겹 */}
       <div
         ref={whaleWrapperRef}

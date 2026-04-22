@@ -79,7 +79,7 @@ function TopBar({
   const backLabel = COPY[lang].back;
   return (
     <nav className="fixed top-0 right-0 left-0 z-50 border-b border-zinc-200/80 bg-white/80 backdrop-blur-md dark:border-zinc-800/80 dark:bg-black/80">
-      <div className="mx-auto flex max-w-3xl items-center justify-between px-8 py-3">
+      <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3">
         <Link
           href="/"
           className="inline-flex items-center gap-1.5 text-xs font-medium text-zinc-600 transition-colors hover:text-accent-500 dark:text-zinc-400"
@@ -132,7 +132,7 @@ export function HighlightDetailClient({ slug }: { slug: string }) {
           onToggleLang={onToggleLang}
           onToggleTheme={onToggleTheme}
         />
-        <main className="mx-auto max-w-3xl px-8 pt-28 pb-20">
+        <main className="mx-auto max-w-3xl px-4 pt-28 pb-20">
           <h1 className="mb-3 text-2xl font-bold text-zinc-900 dark:text-white">
             {c.notFoundTitle}
           </h1>
@@ -155,7 +155,7 @@ export function HighlightDetailClient({ slug }: { slug: string }) {
         onToggleTheme={onToggleTheme}
       />
 
-      <main className="mx-auto max-w-3xl px-8 pt-28 pb-20">
+      <main className="mx-auto max-w-3xl px-4 pt-28 pb-20">
         {/* ── Hero ── */}
         <header className="mb-12 border-b border-zinc-200 pb-8 dark:border-zinc-800">
           <div className="mb-3 flex flex-wrap gap-2">

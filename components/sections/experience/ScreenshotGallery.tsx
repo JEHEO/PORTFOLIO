@@ -225,7 +225,8 @@ function Cylinder({
 
   return (
     <div
-      className="relative w-full cursor-grab overflow-hidden select-none active:cursor-grabbing"
+      // 모바일에서는 좌우 padding 을 negate 해 풀-블리드 (이미지 영역이 화면 너비를 꽉 채움)
+      className="relative -mx-4 w-auto cursor-grab overflow-hidden select-none active:cursor-grabbing sm:mx-0 sm:w-full"
       style={{
         height: `${stageH}px`,
         perspective: "1100px",
@@ -368,7 +369,8 @@ function ScrollRow({
   return (
     <div
       ref={scrollRef}
-      className="flex cursor-grab gap-3 overflow-x-auto overflow-y-hidden pb-4 select-none active:cursor-grabbing [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      // 모바일에서 풀-블리드 (-mx-4) + 안쪽 페이딩(px-4) 으로 첫/마지막 아이템에 여백
+      className="-mx-4 flex cursor-grab gap-3 overflow-x-auto overflow-y-hidden px-4 pb-4 select-none active:cursor-grabbing sm:mx-0 sm:px-0 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={endDrag}

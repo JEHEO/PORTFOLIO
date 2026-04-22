@@ -38,7 +38,7 @@ export function TopNav({
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-3xl items-center justify-between px-8 py-3">
+      <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3">
         <a
           href="#top"
           className="text-sm font-bold text-zinc-900 transition-colors hover:text-accent-500 dark:text-white"
