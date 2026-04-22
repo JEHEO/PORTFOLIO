@@ -1,21 +1,22 @@
 /**
  * 프로젝트 상세의 커밋 컨벤션 섹션.
  * - 타입 레전드 + 실제 파이프라인에서 가져온 샘플 커밋을 함께 노출합니다.
+ * - 커밋 메시지는 현재 언어(`lang`)에 따라 ko/en 으로 스위칭됩니다.
  */
 
 import React from "react";
 
-import {
-  COMMIT_COLORS,
-  COMMIT_SAMPLES,
-} from "@/lib/data/code-showcase";
+import { COMMIT_COLORS, COMMIT_SAMPLES } from "@/lib/data/code-showcase";
+import type { Lang } from "@/lib/stores/uiStore";
 
 export function CommitConventionSection({
   label,
   desc,
+  lang,
 }: {
   label: string;
   desc: string;
+  lang: Lang;
 }) {
   return (
     <div className="mt-6 space-y-3">
@@ -49,7 +50,7 @@ export function CommitConventionSection({
               {c.type}
             </span>
             <span className="text-zinc-700 dark:text-zinc-300">
-              {c.message}
+              {lang === "ko" ? c.message : c.messageEn}
             </span>
             <span className="ml-auto shrink-0 font-mono text-[11px] text-zinc-400">
               #{c.num}

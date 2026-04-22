@@ -13,30 +13,33 @@ import { ArchitectureTree } from "@/components/sections/experience/ArchitectureT
 import { CommitConventionSection } from "@/components/sections/experience/CommitConventionSection";
 import { ScreenshotGallery } from "@/components/sections/experience/ScreenshotGallery";
 import { TechStackGrid } from "@/components/sections/experience/TechStackGrid";
-import { EvidenceSection } from "@/components/ui/EvidencePlaceholder";
+// import { EvidenceSection } from "@/components/ui/EvidencePlaceholder"; // 증거 섹션 보류 중
 import { Section, SectionTitle } from "@/components/ui/Section";
 import { StatBadge } from "@/components/ui/StatBadge";
 import {
-  EVIDENCE_CONVENTION,
-  // EVIDENCE_RN076, // RN 0.76 증거 섹션 보류 중 (아래 주석 블록 참조)
+  // EVIDENCE_CONVENTION, // RN 0.76 · 팀 컨벤션 증거 섹션 보류 중
+  // EVIDENCE_RN076,
   PROJECT_DETAIL,
 } from "@/lib/data/project-detail";
+import type { Lang } from "@/lib/stores/uiStore";
 import type { Project, Translation } from "@/lib/types/portfolio";
 
 function ProjectCard({
   project,
   index,
   t,
+  lang,
 }: {
   project: Project;
   index: number;
   t: Translation;
+  lang: Lang;
 }) {
   return (
     <article className="group">
       {/* 프로젝트 번호 구분선 */}
       <div className="mb-5 flex items-center gap-3">
-        <span className="font-mono text-[11px] font-bold text-accent-500">
+        <span className="text-accent-500 font-mono text-[11px] font-bold">
           {String(index + 1).padStart(2, "0")}
         </span>
         <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
@@ -44,17 +47,15 @@ function ProjectCard({
 
       {/* 프로젝트 헤더 */}
       <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
-        <h4 className="text-base font-bold text-zinc-900 transition-colors group-hover:text-accent-500 dark:text-white">
+        <h4 className="group-hover:text-accent-500 text-base font-bold text-zinc-900 transition-colors dark:text-white">
           {project.title}
         </h4>
-        <span className="rounded border border-zinc-200 px-2 py-0.5 text-[10px] font-bold uppercase text-zinc-400 dark:border-zinc-800">
+        <span className="rounded border border-zinc-200 px-2 py-0.5 text-[10px] font-bold text-zinc-400 uppercase dark:border-zinc-800">
           {project.tag}
         </span>
       </div>
       <p className="mb-4 text-sm font-medium text-zinc-500">{project.sub}</p>
-      <ul
-        className={"mb-6 space-y-2 text-sm text-zinc-600 dark:text-zinc-300"}
-      >
+      <ul className={"mb-6 space-y-2 text-sm text-zinc-600 dark:text-zinc-300"}>
         {project.details.map((detail) => (
           <li key={detail} className="flex gap-2">
             <span className="text-zinc-400">•</span>
@@ -86,19 +87,81 @@ function ProjectCard({
         />
       )} */}
 
+      {/* 보물선 브랜치 전략 디스클로저 */}
+      {project.hasBranchStrategy && <BranchStrategyDetail t={t} />}
+
       {/* Next.js 프로젝트 상세 — 디스클로저로 접을 수 있게 */}
-      {project.hasDetail && <NextJsProjectDetail t={t} />}
+      {project.hasDetail && <NextJsProjectDetail t={t} lang={lang} />}
     </article>
   );
 }
 
-function NextJsProjectDetail({ t }: { t: Translation }) {
+function BranchStrategyDetail({ t }: { t: Translation }) {
+  return (
+    <details className="group/detail mt-4">
+      {/* CTA 스타일 summary — NextJsProjectDetail 과 동일 톤 */}
+      <summary className="border-accent-500/40 bg-accent-50/60 hover:border-accent-500 hover:bg-accent-50 dark:border-accent-500/30 dark:bg-accent-950/20 dark:hover:border-accent-500/60 dark:hover:bg-accent-950/30 flex cursor-pointer list-none items-center justify-between gap-4 rounded-xl border p-5 transition-all [&::-webkit-details-marker]:hidden">
+        <div className="flex items-center gap-4">
+          <div className="bg-accent-500 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-white shadow-sm">
+            {/* Git branch 아이콘 */}
+            <svg
+              className="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              viewBox="0 0 24 24"
+              aria-hidden
+            >
+              <line x1="6" y1="3" x2="6" y2="15" />
+              <circle cx="18" cy="6" r="3" />
+              <circle cx="6" cy="18" r="3" />
+              <path d="M18 9a9 9 0 0 1-9 9" />
+            </svg>
+          </div>
+          <div className="min-w-0">
+            <p className="text-accent-700 dark:text-accent-300 text-sm font-bold">
+              {t.branchStrategyLabel}
+            </p>
+            <p className="text-accent-600/70 dark:text-accent-400/70 mt-0.5 text-xs leading-relaxed">
+              {t.branchStrategyHint}
+            </p>
+          </div>
+        </div>
+        <ArrowRightIcon className="text-accent-500 h-5 w-5 shrink-0 rotate-90 transition-transform group-open/detail:rotate-[270deg]" />
+      </summary>
+      <div className="mt-4 rounded-xl border border-zinc-200 bg-zinc-50/50 p-5 dark:border-zinc-800 dark:bg-zinc-900/30">
+        {/* 5단계 flow — 번호 chip + 설명 */}
+        <ol className="space-y-4">
+          {t.branchStrategySteps.map((step, i) => (
+            <li key={step.label} className="flex gap-4">
+              <span className="bg-accent-100 text-accent-700 dark:bg-accent-950/40 dark:text-accent-300 flex h-7 w-7 shrink-0 items-center justify-center rounded-full font-mono text-xs font-bold">
+                {i + 1}
+              </span>
+              <div className="min-w-0 flex-1 pt-0.5">
+                <p className="text-sm font-semibold text-zinc-900 dark:text-white">
+                  {step.label}
+                </p>
+                <p className="mt-0.5 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
+                  {step.desc}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </details>
+  );
+}
+
+function NextJsProjectDetail({ t, lang }: { t: Translation; lang: Lang }) {
   return (
     <details className="group/detail mt-4">
       {/* CTA 스타일 summary — 눈에 띄도록 블루 액센트 카드로 */}
-      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-xl border border-accent-500/40 bg-accent-50/60 p-5 transition-all hover:border-accent-500 hover:bg-accent-50 dark:border-accent-500/30 dark:bg-accent-950/20 dark:hover:border-accent-500/60 dark:hover:bg-accent-950/30 [&::-webkit-details-marker]:hidden">
+      <summary className="border-accent-500/40 bg-accent-50/60 hover:border-accent-500 hover:bg-accent-50 dark:border-accent-500/30 dark:bg-accent-950/20 dark:hover:border-accent-500/60 dark:hover:bg-accent-950/30 flex cursor-pointer list-none items-center justify-between gap-4 rounded-xl border p-5 transition-all [&::-webkit-details-marker]:hidden">
         <div className="flex items-center gap-4">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent-500 text-white shadow-sm">
+          <div className="bg-accent-500 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-white shadow-sm">
             <svg
               className="h-5 w-5"
               fill="none"
@@ -115,15 +178,15 @@ function NextJsProjectDetail({ t }: { t: Translation }) {
             </svg>
           </div>
           <div className="min-w-0">
-            <p className="text-sm font-bold text-accent-700 dark:text-accent-300">
+            <p className="text-accent-700 dark:text-accent-300 text-sm font-bold">
               {t.projectDetailLabel}
             </p>
-            <p className="mt-0.5 text-xs leading-relaxed text-accent-600/70 dark:text-accent-400/70">
+            <p className="text-accent-600/70 dark:text-accent-400/70 mt-0.5 text-xs leading-relaxed">
               {t.projectDetailHint}
             </p>
           </div>
         </div>
-        <ArrowRightIcon className="h-5 w-5 shrink-0 rotate-90 text-accent-500 transition-transform group-open/detail:rotate-[270deg]" />
+        <ArrowRightIcon className="text-accent-500 h-5 w-5 shrink-0 rotate-90 transition-transform group-open/detail:rotate-[270deg]" />
       </summary>
       <div className="mt-4 space-y-4 rounded-xl border border-zinc-200 bg-zinc-50/50 p-5 dark:border-zinc-800 dark:bg-zinc-900/30">
         {/* Stats — CI/CD · Branches 2종. 증거 스크린샷은 Atomic Design · CI/CD 그룹에 포함됨 */}
@@ -142,29 +205,37 @@ function NextJsProjectDetail({ t }: { t: Translation }) {
         <CommitConventionSection
           label={t.commitConventionLabel}
           desc={t.commitConventionDesc}
+          lang={lang}
         />
         <TechStackGrid
           stack={PROJECT_DETAIL.techStack}
           performanceLabel={t.performanceLabel}
+          lang={lang}
         />
         <ArchitectureTree architecture={PROJECT_DETAIL.architecture} />
         <div className="mt-6">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-zinc-400">
+          <p className="mb-3 text-xs font-semibold tracking-widest text-zinc-400 uppercase">
             Atomic Design 구조 예시
           </p>
           <AtomicDesignDiagram desc={t.atomicDesignDesc} />
         </div>
-        <EvidenceSection
+        {/* <EvidenceSection
           sectionLabel={t.conventionEvidenceLabel}
           items={EVIDENCE_CONVENTION}
           pendingLabel={t.evidencePendingLabel}
-        />
+        /> */}
       </div>
     </details>
   );
 }
 
-export function ExperienceSection({ t }: { t: Translation }) {
+export function ExperienceSection({
+  t,
+  lang,
+}: {
+  t: Translation;
+  lang: Lang;
+}) {
   return (
     <Section id="experience">
       <SectionTitle>{t.experienceLabel}</SectionTitle>
@@ -175,9 +246,7 @@ export function ExperienceSection({ t }: { t: Translation }) {
             <h3 className="text-lg font-bold text-zinc-900 dark:text-white">
               {t.experience.company}
             </h3>
-            <p className="text-sm text-zinc-500">
-              {t.experience.position}
-            </p>
+            <p className="text-sm text-zinc-500">{t.experience.position}</p>
           </div>
           <span className="text-xs font-medium text-zinc-400">
             {t.experience.period}
@@ -196,6 +265,7 @@ export function ExperienceSection({ t }: { t: Translation }) {
             project={project}
             index={pIdx}
             t={t}
+            lang={lang}
           />
         ))}
       </div>

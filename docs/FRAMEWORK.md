@@ -183,10 +183,6 @@ export default function Error({
 |------|------|
 | `feat` | 새로운 기능 |
 | `fix` | 버그 수정 |
-| `refactor` | 리팩토링 (기능 변경 없음) |
-| `style` | 코드 포맷/스타일 (기능 변경 없음) |
-| `docs` | 문서 변경 |
-| `test` | 테스트 추가/수정 |
 | `chore` | 빌드 설정, 패키지 업데이트 등 |
 
 ### PR 규칙

@@ -156,18 +156,43 @@ export const T: Record<Lang, Translation> = {
     projectDetailLabel: "상세 스택 & 아키텍처 보기",
     projectDetailHint:
       "Next.js 16 · React 19 · TypeScript · 10+ 라이브러리 선택 근거와 폴더 구조",
+    branchStrategyLabel: "브랜치 전략 & 배포 플로우 보기",
+    branchStrategyHint:
+      "Jira → feature/bugfix → development → master · 버전별 브랜치 유지",
+    branchStrategySteps: [
+      {
+        label: "Jira 이슈 · 신기능 등록",
+        desc: '이슈나 신기능이 Jira 에 등록되면 해당 작업에서 "브랜치 만들기" 기능을 이용해 origin 에서 분기합니다.',
+      },
+      {
+        label: "feature / bugfix 타입별 브랜치 생성",
+        desc: "작업 유형에 따라 feature/* 또는 bugfix/* 프리픽스로 구분해 브랜치를 생성합니다.",
+      },
+      {
+        label: "development 브랜치 병합 · 통합 테스트",
+        desc: "개별 브랜치를 development 에 병합한 뒤 통합 테스트를 진행합니다.",
+      },
+      {
+        label: "master 브랜치 병합 (운영 반영)",
+        desc: "검증이 끝나면 master 브랜치로 병합해 운영 환경에 배포합니다.",
+      },
+      {
+        label: "버전별 브랜치 유지",
+        desc: "버전별로 브랜치를 별도 생성해두어 해당 버전에 적용된 변경 내역을 브랜치 단위로 추적할 수 있습니다.",
+      },
+    ],
     codeShowcaseLabel: "Clean Code Showcase",
     codeShowcaseDesc:
       "실무에서 작성한 핵심 파일들입니다. Atomic Design · Custom Hook · 단일 책임 원칙을 어떻게 적용했는지 확인하세요.",
-    codeShowcaseBtnLabel: "GitHub에서 파일 보기",
+    codeShowcaseNdaNote:
+      "실제 구현 코드에서 비즈니스 로직만 마스킹한 sanitize 버전입니다.",
     atomicDesignDesc:
       "UI를 Atoms → Molecules → Organisms → Templates → Pages 5계층으로 분리해 재사용성과 테스트 용이성을 확보했습니다.",
     hooksDesc:
       "비즈니스 로직을 Custom Hook으로 분리해 컴포넌트는 UI 렌더링에만 집중합니다.",
     performanceLabel: "왜 이 라이브러리? — 기술 선택 근거 & 성능 최적화",
     commitConventionLabel: "Commit Convention",
-    commitConventionDesc:
-      "feat · fix · refactor · chore · style · docs · test 타입을 일관되게 적용합니다.",
+    commitConventionDesc: "feat · fix · chore  타입을 일관되게 적용합니다.",
     skillsLabel: "Technical Skills",
     portfolioLabel: "2020 Portfolio",
     contactLabel: "Contact",
@@ -217,20 +242,51 @@ export const T: Record<Lang, Translation> = {
             "관리자 페이지 개발 및 유지보수",
           ],
           hasRN076Evidence: true,
+          hasBranchStrategy: true,
           screenshots: [
             {
               label: "보물선 앱 주요 화면",
               items: [
-                { src: "/experience/bomulsen/01.png", alt: "보물선 앱 화면 01" },
-                { src: "/experience/bomulsen/02.png", alt: "보물선 앱 화면 02" },
-                { src: "/experience/bomulsen/03.png", alt: "보물선 앱 화면 03" },
-                { src: "/experience/bomulsen/04.png", alt: "보물선 앱 화면 04" },
-                { src: "/experience/bomulsen/05.png", alt: "보물선 앱 화면 05" },
-                { src: "/experience/bomulsen/06.png", alt: "보물선 앱 화면 06" },
-                { src: "/experience/bomulsen/07.png", alt: "보물선 앱 화면 07" },
-                { src: "/experience/bomulsen/08.png", alt: "보물선 앱 화면 08" },
-                { src: "/experience/bomulsen/09.png", alt: "보물선 앱 화면 09" },
-                { src: "/experience/bomulsen/10.png", alt: "보물선 앱 화면 10" },
+                {
+                  src: "/experience/bomulsen/01.png",
+                  alt: "보물선 앱 화면 01",
+                },
+                {
+                  src: "/experience/bomulsen/02.png",
+                  alt: "보물선 앱 화면 02",
+                },
+                {
+                  src: "/experience/bomulsen/03.png",
+                  alt: "보물선 앱 화면 03",
+                },
+                {
+                  src: "/experience/bomulsen/04.png",
+                  alt: "보물선 앱 화면 04",
+                },
+                {
+                  src: "/experience/bomulsen/05.png",
+                  alt: "보물선 앱 화면 05",
+                },
+                {
+                  src: "/experience/bomulsen/06.png",
+                  alt: "보물선 앱 화면 06",
+                },
+                {
+                  src: "/experience/bomulsen/07.png",
+                  alt: "보물선 앱 화면 07",
+                },
+                {
+                  src: "/experience/bomulsen/08.png",
+                  alt: "보물선 앱 화면 08",
+                },
+                {
+                  src: "/experience/bomulsen/09.png",
+                  alt: "보물선 앱 화면 09",
+                },
+                {
+                  src: "/experience/bomulsen/10.png",
+                  alt: "보물선 앱 화면 10",
+                },
               ],
             },
             {
@@ -548,10 +604,36 @@ export const T: Record<Lang, Translation> = {
     projectDetailLabel: "View detailed stack & architecture",
     projectDetailHint:
       "Next.js 16 · React 19 · TypeScript · rationale for 10+ library choices and the folder layout",
+    branchStrategyLabel: "View branch strategy & deployment flow",
+    branchStrategyHint:
+      "Jira → feature/bugfix → development → master · version branches retained",
+    branchStrategySteps: [
+      {
+        label: "Jira issue / feature registration",
+        desc: 'When an issue or new feature is registered in Jira, branches are created off origin via Jira\'s "Create branch" action.',
+      },
+      {
+        label: "feature / bugfix branch creation",
+        desc: "Branches are prefixed with feature/* or bugfix/* depending on the type of work.",
+      },
+      {
+        label: "Merge to development · integration testing",
+        desc: "Individual branches merge into development, where integration testing runs.",
+      },
+      {
+        label: "Merge to master (production release)",
+        desc: "Once verification passes, branches merge into master to deploy to production.",
+      },
+      {
+        label: "Version branches retained",
+        desc: "A dedicated branch per version is kept, so each version's applied changes can be traced at the branch level.",
+      },
+    ],
     codeShowcaseLabel: "Clean Code Showcase",
     codeShowcaseDesc:
       "Key files from production. See how Atomic Design, Custom Hooks, and Single Responsibility Principle are applied in practice.",
-    codeShowcaseBtnLabel: "View file on GitHub",
+    codeShowcaseNdaNote:
+      "The snippets below are sanitized versions of the actual implementation with business logic masked.",
     atomicDesignDesc:
       "UI is split into 5 layers — Atoms → Molecules → Organisms → Templates → Pages — for reusability and testability.",
     hooksDesc:
@@ -559,8 +641,7 @@ export const T: Record<Lang, Translation> = {
     performanceLabel:
       "Why This Library? — Tech Choices & Performance Optimizations",
     commitConventionLabel: "Commit Convention",
-    commitConventionDesc:
-      "Consistent use of feat · fix · refactor · chore · style · docs · test prefixes.",
+    commitConventionDesc: "Consistent use of feat · fix · chore prefixes.",
     skillsLabel: "Technical Skills",
     portfolioLabel: "2020 Portfolio",
     contactLabel: "Contact",
@@ -610,20 +691,51 @@ export const T: Record<Lang, Translation> = {
             "Developed and maintained the admin dashboard",
           ],
           hasRN076Evidence: true,
+          hasBranchStrategy: true,
           screenshots: [
             {
               label: "Bomulsen — key app screens",
               items: [
-                { src: "/experience/bomulsen/01.png", alt: "Bomulsen screen 01" },
-                { src: "/experience/bomulsen/02.png", alt: "Bomulsen screen 02" },
-                { src: "/experience/bomulsen/03.png", alt: "Bomulsen screen 03" },
-                { src: "/experience/bomulsen/04.png", alt: "Bomulsen screen 04" },
-                { src: "/experience/bomulsen/05.png", alt: "Bomulsen screen 05" },
-                { src: "/experience/bomulsen/06.png", alt: "Bomulsen screen 06" },
-                { src: "/experience/bomulsen/07.png", alt: "Bomulsen screen 07" },
-                { src: "/experience/bomulsen/08.png", alt: "Bomulsen screen 08" },
-                { src: "/experience/bomulsen/09.png", alt: "Bomulsen screen 09" },
-                { src: "/experience/bomulsen/10.png", alt: "Bomulsen screen 10" },
+                {
+                  src: "/experience/bomulsen/01.png",
+                  alt: "Bomulsen screen 01",
+                },
+                {
+                  src: "/experience/bomulsen/02.png",
+                  alt: "Bomulsen screen 02",
+                },
+                {
+                  src: "/experience/bomulsen/03.png",
+                  alt: "Bomulsen screen 03",
+                },
+                {
+                  src: "/experience/bomulsen/04.png",
+                  alt: "Bomulsen screen 04",
+                },
+                {
+                  src: "/experience/bomulsen/05.png",
+                  alt: "Bomulsen screen 05",
+                },
+                {
+                  src: "/experience/bomulsen/06.png",
+                  alt: "Bomulsen screen 06",
+                },
+                {
+                  src: "/experience/bomulsen/07.png",
+                  alt: "Bomulsen screen 07",
+                },
+                {
+                  src: "/experience/bomulsen/08.png",
+                  alt: "Bomulsen screen 08",
+                },
+                {
+                  src: "/experience/bomulsen/09.png",
+                  alt: "Bomulsen screen 09",
+                },
+                {
+                  src: "/experience/bomulsen/10.png",
+                  alt: "Bomulsen screen 10",
+                },
               ],
             },
             {

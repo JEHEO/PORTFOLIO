@@ -7,14 +7,14 @@
 
 ## 기술 스택
 
-| 분류 | 버전 |
-|------|------|
-| Framework | Next.js 16.2.1 (App Router) |
-| Runtime | React 19.2.4 |
-| Language | TypeScript 5.x |
-| Styling | Tailwind CSS 4.x |
-| Linter | ESLint 9 (eslint-config-next) |
-| Node | >=20 |
+| 분류      | 버전                          |
+| --------- | ----------------------------- |
+| Framework | Next.js 16.2.1 (App Router)   |
+| Runtime   | React 19.2.4                  |
+| Language  | TypeScript 5.x                |
+| Styling   | Tailwind CSS 4.x              |
+| Linter    | ESLint 9 (eslint-config-next) |
+| Node      | >=20                          |
 
 ---
 
@@ -77,25 +77,29 @@ npm run lint
 ## 작업 규칙
 
 ### 필수 준수 사항
+
 - **App Router** 전용 사용. Pages Router(`pages/`) 금지.
 - 모든 컴포넌트는 TypeScript strict mode 통과 필수.
 - 스타일은 **Tailwind CSS** 유틸리티 클래스만 사용. 인라인 style 속성 금지.
 - 신규 파일 생성 시 `.claude/templates/`의 템플릿 참조.
 
 ### 파일 네이밍
+
 - 컴포넌트: `PascalCase.tsx` (예: `UserCard.tsx`)
 - 훅: `use` 접두사 + `camelCase.ts` (예: `useUserData.ts`)
 - 유틸: `camelCase.ts` (예: `formatDate.ts`)
 - 라우트 세그먼트: `kebab-case/` (예: `user-profile/`)
 
 ### 커밋 컨벤션
+
 ```
 <type>(<scope>): <subject>
 
-type: feat | fix | refactor | style | docs | test | chore
+type: feat | fix | chore
 ```
 
 ### 참고 문서
+
 - 상세 규칙/컨벤션 → `docs/FRAMEWORK.md`
 - 피처 진행 상태 → `docs/ROADMAP.md`
 - API 스펙 → `docs/API_SPEC.md`
