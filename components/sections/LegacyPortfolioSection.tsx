@@ -12,6 +12,9 @@ export function LegacyPortfolioSection({ t }: { t: Translation }) {
   return (
     <Section id="portfolio">
       <SectionTitle>{t.portfolioLabel}</SectionTitle>
+      <p className="mb-4 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
+        {t.portfolioDesc}
+      </p>
       <div className="flex gap-4">
         <a
           href={PORTFOLIO_LINKS.github}

@@ -39,25 +39,32 @@ export type ScreenshotItem = {
  *   그룹은 "scroll" 로 지정하세요.
  * - `orientation` 은 카드의 가로/세로 비율 프리셋. 모바일 스크린샷이면 "portrait" (기본),
  *   웹 스크린샷이면 "landscape" 로 설정하세요.
+ * - `itemWidth` 는 "scroll" 레이아웃 전용 — 각 아이템 컨테이너의 가로폭(px)을 강제로 통일합니다.
+ *   폴더 구조/아키텍처 다이어그램처럼 세로 비율이 다양한 이미지들을 나란히 정렬해야 할 때 유용합니다.
+ *   값이 없으면 기존 동작(w-auto) 유지.
  */
 export type ScreenshotGroup = {
   label?: string;
   items: ScreenshotItem[];
   layout?: "cylinder" | "scroll";
   orientation?: "portrait" | "landscape";
+  itemWidth?: number;
 };
 
 export type Project = {
   title: string;
   tag: string;
   sub: string;
+  /**
+   * 프로젝트 진행 기간. 회사 전체 재직 기간과 구분되는 프로젝트 단위 타임라인.
+   * 예) "2021.03 — 재직 중 (2023.11 전면 리뉴얼)"
+   */
+  period?: string;
   details: string[];
-  /** `hasDetail` 이 true 인 프로젝트에만 상세 블록(stats·techStack·architecture·evidence) 이 붙습니다. */
+  /** `hasDetail` 이 true 인 프로젝트에만 상세 블록(stats·techStack·architecture) 이 붙습니다. */
   hasDetail?: boolean;
   /** `hasBranchStrategy` 가 true 이면 브랜치 전략 디스클로저가 노출됩니다 (보물선 프로젝트 용). */
   hasBranchStrategy?: boolean;
-  /** RN 0.76 업그레이드 증거 섹션 노출 여부 */
-  hasRN076Evidence?: boolean;
   /**
    * 프로젝트 스크린샷/영상. 그룹 단위로 라벨과 함께 렌더됩니다.
    * - 값이 없거나 빈 배열이면 placeholder(회색 박스) 로 대체됩니다.
@@ -174,14 +181,13 @@ export type Translation = {
   commitConventionDesc: string;
   skillsLabel: string;
   portfolioLabel: string;
+  /** Legacy Portfolio 섹션 보조 설명 */
+  portfolioDesc: string;
   contactLabel: string;
   contact: ContactContent;
   statsLabels: { cicd: string; branches: string };
   cicdValue: string;
   branchesValue: string;
-  evidencePendingLabel: string;
-  rn076EvidenceLabel: string;
-  conventionEvidenceLabel: string;
   experience: ExperienceData;
   highlights: HighlightItem[];
 };

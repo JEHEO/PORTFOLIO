@@ -120,19 +120,19 @@ export const HIGHLIGHTS: Highlight[] = [
     },
   },
 
-  // ─── 02. 프론트엔드 팀 컨벤션 수립 ─────────────────────────────────────────
+  // ─── 02. 팀 프로세스 & 자동화 (컨벤션 수립 + AI 워크플로우 통합) ─────────────
   {
-    slug: "team-convention",
-    tags: ["Leadership", "Process"],
+    slug: "team-process-automation",
+    tags: ["Leadership", "Process", "AI"],
     ko: {
-      title: "프론트엔드 팀 컨벤션 수립",
-      meta: "2023 – 2025 · 지속 개선 · 팀 규모 4명",
+      title: "팀 프로세스 & 자동화",
+      meta: "2023 – 2026 · 지속 개선 · 팀 규모 3명",
       summary:
-        "실질적 파트 리더로서 Atomic Design 도입과 코드 리뷰 프로세스 수립을 통해 협업 효율을 약 30% 개선했습니다.",
+        "Atomic Design · 코드 리뷰 프로세스를 팀에 정착시키고, Claude Code 기반 AI 페어 프로그래밍을 워크플로우에 통합해 사람 + 에이전트가 함께 컨벤션 · 셀프 리뷰 · 린트/타입 체크를 자동으로 수행하도록 설계했습니다.",
       sections: [
         {
           heading: "배경 (Context)",
-          body: "빠른 성장기에 신규 팀원 온보딩과 레거시 유지보수가 동시에 진행되며 코드 스타일이 일관성을 잃기 시작했습니다. 파일 구조 · 네이밍 · 상태 관리 방식이 파일마다 달라, 리뷰의 상당 부분이 '스타일 논의' 에 소모되고 있었습니다.",
+          body: "빠른 성장기에 신규 팀원 온보딩과 레거시 유지보수가 동시에 진행되며 코드 스타일이 일관성을 잃기 시작했고, 이후 Next.js 16 신규 프로젝트로 진입하며 비교적 새로운 스택에서 컨벤션을 빠르게 안착시켜야 했습니다. '사람이 꼭 봐야 할 것' 과 '자동화가 대신할 수 있는 것' 을 명확히 분리하는 것이 목표였습니다.",
         },
         {
           heading: "문제 정의 (Problem)",
@@ -140,11 +140,13 @@ export const HIGHLIGHTS: Highlight[] = [
             "컴포넌트 분리 기준이 개발자마다 달라 재사용성이 떨어짐",
             "스타일 · 상태 관리 · 폴더 구조 일관성 부족",
             "코드 리뷰가 '의미' 보다 '형식' 에 집중됨",
+            "컨벤션 문서가 있어도 신규 파일 작성 시 일관되게 지켜지지 않음",
+            "린트 · 타입 체크를 빌드 이전 단계에서 반복적으로 수동 실행",
             "신규 팀원 온보딩 초반 1 – 2주 생산성 저하",
           ],
         },
         {
-          heading: "접근 (Approach)",
+          heading: "접근 (Approach) · 사람 레이어",
           body: [
             "Atomic Design 5계층 구조 (Atoms / Molecules / Organisms / Templates / Pages) 도입 — 분리 기준을 문서로 명문화",
             "ESLint · Prettier · simple-import-sort · tailwindcss plugin 표준화로 포맷 논쟁을 린터에 위임",
@@ -154,28 +156,40 @@ export const HIGHLIGHTS: Highlight[] = [
           ],
         },
         {
+          heading: "접근 (Approach) · 자동화 레이어",
+          body: [
+            "CLAUDE.md 에 기술 스택 · 패키지 구조 · 네이밍 · 커밋 컨벤션 · 워크플로우 4단계를 집약 — 에이전트가 항상 동일한 컨텍스트로 작동",
+            ".claude/commands/ 에 `/review` (리뷰 기준 자동 적용) · `/lint-check` (ESLint + tsc 일괄 실행) 등 커스텀 커맨드 정의",
+            ".claude/templates/ 에 Component · Hook · Screen · ViewModel · RouteHandler 5종 템플릿을 관리 — 신규 파일 생성 시 컨벤션 자동 준수",
+            "표준 워크플로우 정립: 코드 작성 → /review → /lint-check → 빌드 검증 (중요 변경시)",
+            "문서 · 정적 파일 변경 같은 예외는 문서에 명시해 에이전트가 과도하게 개입하지 않도록 가드레일 설정",
+          ],
+        },
+        {
           heading: "결과 (Result)",
           body: [
-            "리뷰 사이클 평균 시간 체감상 약 30% 단축",
-            "신규 팀원 첫 PR 머지까지 기간 단축",
-            "중복 컴포넌트 감소 · Storybook 커버리지 증가",
+            "리뷰 사이클 평균 시간 체감상 약 30% 단축 (팀 내 자체 평가)",
+            "신규 팀원 첫 PR 머지까지 기간 단축 · 중복 컴포넌트 감소",
+            "리뷰 단계 '스타일' 지적 감소 — 본질적 설계 논의에 집중",
+            "린트 에러로 인한 빌드 실패 사전 차단",
+            "본 포트폴리오 자체도 동일 워크플로우로 유지 — 프로세스를 스스로 증명",
           ],
         },
         {
           heading: "회고 (Takeaway)",
-          body: "컨벤션은 '문서' 가 아니라 '자동화 + 팀 문화' 두 축이 모두 작동할 때만 유지됩니다. 린터로 막을 수 있는 것은 린터에 맡기고, 사람이 꼭 판단해야 할 부분만 리뷰에 남기는 구조가 장기적으로 지속 가능했습니다.",
+          body: "컨벤션은 '문서' 가 아니라 '사람의 합의 + 자동화 + 팀 문화' 세 축이 함께 작동할 때 유지됩니다. 린터로 막을 수 있는 것은 린터에, 에이전트가 강제할 수 있는 것은 에이전트에, 사람이 꼭 판단해야 할 부분만 리뷰에 남기는 구조가 장기적으로 지속 가능했습니다. 에이전트는 '더 빠른 개발자' 가 아니라 '컨벤션을 자동으로 강제하는 장치' 로 쓰는 쪽이 실질 ROI 가 높았습니다.",
         },
       ],
     },
     en: {
-      title: "Establishing Frontend Team Conventions",
-      meta: "2023 – 2025 · Continuous improvement · Team of 4",
+      title: "Team Process & Automation",
+      meta: "2023 – 2026 · Continuous improvement · Team of 3",
       summary:
-        "As acting tech lead, improved collaboration efficiency by ~30% through adopting Atomic Design and formalizing the code review process.",
+        "Formalized Atomic Design and code review processes, and integrated Claude Code-based AI pair programming into the team workflow — so conventions, self-reviews, and lint / type checks are performed automatically by human + agent together.",
       sections: [
         {
           heading: "Context",
-          body: "During a period of fast growth, onboarding new engineers and maintaining legacy code happened in parallel, and code style started drifting. File structure, naming, and state-management patterns varied file-by-file — much of code review was consumed by style debates.",
+          body: "During a period of fast growth, onboarding new engineers and maintaining legacy code happened in parallel, and code style started drifting. Later, entering a new Next.js 16 project required landing conventions quickly on a relatively new stack. The goal was to clearly separate 'what a human must review' from 'what automation can handle'.",
         },
         {
           heading: "Problem",
@@ -183,11 +197,13 @@ export const HIGHLIGHTS: Highlight[] = [
             "Component boundaries differed per developer, hurting reusability",
             "Inconsistent styling / state management / folder structure",
             "Code reviews focused on 'form' rather than 'intent'",
+            "Even with written conventions, new files didn't consistently follow them",
+            "Lint and type checks were run manually over and over before builds",
             "New hires were ~1–2 weeks less productive during onboarding",
           ],
         },
         {
-          heading: "Approach",
+          heading: "Approach · Human layer",
           body: [
             "Adopted a 5-layer Atomic Design structure (Atoms / Molecules / Organisms / Templates / Pages) and documented the boundaries",
             "Standardized ESLint · Prettier · simple-import-sort · tailwindcss plugin to delegate formatting debates to the linter",
@@ -197,16 +213,28 @@ export const HIGHLIGHTS: Highlight[] = [
           ],
         },
         {
+          heading: "Approach · Automation layer",
+          body: [
+            "Consolidated tech stack · package structure · naming · commit conventions · the 4-step workflow into CLAUDE.md — so the agent always operates with the same context",
+            "Defined custom commands under .claude/commands/ — `/review` (apply review criteria) and `/lint-check` (run ESLint + tsc together)",
+            "Maintained 5 code-generation templates (Component · Hook · Screen · ViewModel · RouteHandler) under .claude/templates/ so new files follow conventions by default",
+            "Formalized the workflow: write code → /review → /lint-check → build verification (for significant changes)",
+            "Documented exceptions (docs-only changes, minor style tweaks, static assets) so the agent doesn't over-intervene — guardrails, not shackles",
+          ],
+        },
+        {
           heading: "Result",
           body: [
-            "~30% perceived reduction in average review cycle time",
-            "Shorter time-to-first-merged-PR for new hires",
-            "Fewer duplicate components · higher Storybook coverage",
+            "~30% perceived reduction in average review cycle time (self-reported by team)",
+            "Shorter time-to-first-merged-PR for new hires · fewer duplicate components",
+            "Fewer style / structure nits in review — more room for real design discussion",
+            "Lint errors caught before they broke the build",
+            "This portfolio itself is maintained with the same workflow — the process proves itself",
           ],
         },
         {
           heading: "Takeaway",
-          body: "Conventions survive only when both 'automation' and 'team culture' keep working. Let the linter enforce what it can, and leave reviews for decisions that truly need human judgment — that's the sustainable shape.",
+          body: "Conventions survive only when 'team agreement + automation + team culture' all work together. Let the linter enforce what it can, let the agent enforce what it can, and leave reviews for decisions that truly need human judgment — that's the sustainable shape. Using the agent as 'a tool that automatically enforces team conventions' delivered better ROI than using it as 'a faster developer'.",
         },
       ],
     },
@@ -406,99 +434,6 @@ export const HIGHLIGHTS: Highlight[] = [
     },
   },
 
-  // ─── 05. AI 기반 개발 워크플로우 설계 (NEW) ───────────────────────────────
-  {
-    slug: "ai-workflow",
-    tags: ["AI", "Automation", "Process"],
-    ko: {
-      title: "AI 기반 개발 워크플로우 설계",
-      meta: "2026 · Next.js 신규 프로젝트 · Claude Code",
-      summary:
-        "Claude Code 를 팀 워크플로우에 통합해 컨벤션 준수 · 셀프 리뷰 · 린트/타입 체크까지 에이전트가 일관되게 수행하도록 설계했습니다.",
-      sections: [
-        {
-          heading: "배경 (Context)",
-          body: "반복 작업 (컴포넌트 보일러플레이트 · 셀프 리뷰 · 린트 수정) 이 팀의 집중력을 분산시키고 있었고, Next.js 16 + App Router + Tailwind 4 라는 비교적 새로운 스택에서 컨벤션을 빠르게 안착시켜야 했습니다. '사람이 꼭 봐야 할 것' 과 '에이전트가 대신할 수 있는 것' 을 명확히 분리하는 것이 목표였습니다.",
-        },
-        {
-          heading: "문제 정의 (Problem)",
-          body: [
-            "컨벤션 문서가 있어도 신규 파일 작성 시 일관되게 지켜지지 않음",
-            "린트 · 타입 체크를 빌드 이전 단계에서 반복적으로 수동 실행",
-            "코드 리뷰 초반에 스타일 · 구조 관련 지적이 반복",
-            "신규 멤버 온보딩 시 컨벤션 학습 비용 발생",
-          ],
-        },
-        {
-          heading: "접근 (Approach)",
-          body: [
-            "CLAUDE.md 에 기술 스택 · 패키지 구조 · 네이밍 · 커밋 컨벤션 · 워크플로우 4단계를 집약 — 에이전트가 항상 동일한 컨텍스트로 작동",
-            ".claude/commands/ 에 `/review` (리뷰 기준 자동 적용) · `/lint-check` (ESLint + tsc 일괄 실행) 등 커스텀 커맨드 정의",
-            ".claude/templates/ 에 Component · Hook · Screen · ViewModel · RouteHandler 5종 템플릿을 관리 — 신규 파일 생성 시 컨벤션 자동 준수",
-            "표준 워크플로우 정립: 코드 작성 → /review → /lint-check → 빌드 검증 (중요 변경시)",
-            "문서 · 스타일 미세 조정 · 정적 파일 변경 같은 예외는 문서에 명시해 에이전트가 과도하게 개입하지 않도록 가드레일 설정",
-          ],
-        },
-        {
-          heading: "결과 (Result)",
-          body: [
-            "신규 컴포넌트 초기 작성 시간 단축 (템플릿 기반)",
-            "리뷰 단계 '스타일' 지적 감소 — 본질적 설계 논의에 집중 가능",
-            "린트 에러로 인한 빌드 실패 사전 차단",
-            "본 포트폴리오 자체도 이 워크플로우로 유지 — 스스로의 프로세스를 스스로 증명",
-          ],
-        },
-        {
-          heading: "회고 (Takeaway)",
-          body: "에이전트를 '더 빠른 개발자' 로 쓰는 것보다 '팀 컨벤션을 자동으로 강제하는 장치' 로 쓰는 쪽이 실질 ROI 가 더 높았습니다. 핵심은 문서 · 커맨드 · 템플릿을 코드와 함께 버저닝하는 것이었습니다.",
-        },
-      ],
-    },
-    en: {
-      title: "Designing an AI-Powered Dev Workflow",
-      meta: "2026 · New Next.js project · Claude Code",
-      summary:
-        "Integrated Claude Code into the team workflow so the agent consistently enforces conventions, runs self-reviews, and executes lint / type checks.",
-      sections: [
-        {
-          heading: "Context",
-          body: "Repetitive work — component boilerplate, self-review, lint fixes — was draining team focus, and we needed conventions to land fast on a relatively new stack (Next.js 16 + App Router + Tailwind 4). The goal was to clearly separate 'what a human must review' from 'what an agent can handle'.",
-        },
-        {
-          heading: "Problem",
-          body: [
-            "Even with written conventions, new files didn't consistently follow them",
-            "Lint and type checks were run manually over and over before builds",
-            "Early review rounds kept surfacing style / structure nitpicks",
-            "Onboarding new members carried a significant convention-learning cost",
-          ],
-        },
-        {
-          heading: "Approach",
-          body: [
-            "Consolidated tech stack · package structure · naming · commit conventions · the 4-step workflow into CLAUDE.md — so the agent always operates with the same context",
-            "Defined custom commands under .claude/commands/ — `/review` (apply review criteria) and `/lint-check` (run ESLint + tsc together)",
-            "Maintained 5 code-generation templates (Component · Hook · Screen · ViewModel · RouteHandler) under .claude/templates/ so new files follow conventions by default",
-            "Formalized the workflow: write code → /review → /lint-check → build verification (for significant changes)",
-            "Documented exceptions (docs-only changes, minor style tweaks, static assets) so the agent doesn't over-intervene — guardrails, not shackles",
-          ],
-        },
-        {
-          heading: "Result",
-          body: [
-            "Faster initial authoring of new components (via templates)",
-            "Fewer style / structure nits in review — more room for real design discussion",
-            "Lint errors caught before they broke the build",
-            "This portfolio itself is maintained with the same workflow — the process proves itself",
-          ],
-        },
-        {
-          heading: "Takeaway",
-          body: "Using the agent as 'a tool that automatically enforces team conventions' delivered better ROI than using it as 'a faster developer'. The key was to version the docs · commands · templates alongside the code itself.",
-        },
-      ],
-    },
-  },
 ];
 
 export const HIGHLIGHT_SLUGS = HIGHLIGHTS.map((h) => h.slug);

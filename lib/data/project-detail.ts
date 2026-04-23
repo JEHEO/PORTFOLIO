@@ -1,5 +1,5 @@
 /**
- * Next.js 프로젝트 상세 블록(stats·techStack·architecture) + Evidence placeholder.
+ * Next.js 프로젝트 상세 블록(stats·techStack·architecture).
  *
  * stats 의 표시 값(CI/CD · Branches) 은 번역본에서 주입됩니다.
  * techStack 의 `desc` (ko) / `descEn` (en) 은 TechStackGrid 가 lang 에 따라 스위칭합니다.
@@ -195,47 +195,3 @@ export const PROJECT_DETAIL: ProjectDetail = {
   ],
 };
 
-/**
- * Evidence placeholder 아이템.
- *
- * - `src` 가 비어 있으면 UI 는 자동으로 "준비 중" 상태로 렌더됩니다
- *   (EvidencePlaceholder 컴포넌트). `hint` 는 개발자 전용 메모라 UI에 노출되지 않습니다.
- * - 실제 이미지를 `public/evidence/` 에 저장한 뒤 `src` 만 교체하세요.
- */
-export type EvidenceItem = { label: string; hint: string; src: string };
-
-export const EVIDENCE_RN076: EvidenceItem[] = [
-  {
-    label: "package.json 버전 변경 이력",
-    hint: "public/evidence/package-diff.png",
-    src: "",
-  },
-  {
-    label: "Hermes 프로파일러 메모리 개선",
-    hint: "public/evidence/hermes-memory.png",
-    src: "",
-  },
-  {
-    label: "patch-package 파일 목록",
-    hint: "public/evidence/patch-package.png",
-    src: "",
-  },
-];
-
-export const EVIDENCE_CONVENTION: EvidenceItem[] = [
-  {
-    label: "ESLint 설정 파일",
-    hint: "public/evidence/eslint-config.png",
-    src: "",
-  },
-  {
-    label: "Storybook 컴포넌트 목록",
-    hint: "public/evidence/storybook-sidebar.png",
-    src: "",
-  },
-  {
-    label: "컴포넌트 명명 규칙 문서",
-    hint: "Notion 링크 또는 public/evidence/naming-convention.png",
-    src: "",
-  },
-];

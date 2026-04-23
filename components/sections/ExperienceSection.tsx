@@ -13,14 +13,9 @@ import { ArchitectureTree } from "@/components/sections/experience/ArchitectureT
 import { CommitConventionSection } from "@/components/sections/experience/CommitConventionSection";
 import { ScreenshotGallery } from "@/components/sections/experience/ScreenshotGallery";
 import { TechStackGrid } from "@/components/sections/experience/TechStackGrid";
-// import { EvidenceSection } from "@/components/ui/EvidencePlaceholder"; // 증거 섹션 보류 중
 import { Section, SectionTitle } from "@/components/ui/Section";
 import { StatBadge } from "@/components/ui/StatBadge";
-import {
-  // EVIDENCE_CONVENTION, // RN 0.76 · 팀 컨벤션 증거 섹션 보류 중
-  // EVIDENCE_RN076,
-  PROJECT_DETAIL,
-} from "@/lib/data/project-detail";
+import { PROJECT_DETAIL } from "@/lib/data/project-detail";
 import type { Lang } from "@/lib/stores/uiStore";
 import type { Project, Translation } from "@/lib/types/portfolio";
 
@@ -54,7 +49,20 @@ function ProjectCard({
           {project.tag}
         </span>
       </div>
-      <p className="mb-4 text-sm font-medium text-zinc-500">{project.sub}</p>
+      <p
+        className={
+          project.period
+            ? "mb-1 text-sm font-medium text-zinc-500"
+            : "mb-4 text-sm font-medium text-zinc-500"
+        }
+      >
+        {project.sub}
+      </p>
+      {project.period && (
+        <p className="mb-4 font-mono text-[11px] text-zinc-400">
+          {project.period}
+        </p>
+      )}
       <ul className={"mb-6 space-y-2 text-sm text-zinc-600 dark:text-zinc-300"}>
         {project.details.map((detail) => (
           <li key={detail} className="flex gap-2">
@@ -77,15 +85,6 @@ function ProjectCard({
           ))}
         </div>
       )}
-
-      {/* RN 0.76 업그레이드 증거 (보물선 프로젝트) — 증거 스크린샷 준비 전까지 보류 */}
-      {/* {project.hasRN076Evidence && (
-        <EvidenceSection
-          sectionLabel={t.rn076EvidenceLabel}
-          items={EVIDENCE_RN076}
-          pendingLabel={t.evidencePendingLabel}
-        />
-      )} */}
 
       {/* 보물선 브랜치 전략 디스클로저 */}
       {project.hasBranchStrategy && <BranchStrategyDetail t={t} />}
@@ -219,11 +218,6 @@ function NextJsProjectDetail({ t, lang }: { t: Translation; lang: Lang }) {
           </p>
           <AtomicDesignDiagram desc={t.atomicDesignDesc} />
         </div>
-        {/* <EvidenceSection
-          sectionLabel={t.conventionEvidenceLabel}
-          items={EVIDENCE_CONVENTION}
-          pendingLabel={t.evidencePendingLabel}
-        /> */}
       </div>
     </details>
   );

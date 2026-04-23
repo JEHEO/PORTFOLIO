@@ -322,11 +322,30 @@ function Cylinder({
 
 // ─── ScrollRow — 평면 가로 드래그 스크롤 ─────────────────────────────────────
 
-function ScrollThumbnail({ item }: { item: ScreenshotItem }) {
-  const className =
-    "pointer-events-none h-full w-auto rounded-xl border border-zinc-200 bg-zinc-50 object-contain dark:border-zinc-700 dark:bg-zinc-900";
+/**
+ * Scroll 레이아웃 썸네일.
+ *
+ * - `uniform` 모드 (ScrollRow 가 itemWidth 를 받은 경우): 카드 전체 폭에 맞춰 이미지를 스케일하고
+ *   top 정렬 + overflow hidden 으로 크롭. 클릭하면 라이트박스에서 원본 확인 가능.
+ *   (폴더 구조 · 아키텍처 다이어그램처럼 비율이 다양한 이미지 정렬용)
+ * - 기본 모드: 이미지 고유 비율을 유지한 채 `h-full w-auto object-contain` 로 배치 (월간 이벤트 등).
+ */
+function ScrollThumbnail({
+  item,
+  uniform = false,
+}: {
+  item: ScreenshotItem;
+  uniform?: boolean;
+}) {
   const src = asset(item.src)!;
   const poster = asset(item.poster);
+
+  // uniform: 카드가 외부에서 border/bg/rounded/overflow-hidden 를 담당. 이미지는 꽉 채우되 상단 고정 + 잘림.
+  // default: 이미지 자체가 카드처럼 렌더 (border/bg/rounded 포함).
+  const className = uniform
+    ? "pointer-events-none block w-full h-full object-cover object-top"
+    : "pointer-events-none h-full w-auto rounded-xl border border-zinc-200 bg-zinc-50 object-contain dark:border-zinc-700 dark:bg-zinc-900";
+
   if (item.video) {
     return (
       <video
@@ -356,9 +375,12 @@ function ScrollThumbnail({ item }: { item: ScreenshotItem }) {
 function ScrollRow({
   items,
   onItemClick,
+  itemWidth,
 }: {
   items: ScreenshotItem[];
   onItemClick?: (index: number) => void;
+  /** 각 아이템 컨테이너의 고정 가로폭(px). 폴더 트리/아키텍처 다이어그램 처럼 통일된 정렬이 필요할 때 사용. */
+  itemWidth?: number;
 }) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const isDraggingRef = useRef(false);
@@ -431,10 +453,22 @@ function ScrollRow({
         <div
           key={item.src}
           data-item-index={i}
-          className="h-72 w-auto shrink-0 cursor-zoom-in"
-          style={{ minWidth: "4rem" }}
+          // itemWidth 가 설정되면:
+          //   - 정사각형(폭=높이) + overflow-hidden + border/bg/rounded 를 카드 컨테이너가 담당
+          //   - 이미지는 object-cover 로 카드를 꽉 채우고 overshoot 은 잘려 보임 (클릭 → 라이트박스)
+          // 없으면 이미지 자체가 카드처럼 렌더되는 기존 동작 유지 (h-72 고정).
+          className={
+            itemWidth
+              ? "shrink-0 cursor-zoom-in overflow-hidden rounded-xl border border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900"
+              : "h-72 w-auto shrink-0 cursor-zoom-in"
+          }
+          style={
+            itemWidth
+              ? { width: `${itemWidth}px`, height: `${itemWidth}px` }
+              : { minWidth: "4rem" }
+          }
         >
-          <ScrollThumbnail item={item} />
+          <ScrollThumbnail item={item} uniform={Boolean(itemWidth)} />
         </div>
       ))}
     </div>
@@ -503,6 +537,7 @@ export function ScreenshotGallery({
                 <ScrollRow
                   items={group.items}
                   onItemClick={handleClick}
+                  itemWidth={group.itemWidth}
                 />
               ) : (
                 <Cylinder

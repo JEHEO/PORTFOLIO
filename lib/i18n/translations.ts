@@ -16,7 +16,7 @@ export const T: Record<Lang, Translation> = {
   ko: {
     role: "Frontend Developer",
     roleSub: "Design → Engineering · 크로스 스킬 포지션",
-    title: "근성 있는 디자인 전공\n프론트엔드 리더",
+    title: "디자인 전공 출신\n프론트엔드 리더",
     availability: "새로운 기회 탐색 중",
     nav: [
       { label: "소개", href: "#about" },
@@ -69,18 +69,6 @@ export const T: Record<Lang, Translation> = {
             text: "한 경험이 있습니다.",
           },
         ],
-        [
-          {
-            text: "반복 작업은 자동화하고, 사람이 판단해야 할 부분만 리뷰에 남기는 워크플로우를 선호합니다. ",
-          },
-          {
-            text: "Claude Code 기반 AI 페어 프로그래밍을 팀 워크플로우에 정착",
-            emphasis: true,
-          },
-          {
-            text: "시켜 컨벤션 준수·셀프 리뷰·린트 체크를 에이전트가 일관되게 수행하도록 설계했습니다.",
-          },
-        ],
       ],
     },
     impactLabel: "Impact at a Glance",
@@ -103,7 +91,7 @@ export const T: Record<Lang, Translation> = {
       {
         value: "~30%",
         label: "리뷰 사이클 체감 단축",
-        hint: "Atomic Design + 린터 자동화 도입",
+        hint: "Atomic Design + 린터 자동화 · 체감 측정 (자체 평가)",
       },
     ],
     highlightsLabel: "Expertise & Leadership",
@@ -151,7 +139,7 @@ export const T: Record<Lang, Translation> = {
       },
     ],
     awardsLabel: "Awards & Recognition",
-    // TODO: 수상/사내 기여 인정을 여기에 추가하세요. 없으면 빈 배열로 두면 섹션이 자동 숨겨집니다.
+    // 의도적으로 비워둠 — 섹션이 자동 숨김됩니다.
     awards: [],
     projectDetailLabel: "상세 스택 & 아키텍처 보기",
     projectDetailHint:
@@ -195,6 +183,7 @@ export const T: Record<Lang, Translation> = {
     commitConventionDesc: "feat · fix · chore  타입을 일관되게 적용합니다.",
     skillsLabel: "Technical Skills",
     portfolioLabel: "2020 Portfolio",
+    portfolioDesc: "초기 커리어 작업물 — HTML/CSS/JS 기반 정적 포트폴리오 (2020)",
     contactLabel: "Contact",
     contact: {
       links: [
@@ -216,20 +205,18 @@ export const T: Record<Lang, Translation> = {
     },
     cicdValue: "lint · type check · build 자동화",
     branchesValue: "bugfix / feature 브랜치 전략",
-    evidencePendingLabel: "준비 중",
-    rn076EvidenceLabel: "RN 0.76 업그레이드 증거",
-    conventionEvidenceLabel: "팀 컨벤션 증거",
     experience: {
       company: "(주)에이치투비즈",
       position: "개발팀 책임연구원",
       period: "2021.03 — 재직 중",
       description:
-        "리뉴얼 및 유지보수 담당, 신규 프로젝트 제작, 실질적인 파트 리더 역할 수행, 부사수 매니지먼트 및 프로젝트 스케줄링 전담",
+        "리뉴얼 및 유지보수 담당, 신규 프로젝트 제작, 3인 프론트엔드 팀의 실질적인 파트 리더 역할 수행, 부사수 매니지먼트 및 프로젝트 스케줄링 전담",
       projects: [
         {
           title: "보물선 — 리뉴얼 및 유지보수",
           tag: "프론트 메인 담당",
           sub: "국내 랜덤박스 플랫폼",
+          period: "2021.03 — 재직 중 (2023.11 전면 리뉴얼 · 이후 유지보수 지속)",
           details: [
             "jQuery 기반 노후 서비스를 React Native로 전면 리뉴얼",
             "사용자 13.7만 명 규모 서비스를 무중단 운영 (회원 수 7,700% 성장기 전 과정 프론트엔드 관리)",
@@ -241,7 +228,6 @@ export const T: Record<Lang, Translation> = {
             "월간 이벤트/프로모션 페이지 개발 — 앱 내 WebView에 React 기반 반응형 UI를 띄워 다양한 단말·해상도에서 일관된 경험 제공",
             "관리자 페이지 개발 및 유지보수",
           ],
-          hasRN076Evidence: true,
           hasBranchStrategy: true,
           screenshots: [
             {
@@ -290,6 +276,25 @@ export const T: Record<Lang, Translation> = {
               ],
             },
             {
+              label: "관리자 페이지",
+              layout: "scroll",
+              orientation: "landscape",
+              items: [
+                {
+                  src: "/experience/bomulsen/admin_01.png",
+                  alt: "보물선 관리자 페이지 01",
+                },
+                {
+                  src: "/experience/bomulsen/admin_02.png",
+                  alt: "보물선 관리자 페이지 02",
+                },
+                {
+                  src: "/experience/bomulsen/admin_03.png",
+                  alt: "보물선 관리자 페이지 03",
+                },
+              ],
+            },
+            {
               label: "월간 이벤트 WebView (React · 반응형)",
               layout: "scroll",
               items: [
@@ -331,13 +336,17 @@ export const T: Record<Lang, Translation> = {
         },
         {
           title: "GOPANG — 신규 제작",
-          tag: "단독 개발",
+          tag: "프론트 메인 담당",
           sub: "인도네시아향 랜덤박스 웹 플랫폼",
+          period:
+            "2024.06 — 2025.10 (6개월 내 퍼블리싱 · 프론트 개발 완료 → 2025.02 출시, 이후 유지보수)",
           details: [
-            "보물선(React Native) 의 서비스 구조를 기반으로, 인도네시아향 랜덤박스 플랫폼을 React 웹앱으로 처음부터 단독 구축",
+            "보물선(React Native) 의 서비스 구조를 기반으로, 인도네시아향 랜덤박스 플랫폼을 React 웹앱으로 처음부터 메인 담당으로 구축",
             "디자인 시안 퍼블리싱부터 React 컴포넌트 구현 · 상태 관리 · API 연동까지 프론트엔드 전 과정 1인 전담",
+            "6개월 내 사용자 화면 40+ · 관리자 화면 30+ 총 70+ 페이지 단독 구축",
             "다양한 모바일 단말 · 해상도에서 일관된 경험을 내기 위한 반응형 퍼블리싱 + 현지(인도네시아) 사용자 맥락에 맞춘 UI/UX 설계",
             "관리자 페이지 UI/UX 디자인 · 퍼블리싱 · 구현 1인 전담 — 시안부터 엔드투엔드",
+            "2025.02 정식 출시 이후 유지보수 및 개선 작업 지속",
           ],
           screenshots: [
             {
@@ -355,12 +364,32 @@ export const T: Record<Lang, Translation> = {
                 { src: "/experience/gopang/10.png", alt: "GOPANG 화면 10" },
               ],
             },
+            {
+              label: "관리자 페이지",
+              layout: "scroll",
+              orientation: "landscape",
+              items: [
+                {
+                  src: "/experience/gopang/admin_01.png",
+                  alt: "GOPANG 관리자 페이지 01",
+                },
+                {
+                  src: "/experience/gopang/admin_02.png",
+                  alt: "GOPANG 관리자 페이지 02",
+                },
+                {
+                  src: "/experience/gopang/admin_03.png",
+                  alt: "GOPANG 관리자 페이지 03",
+                },
+              ],
+            },
           ],
         },
         {
           title: "Next.js 기반 신규 프로젝트",
           tag: "리드 개발자 · 진행 중",
           sub: "차세대 웹 서비스 구축",
+          period: "2026.01 — 진행 중",
           details: [
             "Atomic Design Pattern 도입으로 코드 유지보수성 및 일관성 확보",
             "Storybook 활용한 컴포넌트 주도 개발(CDD) 환경 구축",
@@ -375,10 +404,6 @@ export const T: Record<Lang, Translation> = {
               orientation: "landscape",
               items: [
                 { src: "/experience/nextjs/01.png", alt: "Next.js 화면 01" },
-                {
-                  src: "/experience/nextjs/01-1.png",
-                  alt: "Next.js 화면 01 상세",
-                },
                 { src: "/experience/nextjs/02.png", alt: "Next.js 화면 02" },
                 { src: "/experience/nextjs/03.png", alt: "Next.js 화면 03" },
                 { src: "/experience/nextjs/04.png", alt: "Next.js 화면 04" },
@@ -388,6 +413,7 @@ export const T: Record<Lang, Translation> = {
             {
               label: "Atomic Design · 아키텍처 · CI/CD 파이프라인",
               layout: "scroll",
+              itemWidth: 150,
               items: [
                 {
                   src: "/experience/nextjs/Architecture_01.png",
@@ -417,10 +443,6 @@ export const T: Record<Lang, Translation> = {
                   src: "/experience/nextjs/Architecture_07.png",
                   alt: "아키텍처 다이어그램 07",
                 },
-                {
-                  src: "/experience/nextjs/Architecture_08.png",
-                  alt: "아키텍처 다이어그램 08",
-                },
               ],
             },
           ],
@@ -436,11 +458,11 @@ export const T: Record<Lang, Translation> = {
         tags: ["Technical", "Problem Solving"],
       },
       {
-        slug: "team-convention",
-        title: "프론트엔드 팀 컨벤션 수립",
+        slug: "team-process-automation",
+        title: "팀 프로세스 & 자동화",
         description:
-          "실질적 파트 리더로서 코드 리뷰 프로세스와 Atomic Design 도입을 통해 협업 효율을 체감상 약 30% 개선했습니다.",
-        tags: ["Leadership", "Process"],
+          "실질적 파트 리더로서 Atomic Design · 코드 리뷰 프로세스를 정착시켰고, Claude Code 기반 AI 페어 프로그래밍을 팀 워크플로우에 통합해 사람과 에이전트가 함께 컨벤션을 자동 강제하도록 설계했습니다.",
+        tags: ["Leadership", "Process", "AI"],
       },
       {
         slug: "bomulsen-treasure-box",
@@ -455,13 +477,6 @@ export const T: Record<Lang, Translation> = {
         description:
           "디자인 전공 배경이 프론트엔드 업무에 어떻게 작용하는지 — Figma 프로토타입 · 디자인 시스템 · 1인 UI/UX 담당 경험을 중심으로 정리했습니다.",
         tags: ["Design", "Frontend", "Collaboration"],
-      },
-      {
-        slug: "ai-workflow",
-        title: "AI 기반 개발 워크플로우 설계",
-        description:
-          "Claude Code 를 팀 워크플로우에 통합해 컨벤션 준수 · 셀프 리뷰 · 린트/타입 체크를 에이전트가 일관되게 수행하도록 설계했습니다.",
-        tags: ["AI", "Automation", "Process"],
       },
     ],
   },
@@ -521,18 +536,6 @@ export const T: Record<Lang, Translation> = {
             text: ".",
           },
         ],
-        [
-          {
-            text: "I lean on automation for repetitive work and reserve review for decisions that actually need human judgment. I built a ",
-          },
-          {
-            text: "Claude Code–powered team workflow",
-            emphasis: true,
-          },
-          {
-            text: " where the agent consistently enforces conventions, performs self-review, and runs lint checks before code even reaches human eyes.",
-          },
-        ],
       ],
     },
     impactLabel: "Impact at a Glance",
@@ -555,7 +558,7 @@ export const T: Record<Lang, Translation> = {
       {
         value: "~30%",
         label: "Review cycle perceived reduction",
-        hint: "Atomic Design + linter automation adoption",
+        hint: "Atomic Design + linter automation · self-reported by team",
       },
     ],
     highlightsLabel: "Expertise & Leadership",
@@ -603,7 +606,7 @@ export const T: Record<Lang, Translation> = {
       },
     ],
     awardsLabel: "Awards & Recognition",
-    // TODO: Add awards here. Keep empty to hide the subsection.
+    // Intentionally empty — the subsection auto-hides.
     awards: [],
     projectDetailLabel: "View detailed stack & architecture",
     projectDetailHint:
@@ -648,6 +651,7 @@ export const T: Record<Lang, Translation> = {
     commitConventionDesc: "Consistent use of feat · fix · chore prefixes.",
     skillsLabel: "Technical Skills",
     portfolioLabel: "2020 Portfolio",
+    portfolioDesc: "Early-career work — a static HTML/CSS/JS portfolio (2020)",
     contactLabel: "Contact",
     contact: {
       links: [
@@ -669,20 +673,18 @@ export const T: Record<Lang, Translation> = {
     },
     cicdValue: "lint · type check · build automated",
     branchesValue: "bugfix / feature branch strategy",
-    evidencePendingLabel: "Coming soon",
-    rn076EvidenceLabel: "RN 0.76 Upgrade Evidence",
-    conventionEvidenceLabel: "Team Convention Evidence",
     experience: {
       company: "H2Biz Co., Ltd.",
       position: "Senior Research Engineer, Dev Team",
       period: "Mar 2021 — Present",
       description:
-        "In charge of renewal & maintenance, new project development, acting frontend tech lead, junior mentoring, and project scheduling.",
+        "In charge of renewal & maintenance, new project development, acting tech lead of a 3-person frontend team, junior mentoring, and project scheduling.",
       projects: [
         {
           title: "Bomulsen — Renewal & Maintenance",
           tag: "Frontend Lead",
           sub: "Domestic random-box platform",
+          period: "Mar 2021 — Present (Nov 2023 full rebuild · ongoing maintenance)",
           details: [
             "Fully migrated legacy jQuery service to React Native",
             "Kept a 137K-user service running with zero downtime throughout a 7,700% member-growth period",
@@ -694,7 +696,6 @@ export const T: Record<Lang, Translation> = {
             "Built monthly event / promo pages as React-based responsive UIs loaded in an in-app WebView — consistent experience across devices and resolutions",
             "Developed and maintained the admin dashboard",
           ],
-          hasRN076Evidence: true,
           hasBranchStrategy: true,
           screenshots: [
             {
@@ -743,6 +744,25 @@ export const T: Record<Lang, Translation> = {
               ],
             },
             {
+              label: "Admin dashboard",
+              layout: "scroll",
+              orientation: "landscape",
+              items: [
+                {
+                  src: "/experience/bomulsen/admin_01.png",
+                  alt: "Bomulsen admin dashboard 01",
+                },
+                {
+                  src: "/experience/bomulsen/admin_02.png",
+                  alt: "Bomulsen admin dashboard 02",
+                },
+                {
+                  src: "/experience/bomulsen/admin_03.png",
+                  alt: "Bomulsen admin dashboard 03",
+                },
+              ],
+            },
+            {
               label: "Monthly event WebView (React · responsive)",
               layout: "scroll",
               items: [
@@ -784,13 +804,17 @@ export const T: Record<Lang, Translation> = {
         },
         {
           title: "GOPANG — New Build",
-          tag: "Solo Developer",
+          tag: "Frontend Lead",
           sub: "Indonesian random-box web platform",
+          period:
+            "Jun 2024 — Oct 2025 (6-month publishing + frontend build → launched Feb 2025, ongoing maintenance)",
           details: [
-            "Built an Indonesian random-box React web app from scratch — alone — adapting Bomulsen's (React Native) service patterns to a web context",
+            "Built an Indonesian random-box React web app from scratch as frontend lead, adapting Bomulsen's (React Native) service patterns to a web context",
             "Sole frontend ownership across the full stack: design-mock publishing, React component implementation, state management, and API integration",
+            "Delivered 70+ pages end-to-end in 6 months — 40+ user screens and 30+ admin screens, single-handed",
             "Responsive publishing for consistent experience across mobile devices and resolutions, with UI/UX tailored to the Indonesian market context",
             "Owned the admin page UI/UX end-to-end — design, publishing, and implementation, solo",
+            "Continued maintenance and iteration after the official launch in Feb 2025",
           ],
           screenshots: [
             {
@@ -808,12 +832,32 @@ export const T: Record<Lang, Translation> = {
                 { src: "/experience/gopang/10.png", alt: "GOPANG screen 10" },
               ],
             },
+            {
+              label: "Admin dashboard",
+              layout: "scroll",
+              orientation: "landscape",
+              items: [
+                {
+                  src: "/experience/gopang/admin_01.png",
+                  alt: "GOPANG admin dashboard 01",
+                },
+                {
+                  src: "/experience/gopang/admin_02.png",
+                  alt: "GOPANG admin dashboard 02",
+                },
+                {
+                  src: "/experience/gopang/admin_03.png",
+                  alt: "GOPANG admin dashboard 03",
+                },
+              ],
+            },
           ],
         },
         {
           title: "Next.js-based New Project",
           tag: "Lead Developer · In Progress",
           sub: "Next-generation web service",
+          period: "Jan 2026 — Present",
           details: [
             "Adopted Atomic Design Pattern to improve maintainability and consistency",
             "Set up Component-Driven Development (CDD) environment with Storybook",
@@ -828,10 +872,6 @@ export const T: Record<Lang, Translation> = {
               orientation: "landscape",
               items: [
                 { src: "/experience/nextjs/01.png", alt: "Next.js screen 01" },
-                {
-                  src: "/experience/nextjs/01-1.png",
-                  alt: "Next.js screen 01 detail",
-                },
                 { src: "/experience/nextjs/02.png", alt: "Next.js screen 02" },
                 { src: "/experience/nextjs/03.png", alt: "Next.js screen 03" },
                 { src: "/experience/nextjs/04.png", alt: "Next.js screen 04" },
@@ -841,6 +881,7 @@ export const T: Record<Lang, Translation> = {
             {
               label: "Atomic Design · architecture · CI/CD pipeline",
               layout: "scroll",
+              itemWidth: 150,
               items: [
                 {
                   src: "/experience/nextjs/Architecture_01.png",
@@ -870,10 +911,6 @@ export const T: Record<Lang, Translation> = {
                   src: "/experience/nextjs/Architecture_07.png",
                   alt: "Architecture diagram 07",
                 },
-                {
-                  src: "/experience/nextjs/Architecture_08.png",
-                  alt: "Architecture diagram 08",
-                },
               ],
             },
           ],
@@ -889,11 +926,11 @@ export const T: Record<Lang, Translation> = {
         tags: ["Technical", "Problem Solving"],
       },
       {
-        slug: "team-convention",
-        title: "Establishing Frontend Team Conventions",
+        slug: "team-process-automation",
+        title: "Team Process & Automation",
         description:
-          "As acting tech lead, improved collaboration efficiency by a perceived ~30% through code review processes and Atomic Design adoption.",
-        tags: ["Leadership", "Process"],
+          "As acting tech lead, formalized Atomic Design and code review processes, and integrated Claude Code-based AI pair programming — human and agent now enforce conventions together automatically.",
+        tags: ["Leadership", "Process", "AI"],
       },
       {
         slug: "bomulsen-treasure-box",
@@ -908,13 +945,6 @@ export const T: Record<Lang, Translation> = {
         description:
           "How a design background actively shapes my frontend work — Figma prototyping, design systems, and solo UI/UX ownership for admin surfaces.",
         tags: ["Design", "Frontend", "Collaboration"],
-      },
-      {
-        slug: "ai-workflow",
-        title: "Designing an AI-Powered Dev Workflow",
-        description:
-          "Integrated Claude Code into the team workflow so the agent consistently enforces conventions, runs self-reviews, and executes lint / type checks.",
-        tags: ["AI", "Automation", "Process"],
       },
     ],
   },
