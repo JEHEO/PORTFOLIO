@@ -32,7 +32,10 @@ const instrumentSerif = Instrument_Serif({
  * 사이트 공통 메타데이터.
  * - title / description 은 검색 · OG · Twitter 카드 에서 공통 사용됩니다.
  * - `metadataBase` 는 OG/Twitter 이미지 경로를 절대 URL 로 풀 때 쓰입니다.
- *   GitHub Pages 배포 URL 에 맞춰 설정.
+ *   ⚠️ basePath(`/PORTFOLIO_2026`) 를 여기 포함시키면 Next.js 가 이미 basePath
+ *      를 붙인 이미지 경로 앞에 또 덧붙여서 `/PORTFOLIO_2026/PORTFOLIO_2026/...`
+ *      중복이 발생합니다. 그래서 여기는 **루트 도메인까지만** 적고, basePath 는
+ *      `next.config.ts` 와 개별 경로에서만 한 번씩 붙도록 분리합니다.
  * - 파비콘/OG 이미지는 `app/icon.*` · `app/opengraph-image.*` 규약 파일로
  *   자동 인식되므로 여기서 별도 설정할 필요 없음.
  */
@@ -41,7 +44,7 @@ const SITE_DESC =
   "디자이너 출신 프론트엔드 리더. 감각과 구현력을 함께 만들어내는 프론트엔드 — 허정은의 포트폴리오.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://jeheo.github.io/PORTFOLIO_2026"),
+  metadataBase: new URL("https://jeheo.github.io"),
   title: SITE_TITLE,
   description: SITE_DESC,
   openGraph: {
