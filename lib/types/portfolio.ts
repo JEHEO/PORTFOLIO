@@ -72,12 +72,25 @@ export type Project = {
   screenshots?: ScreenshotGroup[];
 };
 
+/**
+ * 현재 커리어 이전의 경력 요약 (세부사항은 생략).
+ * - Experience 섹션 최상단에 "Prior Career" 라벨과 함께 한 줄로 렌더됩니다.
+ * - 편집디자인 → 프론트엔드처럼 트랙이 바뀐 경우 타임라인 맥락 제공용.
+ */
+export type PriorCareer = {
+  role: string;
+  period: string;
+  note?: string;
+};
+
 export type ExperienceData = {
   company: string;
   position: string;
   period: string;
   description: string;
   projects: Project[];
+  /** 현재 회사 이전 커리어. 없으면 블록 자동 숨김. */
+  priorCareer?: PriorCareer;
 };
 
 export type HighlightItem = {

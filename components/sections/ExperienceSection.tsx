@@ -230,9 +230,33 @@ export function ExperienceSection({
   t: Translation;
   lang: Lang;
 }) {
+  const prior = t.experience.priorCareer;
   return (
     <Section id="experience">
       <SectionTitle>{t.experienceLabel}</SectionTitle>
+
+      {/* Prior career — 현재 커리어 이전 타임라인 맥락 (세부사항 생략). 없으면 자동 숨김. */}
+      {prior && (
+        <div className="mb-8 border-l-2 border-zinc-300 pl-4 dark:border-zinc-700">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">
+            Prior Career
+          </p>
+          <div className="mt-1 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+              {prior.role}
+            </p>
+            <span className="font-mono text-[11px] text-zinc-400">
+              {prior.period}
+            </span>
+          </div>
+          {prior.note && (
+            <p className="mt-1 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
+              {prior.note}
+            </p>
+          )}
+        </div>
+      )}
+
       {/* 회사 요약 — 카드 없이 섹션 인트로로. 바로 아래 프로젝트들이 "여기서 진행한 일" 로 자연스럽게 이어짐 */}
       <div className="mb-10">
         <div className="flex flex-wrap items-baseline justify-between gap-2">

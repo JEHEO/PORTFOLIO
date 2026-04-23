@@ -16,7 +16,7 @@ export const T: Record<Lang, Translation> = {
   ko: {
     role: "Frontend Developer",
     roleSub: "Design → Engineering · 크로스 스킬 포지션",
-    title: "디자인 전공 출신\n프론트엔드 리더",
+    title: "감각과 구현력을\n함께 만들어내는 프론트엔드",
     availability: "새로운 기회 탐색 중",
     nav: [
       { label: "소개", href: "#about" },
@@ -33,7 +33,14 @@ export const T: Record<Lang, Translation> = {
       paragraphs: [
         [
           {
-            text: "시각디자인 전공자로 출발해 웹디자인기능사 → SQL 개발자 → 정보처리기사 → 학점은행제 컴퓨터공학 학사까지, ",
+            text: "시각디자인 전공 후 ",
+          },
+          {
+            text: "편집 디자이너로 약 6년간 현장 경험(2014 – 2020)",
+            emphasis: true,
+          },
+          {
+            text: "을 쌓은 뒤, 웹디자인기능사 → SQL 개발자 → 정보처리기사 → 학점은행제 컴퓨터공학 학사까지 ",
           },
           {
             text: "의도적인 디자인-엔지니어링 전환 경로",
@@ -209,6 +216,11 @@ export const T: Record<Lang, Translation> = {
       company: "(주)에이치투비즈",
       position: "개발팀 책임연구원",
       period: "2021.03 — 재직 중",
+      priorCareer: {
+        role: "편집 디자이너",
+        period: "2014.09 — 2020.05",
+        note: "출판·편집 디자인 실무",
+      },
       description:
         "리뉴얼 및 유지보수 담당, 신규 프로젝트 제작, 3인 프론트엔드 팀의 실질적인 파트 리더 역할 수행, 부사수 매니지먼트 및 프로젝트 스케줄링 전담",
       projects: [
@@ -483,7 +495,7 @@ export const T: Record<Lang, Translation> = {
   en: {
     role: "Frontend Developer",
     roleSub: "Design → Engineering · Cross-skill position",
-    title: "A Design-Trained\nFrontend Lead Who Ships with Grit",
+    title: "Taste and Engineering,\nShaped Into Frontend",
     availability: "Open to new roles",
     nav: [
       { label: "About", href: "#about" },
@@ -500,10 +512,17 @@ export const T: Record<Lang, Translation> = {
       paragraphs: [
         [
           {
-            text: "I started out as a Visual Communication Design major and ",
+            text: "I studied Visual Communication Design and ",
           },
           {
-            text: "took an intentional path into engineering",
+            text: "worked as an editorial designer for ~6 years (2014 – 2020)",
+            emphasis: true,
+          },
+          {
+            text: " before ",
+          },
+          {
+            text: "taking an intentional path into engineering",
             emphasis: true,
           },
           {
@@ -677,6 +696,11 @@ export const T: Record<Lang, Translation> = {
       company: "H2Biz Co., Ltd.",
       position: "Senior Research Engineer, Dev Team",
       period: "Mar 2021 — Present",
+      priorCareer: {
+        role: "Editorial Designer",
+        period: "Sep 2014 — May 2020",
+        note: "Publishing / editorial design practice",
+      },
       description:
         "In charge of renewal & maintenance, new project development, acting tech lead of a 3-person frontend team, junior mentoring, and project scheduling.",
       projects: [

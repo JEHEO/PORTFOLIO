@@ -37,8 +37,9 @@ export function HeaderSection({ t }: { t: Translation }) {
         )}
       </div>
 
-      {/* Title — 두 번째 라인을 블루 액센트로 강조 */}
-      <h1 className="mb-8 text-4xl font-bold leading-[1.15] tracking-tight text-zinc-900 sm:text-5xl dark:text-white">
+      {/* Title — 두 번째 라인을 accent 색상으로 강조.
+          `break-keep` 으로 한글 단어 중간 끊김 방지 (예: 프론트엔/드). */}
+      <h1 className="mb-8 text-4xl font-bold leading-[1.15] tracking-tight break-keep text-zinc-900 sm:text-5xl dark:text-white">
         {titleLine1}
         {titleLine2 && (
           <>

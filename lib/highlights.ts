@@ -346,13 +346,13 @@ export const HIGHLIGHTS: Highlight[] = [
     tags: ["Design", "Frontend", "Collaboration"],
     ko: {
       title: "디자인-엔지니어링 크로스 스킬",
-      meta: "2012 – 현재 · 시각디자인 전공 → 프론트엔드 리드",
+      meta: "2012 – 현재 · 시각디자인 전공 → 편집 디자이너 6년 → 프론트엔드 리드",
       summary:
-        "시각디자인 전공자로 시작해 웹디자인기능사 · SQL 개발자 · 정보처리기사 · 컴퓨터공학 학사까지 의도적인 전환 경로를 밟았고, 지금은 디자인 시스템 · Figma 프로토타입 · 1인 UI/UX 담당까지 수행하는 프론트엔드 개발자로 일하고 있습니다.",
+        "시각디자인 전공 후 편집 디자이너로 약 6년간 현장 경험을 쌓은 뒤, 웹디자인기능사 · SQL 개발자 · 정보처리기사 · 컴퓨터공학 학사까지 의도적인 엔지니어링 전환 경로를 밟았고, 지금은 디자인 시스템 · Figma 프로토타입 · 1인 UI/UX 담당까지 수행하는 프론트엔드 개발자로 일하고 있습니다.",
       sections: [
         {
           heading: "배경 (Context)",
-          body: "2014년 충청대학 시각디자인을 졸업했지만 웹 퍼블리싱 현장에서 '디자인을 구현하는 쪽' 의 언어가 더 잘 맞는다고 느꼈습니다. 이후 웹디자인기능사(2020) → SQL 개발자(2023) → 정보처리기사(2024) → 학점은행제 컴퓨터공학 학사(2024) 순서로, 취미 전환이 아닌 '정식 자격 · 학위로 프론트엔드 엔지니어 포지션을 증명' 하는 경로를 선택했습니다.",
+          body: "2014년 충청대학 시각디자인 전공을 졸업한 뒤 편집 디자이너로 약 6년간(2014.09 – 2020.05) 현장 경험을 쌓았습니다. 이 시기에 웹 퍼블리싱으로 접점을 옮기면서 '디자인을 구현하는 쪽' 의 언어가 더 잘 맞는다고 느꼈고, 이후 웹디자인기능사(2020) → SQL 개발자(2023) → 정보처리기사(2024) → 학점은행제 컴퓨터공학 학사(2024) 순서로, 취미 전환이 아닌 '정식 자격 · 학위로 프론트엔드 엔지니어 포지션을 증명' 하는 경로를 선택했습니다.",
         },
         {
           heading: "실무에서 어떻게 작용하는가 (How it shows up in my work)",
@@ -390,13 +390,13 @@ export const HIGHLIGHTS: Highlight[] = [
     },
     en: {
       title: "Design–Engineering Cross-Skill",
-      meta: "2012 – present · Design major → frontend lead",
+      meta: "2012 – present · Design major → 6 years as editorial designer → frontend lead",
       summary:
-        "I started as a Visual Communication Design major and chose an intentional path into engineering — Craftsman Web Design, SQL Developer, Engineer Information Processing, and a Bachelor in Computer Science. Today I work as a frontend engineer who also owns design systems, Figma prototypes, and solo UI/UX ownership for admin surfaces.",
+        "After studying Visual Communication Design, I worked as an editorial designer for ~6 years before taking an intentional path into engineering — Craftsman Web Design, SQL Developer, Engineer Information Processing, and a Bachelor in Computer Science. Today I work as a frontend engineer who also owns design systems, Figma prototypes, and solo UI/UX ownership for admin surfaces.",
       sections: [
         {
           heading: "Context",
-          body: "I graduated in Visual Communication Design from Chungcheong University in 2014, but in the field I found I fit better on the 'implementation' side of the design/dev seam. From there I took a formal route — Craftsman Web Design (2020) → SQL Developer (2023) → Engineer Information Processing (2024) → a BEng in Computer Science through Korea's Academic Credit Bank System (2024) — not as a hobby switch, but to formally certify a frontend engineer identity.",
+          body: "I graduated in Visual Communication Design from Chungcheong University in 2014 and spent ~6 years in editorial design practice (Sep 2014 – May 2020). During that time, as I moved closer to web publishing, I realized I fit better on the 'implementation' side of the design/dev seam. From there I took a formal route — Craftsman Web Design (2020) → SQL Developer (2023) → Engineer Information Processing (2024) → a BEng in Computer Science through Korea's Academic Credit Bank System (2024) — not as a hobby switch, but to formally certify a frontend engineer identity.",
         },
         {
           heading: "How it shows up in my work",
