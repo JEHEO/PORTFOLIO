@@ -30,15 +30,21 @@ import { Lightbox } from "./Lightbox";
 // ─── 스타일 / 치수 상수 ───────────────────────────────────────────────────────
 
 type Orientation = "portrait" | "landscape";
+/**
+ * 오리엔테이션별 카드 프리셋.
+ * - `gap` 은 인접 카드 사이 최소 간격 (원주 기준). 값이 작을수록 cylinder 반지름이 줄어
+ *   "얇은 롤" 처럼 보이고, 카드가 화면 밖으로 덜 뻗어나갑니다.
+ * - landscape 는 원래 카드가 커서 PC에서 stage 를 벗어나는 경향이 있어 cardW·gap 을
+ *   더 타이트하게 잡습니다.
+ */
 const PRESETS: Record<
   Orientation,
-  { cardW: number; cardH: number; stageH: number }
+  { cardW: number; cardH: number; stageH: number; gap: number }
 > = {
-  portrait: { cardW: 170, cardH: 340, stageH: 400 },
-  landscape: { cardW: 450, cardH: 280, stageH: 340 },
+  portrait: { cardW: 170, cardH: 340, stageH: 400, gap: 24 },
+  landscape: { cardW: 420, cardH: 265, stageH: 340, gap: -20 },
 };
 
-const GAP = 24; // px — 인접 카드 사이 최소 간격 (원주 기준)
 const MIN_RADIUS = 220; // px — 아이템 수가 적어도 너무 얇아지지 않도록 하한
 const AUTO_ROTATE_DEG_PER_FRAME = 0.06; // ≈ 3.6°/sec @60fps — 천천히
 const DRAG_PX_PER_DEG = 3; // 드래그 감도. 숫자가 클수록 둔해짐
@@ -62,6 +68,7 @@ function guessVideoType(src: string): string {
 
 function Thumbnail({ item }: { item: ScreenshotItem }) {
   // 카드 영역을 꽉 채우도록 object-cover. 비율이 다르면 가장자리가 잘릴 수 있음.
+  // shadow-lg 로 은은한 "떠있는 느낌" 을 유지하되, 진한 효과는 Cylinder 에서 blur + brightness 로 처리.
   const className =
     "pointer-events-none h-full w-full rounded-xl border border-zinc-200 bg-zinc-50 object-cover shadow-lg dark:border-zinc-700 dark:bg-zinc-900";
   const src = asset(item.src)!;
@@ -125,8 +132,9 @@ function Cylinder({
   orientation?: Orientation;
   onItemClick?: (index: number) => void;
 }) {
-  const { cardW, cardH, stageH } = PRESETS[orientation];
+  const { cardW, cardH, stageH, gap } = PRESETS[orientation];
   const innerRef = useRef<HTMLDivElement>(null);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const rotationRef = useRef(0);
   const isDraggingRef = useRef(false);
   const dragStateRef = useRef({
@@ -140,19 +148,50 @@ function Cylinder({
   const n = items.length;
   const angularStep = 360 / n;
   const computedRadius =
-    (cardW + GAP) / (2 * Math.sin((angularStep / 2) * (Math.PI / 180)));
+    (cardW + gap) / (2 * Math.sin((angularStep / 2) * (Math.PI / 180)));
   const radius = Math.max(MIN_RADIUS, computedRadius);
 
-  // 자동 회전 RAF
+  // 자동 회전 RAF + per-card depth 효과
   React.useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
     let rafId = 0;
+
+    /**
+     * 매 프레임마다:
+     * 1) inner container 회전 적용
+     * 2) 각 카드의 "정면 대비 회전각" 을 계산해 밝기 · 투명도 · 블러 를 동적으로 적용
+     *    - factor = (cos(effAngle) + 1) / 2 — 정면 1, 옆 0.5, 뒤 0
+     *    - 앞쪽 카드: 선명 · 밝음 · 불투명 (초점이 맞은 느낌)
+     *    - 측/뒤 카드: 블러 걸림 · 어두움 · 투명도 감소 (depth of field 효과)
+     *
+     * drop-shadow 대신 blur 를 쓰면 stage 의 overflow-hidden 과 충돌 없이
+     * 자연스러운 입체감이 생깁니다. (shadow 는 edge 에서 뚝 잘리는 문제가 있었음)
+     */
     const applyTransform = () => {
+      const rot = rotationRef.current;
+
       if (innerRef.current) {
-        innerRef.current.style.transform = `translateZ(-${radius}px) rotateY(${rotationRef.current}deg)`;
+        innerRef.current.style.transform = `translateZ(-${radius}px) rotateY(${rot}deg)`;
+      }
+
+      for (let i = 0; i < n; i++) {
+        const el = itemRefs.current[i];
+        if (!el) continue;
+        // effective angle = 카드의 기본 각도 + 전체 회전. 뷰어 기준 0°가 정면.
+        let eff = ((i * angularStep + rot) % 360 + 360) % 360;
+        if (eff > 180) eff -= 360;
+        const frontness = Math.cos((eff * Math.PI) / 180);
+        const factor = (frontness + 1) / 2; // 0 (뒤) → 1 (앞)
+
+        const brightness = (0.55 + 0.45 * factor).toFixed(2); // 0.55 ~ 1.0
+        const opacity = (0.12 + 0.88 * factor).toFixed(2); // 0.12 ~ 1.0
+        const blur = ((1 - factor) * 4).toFixed(1); // 앞: 0px, 뒤: 4px
+
+        el.style.opacity = opacity;
+        el.style.filter = `brightness(${brightness}) blur(${blur}px)`;
       }
     };
 
@@ -171,7 +210,7 @@ function Cylinder({
     applyTransform();
     rafId = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafId);
-  }, [radius]);
+  }, [radius, n, angularStep]);
 
   const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     isDraggingRef.current = true;
@@ -231,6 +270,11 @@ function Cylinder({
         height: `${stageH}px`,
         perspective: "1100px",
         touchAction: "pan-y",
+        // WebKit prefix 는 Safari 호환성 유지용.
+        maskImage:
+          "linear-gradient(to bottom, transparent 0%, #000 14%, #000 86%, transparent 100%)",
+        WebkitMaskImage:
+          "linear-gradient(to bottom, transparent 0%, #000 14%, #000 86%, transparent 100%)",
       }}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
@@ -255,11 +299,17 @@ function Cylinder({
         {items.map((item, i) => (
           <div
             key={item.src}
+            ref={(el) => {
+              itemRefs.current[i] = el;
+            }}
             data-item-index={i}
             className="absolute inset-0 cursor-zoom-in"
             style={{
               transform: `rotateY(${i * angularStep}deg) translateZ(${radius}px)`,
-              backfaceVisibility: "hidden",
+              // opacity 는 RAF loop 에서 각도별로 동적 갱신됩니다 (backface-visibility 대신).
+              // 초기값은 0 으로 두고 첫 프레임에서 즉시 갱신되어 깜빡임 최소화.
+              opacity: 0,
+              willChange: "opacity, filter",
             }}
           >
             <Thumbnail item={item} />
