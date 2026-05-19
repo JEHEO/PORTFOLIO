@@ -17,7 +17,7 @@ export function AboutSection({ t }: { t: Translation }) {
       <h3 className="mb-4 text-lg font-bold text-zinc-900 dark:text-white">
         {t.about.heading}
       </h3>
-      <div className="space-y-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+      <div className="space-y-3 text-sm leading-loose text-zinc-600 dark:text-zinc-300">
         {t.about.paragraphs.map((segments, i) => (
           <p key={i}>
             {segments.map((seg, j) =>

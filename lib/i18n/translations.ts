@@ -14,9 +14,9 @@ import type { Translation } from "@/lib/types/portfolio";
 
 export const T: Record<Lang, Translation> = {
   ko: {
-    role: "Frontend Developer",
+    role: "UX Engineer",
     roleSub: "Design → Engineering",
-    title: "감각과 구현력을\n함께 만들어내는 프론트엔드",
+    title: "디자인 의도와 코드 구조를\n동시에 이해하는 UX Engineer",
     availability: "새로운 기회 탐색 중",
     nav: [
       { label: "소개", href: "#about" },
@@ -506,9 +506,9 @@ export const T: Record<Lang, Translation> = {
     ],
   },
   en: {
-    role: "Frontend Developer",
+    role: "UX Engineer",
     roleSub: "Design → Engineering",
-    title: "Taste and Engineering,\nShaped Into Frontend",
+    title: "Reading Design Intent,\nWriting Code Structure",
     availability: "Open to new roles",
     nav: [
       { label: "About", href: "#about" },

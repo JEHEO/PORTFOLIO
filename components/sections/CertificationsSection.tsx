@@ -53,7 +53,7 @@ function DocumentCard({
         {subtitle}
       </p>
       {description && (
-        <p className="mt-2 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
+        <p className="mt-2 text-xs leading-loose text-zinc-500 dark:text-zinc-400">
           {description}
         </p>
       )}

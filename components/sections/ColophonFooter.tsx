@@ -13,7 +13,7 @@ import type { Translation } from "@/lib/types/portfolio";
 export function ColophonFooter({ t }: { t: Translation }) {
   return (
     <footer className="mt-16 border-t border-zinc-200 pt-6 dark:border-zinc-800">
-      <p className="text-center text-[11px] leading-relaxed text-zinc-400 dark:text-zinc-500">
+      <p className="text-center text-[11px] leading-loose text-zinc-400 dark:text-zinc-500">
         {t.colophon}
       </p>
     </footer>

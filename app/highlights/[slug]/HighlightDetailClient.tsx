@@ -89,7 +89,7 @@ function Section({ section }: { section: HighlightSection }) {
         <span>{section.heading}</span>
       </h2>
       {isList ? (
-        <ul className="space-y-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+        <ul className="space-y-2 text-sm leading-loose text-zinc-600 dark:text-zinc-300">
           {(section.body as string[]).map((item) => (
             <li key={item} className="flex gap-2">
               <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-accent-500" />
@@ -98,7 +98,7 @@ function Section({ section }: { section: HighlightSection }) {
           ))}
         </ul>
       ) : (
-        <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+        <p className="text-sm leading-loose text-zinc-600 dark:text-zinc-300">
           {section.body as string}
         </p>
       )}
@@ -239,7 +239,7 @@ export function HighlightDetailClient({ slug }: { slug: string }) {
           <p className="mb-6 text-xs font-medium uppercase tracking-widest text-zinc-400">
             {content.meta}
           </p>
-          <p className="text-base leading-relaxed text-zinc-600 dark:text-zinc-300">
+          <p className="text-base leading-loose text-zinc-600 dark:text-zinc-300">
             {content.summary}
           </p>
         </header>

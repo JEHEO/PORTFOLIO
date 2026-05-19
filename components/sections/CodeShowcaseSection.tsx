@@ -36,7 +36,7 @@ export function CodeShowcaseSection({
           ))}
         </div>
         {/* NDA 안내 — 실무 코드가 아닌 패턴 예시임을 명시 */}
-        <p className="pt-2 text-center text-[11px] leading-relaxed text-zinc-400 dark:text-zinc-500">
+        <p className="pt-2 text-center text-[11px] leading-loose text-zinc-400 dark:text-zinc-500">
           {t.codeShowcaseNdaNote}
         </p>
       </div>

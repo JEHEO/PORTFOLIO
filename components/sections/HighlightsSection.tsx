@@ -52,7 +52,7 @@ export function HighlightsSection({ t }: { t: Translation }) {
             <h3 className="mb-2 font-bold transition-colors group-hover:text-accent-500">
               {item.title}
             </h3>
-            <p className="text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
+            <p className="text-sm leading-loose text-zinc-500 dark:text-zinc-400">
               {item.description}
             </p>
           </Link>

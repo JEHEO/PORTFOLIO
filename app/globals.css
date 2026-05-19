@@ -11,8 +11,13 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* font-sans 유틸 / SVG fontFamily 등에서도 NanumSquare(OTF AC) 가 먼저 잡히도록
+   * 체인 자체를 토큰에 박아둔다. --font-nanum-square 는 layout.tsx 의 next/font/local
+   * 에서 주입한 CSS 변수. Geist 는 라틴 폴백. */
+  --font-sans: var(--font-nanum-square), var(--font-geist-sans);
+  /* 코드 블록 / 모노스페이스: D2Coding(한글 + 영문 정확 1:2 정렬, ligature 지원).
+   * Geist Mono 는 D2Coding 이 없을 때의 라틴 폴백. */
+  --font-mono: var(--font-d2coding), var(--font-geist-mono);
   --font-serif: var(--font-serif-display);
 
   /* 메인 accent 컬러. 전 섹션이 bg-accent-500 / text-accent-400 / border-accent-500/40
@@ -41,10 +46,53 @@ html.dark {
 body {
   background: var(--background);
   color: var(--foreground);
-  /* layout.tsx 에서 주입한 Geist 가 먼저 잡히고 못 받으면 시스템 폰트로 떨어짐.
+  /* --font-sans 안에 이미 NanumSquare + Geist 체인이 들어있다.
+   * 한글은 NanumSquare, 라틴/이모지는 Geist · 시스템 폰트로 자연스럽게 폴백.
    * 예전엔 첫 폴백을 Arial 로 둬서 Geist 가 덮여버리는 버그가 있었음. */
   font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* 코딩 폰트 (D2Coding) 의 ligature 활성화.
+ * "->", "=>", "==", "!=", ">=", "<=" 같은 연산자가 한 글자 기호로 합쳐져
+ * 코드 가독성이 좋아진다. 날짜/숫자에는 ligature 트리거가 없어 영향 없음. */
+.font-mono,
+pre,
+code,
+kbd,
+samp {
+  font-feature-settings: "calt" 1, "liga" 1;
+}
+
+/* 히어로 타이틀의 타이핑 캐럿.
+ * steps(2) 로 0/1 만 깜빡이게 해서 옛 터미널 커서처럼 "딱딱" 떨어지는 느낌.
+ * 자연스러운 fade 보다 글쓰는 사람 옆에 진짜 커서가 있는 인상을 줘서 타이핑 모션과 어울림. */
+@keyframes typewriterCaretBlink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.typewriter-caret {
+  display: inline-block;
+  width: 0.08em;
+  height: 0.92em;
+  margin-left: 0.06em;
+  background-color: currentColor;
+  vertical-align: text-bottom;
+  animation: typewriterCaretBlink 0.9s steps(2, jump-none) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typewriter-caret {
+    animation: none;
+    opacity: 0;
+  }
 }
 
 /* 인트로 히어로 (고래 + 스크롤 인디케이터) 애니메이션. */

@@ -43,7 +43,7 @@ export function TechStackGrid({
                       {item.name}
                     </p>
                     {desc && (
-                      <p className="mt-0.5 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
+                      <p className="mt-0.5 text-xs leading-loose text-zinc-500 dark:text-zinc-400">
                         {desc}
                       </p>
                     )}

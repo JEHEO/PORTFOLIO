@@ -38,7 +38,7 @@ function DisclosureSummary({
           <p className="text-accent-700 dark:text-accent-300 text-sm font-bold">
             {label}
           </p>
-          <p className="text-accent-600/70 dark:text-accent-400/70 mt-0.5 text-xs leading-relaxed">
+          <p className="text-accent-600/70 dark:text-accent-400/70 mt-0.5 text-xs leading-loose">
             {hint}
           </p>
         </div>
@@ -96,7 +96,7 @@ function ProjectCard({
           {project.period}
         </p>
       )}
-      <ul className={"mb-6 space-y-2 text-sm text-zinc-600 dark:text-zinc-300"}>
+      <ul className={"mb-6 space-y-2 text-sm leading-loose text-zinc-600 dark:text-zinc-300"}>
         {project.details.map((detail) => (
           <li key={detail} className="flex gap-2">
             <span className="text-zinc-400">•</span>
@@ -165,7 +165,7 @@ function BranchStrategyDetail({ t }: { t: Translation }) {
                 <p className="text-sm font-semibold text-zinc-900 dark:text-white">
                   {step.label}
                 </p>
-                <p className="mt-0.5 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
+                <p className="mt-0.5 text-xs leading-loose text-zinc-500 dark:text-zinc-400">
                   {step.desc}
                 </p>
               </div>
@@ -264,7 +264,7 @@ export function ExperienceSection({
             </span>
           </div>
           {prior.note && (
-            <p className="mt-1 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
+            <p className="mt-1 text-xs leading-loose text-zinc-500 dark:text-zinc-400">
               {prior.note}
             </p>
           )}
@@ -283,7 +283,7 @@ export function ExperienceSection({
           </span>
         </div>
         {t.experience.companyDesc && (
-          <p className="mt-2 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
+          <p className="mt-2 text-xs leading-loose text-zinc-500 dark:text-zinc-400">
             {t.experience.companyDesc}
           </p>
         )}
@@ -293,7 +293,7 @@ export function ExperienceSection({
           <p className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">
             {t.experience.position}
           </p>
-          <p className="mt-1.5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+          <p className="mt-1.5 text-sm leading-loose text-zinc-600 dark:text-zinc-400">
             {t.experience.description}
           </p>
         </div>
