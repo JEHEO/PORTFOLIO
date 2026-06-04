@@ -9,7 +9,6 @@ import React from "react";
 import { TopNav } from "@/components/layout/TopNav";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { CertificationsSection } from "@/components/sections/CertificationsSection";
-import { CodeShowcaseSection } from "@/components/sections/CodeShowcaseSection";
 import { ColophonFooter } from "@/components/sections/ColophonFooter";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { EducationSection } from "@/components/sections/EducationSection";
@@ -79,8 +78,7 @@ export default function Home() {
         <AboutSection t={t} />
         <ImpactStrip t={t} />
         <HighlightsSection t={t} />
-        <ExperienceSection t={t} lang={lang} />
-        <CodeShowcaseSection t={t} lang={lang} />
+        <ExperienceSection t={t} />
         <EducationSection t={t} />
         <CertificationsSection t={t} />
         <SkillsSection t={t} />

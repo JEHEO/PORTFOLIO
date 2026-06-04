@@ -6,22 +6,6 @@
  */
 
 /**
- * 기술 스택 아이템.
- * - `desc` 한국어, `descEn` 영어. 렌더러가 lang 에 따라 스위칭합니다.
- * - `name` 은 브랜드명이라 언어 공통.
- */
-export type TechItem = { name: string; desc: string; descEn: string };
-export type TechCategory = { category: string; items: TechItem[] };
-
-export type ProjectDetail = {
-  /** `cicd` / `branches` 의 실제 표시 값은 번역본(Translation.cicdValue / branchesValue) 에서 주입됩니다.
-   * 이 객체는 `ProjectDetail` 에 추가 stat 이 생길 때의 확장 지점으로 남겨둡니다. */
-  stats: { cicd: string; branches: string };
-  techStack: TechCategory[];
-  architecture: { label: string; items: string[] }[];
-};
-
-/**
  * 스크린샷/영상 아이템.
  * - `video: true` 이면 `<video>` 태그로 렌더됩니다. `poster` 는 재생 전 썸네일.
  */
@@ -61,10 +45,6 @@ export type Project = {
    */
   period?: string;
   details: string[];
-  /** `hasDetail` 이 true 인 프로젝트에만 상세 블록(stats·techStack·architecture) 이 붙습니다. */
-  hasDetail?: boolean;
-  /** `hasBranchStrategy` 가 true 이면 브랜치 전략 디스클로저가 노출됩니다 (보물선 프로젝트 용). */
-  hasBranchStrategy?: boolean;
   /**
    * 프로젝트 스크린샷/영상. 그룹 단위로 라벨과 함께 렌더됩니다.
    * - 값이 없거나 빈 배열이면 placeholder(회색 박스) 로 대체됩니다.
@@ -154,12 +134,6 @@ export type ImpactMetric = {
   hint?: string;
 };
 
-/** 브랜치 전략 디스클로저 안의 한 단계 */
-export type BranchStrategyStep = {
-  label: string;
-  desc: string;
-};
-
 export type Translation = {
   role: string;
   roleSub: string;
@@ -180,20 +154,6 @@ export type Translation = {
   certifications: CertificationItem[];
   awardsLabel: string;
   awards: AwardItem[];
-  projectDetailLabel: string;
-  projectDetailHint: string;
-  branchStrategyLabel: string;
-  branchStrategyHint: string;
-  branchStrategySteps: BranchStrategyStep[];
-  codeShowcaseLabel: string;
-  codeShowcaseDesc: string;
-  /** NDA · 인터뷰 시 시연 가능 안내 문구 (섹션 하단) */
-  codeShowcaseNdaNote: string;
-  atomicDesignDesc: string;
-  hooksDesc: string;
-  performanceLabel: string;
-  commitConventionLabel: string;
-  commitConventionDesc: string;
   skillsLabel: string;
   portfolioLabel: string;
   /** Legacy Portfolio 섹션 보조 설명 */
@@ -202,9 +162,6 @@ export type Translation = {
   contact: ContactContent;
   /** 맨 아래 footer 에 들어가는 meta 시그널 (이 포트폴리오가 어떻게 빌드됐는지). */
   colophon: string;
-  statsLabels: { cicd: string; branches: string };
-  cicdValue: string;
-  branchesValue: string;
   experience: ExperienceData;
   highlights: HighlightItem[];
 };

@@ -14,22 +14,21 @@ import type { Translation } from "@/lib/types/portfolio";
 
 export const T: Record<Lang, Translation> = {
   ko: {
-    role: "UX Engineer",
-    roleSub: "Design → Engineering",
-    title: "디자인 의도와 코드 구조를\n동시에 이해하는 UX Engineer",
+    role: "Publisher",
+    roleSub: "Designer → Publisher",
+    title: "시안의 의도를\n1px 단위로 옮기는 퍼블리셔",
     availability: "새로운 기회 탐색 중",
     nav: [
       { label: "소개", href: "#about" },
       { label: "역량", href: "#highlights" },
       { label: "경력", href: "#experience" },
       { label: "학력", href: "#education" },
-      { label: "코드", href: "#code-showcase" },
       { label: "기술", href: "#skills" },
       { label: "문의", href: "#contact" },
     ],
     aboutLabel: "About",
     about: {
-      heading: "디자인과 엔지니어링 사이에서",
+      heading: "디자인과 마크업 사이에서",
       paragraphs: [
         [
           {
@@ -43,37 +42,37 @@ export const T: Record<Lang, Translation> = {
             text: "을 쌓은 뒤, 웹디자인기능사 → SQL 개발자 → 정보처리기사 → 학점은행제 컴퓨터공학 학사까지 ",
           },
           {
-            text: "의도적인 디자인-엔지니어링 전환 경로",
+            text: "디자인에서 퍼블리싱·프론트엔드로의 전환 경로",
             emphasis: true,
           },
           {
-            text: "를 밟아 왔습니다. 2021년부터 (주)에이치투비즈에서 프론트엔드 개발자로 성장하며 React Native 모바일 앱과 Next.js 웹 서비스를 설계·구현하고, ",
+            text: "를 밟아왔습니다. 2021년부터 (주)에이치투비즈에서 퍼블리셔 겸 프론트엔드로 성장하며 모바일 앱·웹 서비스의 ",
           },
           {
-            text: "파트 리더",
+            text: "시안을 마크업으로 옮기고 인터랙션을 직접 구현",
             emphasis: true,
           },
           {
-            text: "로서 팀 컨벤션 수립과 주니어 멘토링을 함께 수행하고 있습니다.",
+            text: "하는 일을 6년간 이어오고 있습니다.",
           },
         ],
         [
           {
-            text: "디자이너·기획자의 언어를 이해하는 개발자로서, 컴포넌트 구조·상태 설계·코드 품질을 ",
+            text: "디자이너의 언어를 이해하는 퍼블리셔로서, 시안을 코드로 옮기는 일을 단순 변환이 아니라 ",
           },
           {
-            text: "사용자 경험과 같은 기준",
+            text: "1px·미세 인터랙션·반응형 디테일까지 챙기는 작업",
             emphasis: true,
           },
           {
-            text: "으로 다룹니다. 디자인 시안을 단순 구현하는 게 아니라 시안 리뷰 · 디자인 시스템 · 상호작용 단계부터 함께 의사결정하고, ",
+            text: "으로 봅니다. 시안 리뷰 단계부터 디자이너·기획자와 함께 의도와 화면 변수를 정리하고, ",
           },
           {
-            text: "관리자 페이지는 UI/UX 디자인부터 구현까지 1인 전담",
+            text: "공통 컴포넌트와 디자인 토큰을 시스템화",
             emphasis: true,
           },
           {
-            text: "한 경험이 있습니다.",
+            text: "해 매번 새 화면을 빠르고 일관되게 만들 수 있도록 운영하고 있습니다.",
           },
         ],
       ],
@@ -82,23 +81,23 @@ export const T: Record<Lang, Translation> = {
     impactMetrics: [
       {
         value: "137K",
-        label: "운영 · 유지보수",
-        hint: "보물선 누적 회원 · 7,700% 회원 증가 기간 동안 프론트엔드 담당",
+        label: "라이브 UI 운영 · 유지보수",
+        hint: "보물선 누적 회원 · 7,700% 회원 증가 기간 동안 마크업·UI 담당",
       },
       {
-        value: "0.70 → 0.76",
-        label: "React Native 메이저 버전업",
-        hint: "Google Play 16KB 정책 대응 · 약 2개월",
+        value: "6년",
+        label: "디자인 → 퍼블리싱 실무",
+        hint: "편집 디자이너 6년 + 퍼블리셔·프론트 6년 = 시각/마크업 양쪽 합계 12년",
       },
       {
         value: "70+ 페이지",
-        label: "단독 구축 · 6개월",
-        hint: "GOPANG · 사용자 40+ · 관리자 30+ 페이지",
+        label: "단독 마크업 · 6개월",
+        hint: "GOPANG · 사용자 40+ · 관리자 30+ 페이지 시안→마크업 변환",
       },
       {
         value: "10+ 종",
-        label: "인터랙티브 이벤트 게임",
-        hint: "보물선 월간 이벤트 · CSS 3D · 다이스/RPS/슬롯 등 직접 구현",
+        label: "인터랙티브 이벤트 화면",
+        hint: "보물선 월간 이벤트 · 순수 CSS 3D 로 인터랙션 직접 마크업",
       },
     ],
     highlightsLabel: "Expertise & Leadership",
@@ -148,46 +147,6 @@ export const T: Record<Lang, Translation> = {
     awardsLabel: "Awards & Recognition",
     // 의도적으로 비워둠 — 섹션이 자동 숨김됩니다.
     awards: [],
-    projectDetailLabel: "상세 스택 & 아키텍처 보기",
-    projectDetailHint:
-      "Next.js 16 · React 19 · TypeScript · 10+ 라이브러리 선택 근거와 폴더 구조",
-    branchStrategyLabel: "브랜치 전략 & 배포 플로우 보기",
-    branchStrategyHint:
-      "Jira → feature/bugfix → development → master · 버전별 브랜치 유지",
-    branchStrategySteps: [
-      {
-        label: "Jira 이슈 · 신기능 등록",
-        desc: '이슈나 신기능이 Jira 에 등록되면 해당 작업에서 "브랜치 만들기" 기능을 이용해 origin 에서 분기합니다.',
-      },
-      {
-        label: "feature / bugfix 타입별 브랜치 생성",
-        desc: "작업 유형에 따라 feature/* 또는 bugfix/* 프리픽스로 구분해 브랜치를 생성합니다.",
-      },
-      {
-        label: "development 브랜치 병합 · 통합 테스트",
-        desc: "개별 브랜치를 development 에 병합한 뒤 통합 테스트를 진행합니다.",
-      },
-      {
-        label: "master 브랜치 병합 (운영 반영)",
-        desc: "검증이 끝나면 master 브랜치로 병합해 운영 환경에 배포합니다.",
-      },
-      {
-        label: "버전별 브랜치 유지",
-        desc: "버전별로 브랜치를 별도 생성해두어 해당 버전에 적용된 변경 내역을 브랜치 단위로 추적할 수 있습니다.",
-      },
-    ],
-    codeShowcaseLabel: "Clean Code Showcase",
-    codeShowcaseDesc:
-      "실무에서 작성한 핵심 파일들입니다. Atomic Design · Custom Hook · 단일 책임 원칙을 어떻게 적용했는지 확인하세요.",
-    codeShowcaseNdaNote:
-      "실제 구현 코드에서 비즈니스 로직만 제거한 공개용 버전입니다.",
-    atomicDesignDesc:
-      "UI를 Atoms → Molecules → Organisms → Templates → Pages 5계층으로 분리해 재사용성과 테스트 용이성을 확보했습니다.",
-    hooksDesc:
-      "비즈니스 로직을 Custom Hook으로 분리해 컴포넌트는 UI 렌더링에만 집중합니다.",
-    performanceLabel: "왜 이 라이브러리? — 기술 선택 근거 및 성능 최적화",
-    commitConventionLabel: "Commit Convention",
-    commitConventionDesc: "feat · fix · chore 타입을 일관되게 적용합니다.",
     skillsLabel: "Technical Skills",
     portfolioLabel: "2020 Portfolio",
     portfolioDesc: "초기 커리어 작업물 — HTML/CSS/JS 기반 정적 포트폴리오 (2020)",
@@ -207,13 +166,7 @@ export const T: Record<Lang, Translation> = {
       ],
     },
     colophon:
-      "이 포트폴리오는 Next.js 16 · React 19 · Tailwind 4 로 빌드하고, Claude Code 워크플로우로 유지 · GitHub Actions 로 자동 배포됩니다.",
-    statsLabels: {
-      cicd: "CI/CD 파이프라인",
-      branches: "브랜치 전략",
-    },
-    cicdValue: "lint · type check · build 자동화",
-    branchesValue: "bugfix / feature 브랜치 전략",
+      "이 포트폴리오는 Next.js 16 · React 19 · Tailwind 4 로 직접 마크업하고 GitHub Actions 로 자동 배포됩니다.",
     experience: {
       company: "(주)에이치투비즈",
       position: "개발팀 책임연구원",
@@ -226,7 +179,7 @@ export const T: Record<Lang, Translation> = {
         note: "출판·편집 디자인 실무",
       },
       description:
-        "리뉴얼 및 유지보수 담당, 신규 프로젝트 제작, 프로젝트 일정 관리. 후임이 합류한 시기에는 3인 프론트엔드 팀의 파트 리더 역할로 멘토링까지 수행했습니다.",
+        "리뉴얼 및 유지보수 담당, 신규 프로젝트의 시안 마크업·인터랙션·반응형 구현. 후임이 합류한 시기에는 시니어 퍼블리셔/프론트로서 코드 리뷰와 마크업 컨벤션 정리를 함께 진행했습니다.",
       projects: [
         {
           title: "Next.js 기반 신규 프로젝트",
@@ -234,13 +187,12 @@ export const T: Record<Lang, Translation> = {
           sub: "차세대 웹 서비스 구축",
           period: "2026.01 — 진행 중",
           details: [
-            "팀원과 함께 논의해 Atomic Design Pattern 도입 — 코드 유지보수성 및 일관성 확보",
-            "Zustand · TanStack Query 도입으로 fetch · 로딩 · 에러 처리를 추상화하고 캐싱 / 자동 리페치를 표준화 — 컴포넌트는 UI 렌더링에만 집중",
-            "Next.js App Router 기반 아키텍처 · 폴더 구조 설계",
-            "Bitbucket Pipelines 기반 CI/CD 파이프라인 구축 — push 시 lint · type check · build 자동화 후 Vercel CLI 로 자동 배포",
-            "회사 도입 Claude Code 기반 AI 페어 프로그래밍 워크플로우 활용 — CLAUDE.md로 프로젝트 컨텍스트 문서화, 커스텀 커맨드(/review · /lint-check)와 코드 생성 템플릿 5종(Component · Hook · Screen · ViewModel · RouteHandler) 보유, 컨벤션 준수·리뷰·린트를 에이전트와 함께 수행",
+            "디자인 시안을 Atomic Design 5계층(Atoms / Molecules / Organisms / Templates / Pages)으로 분해해 재사용 가능한 마크업 컴포넌트로 정착",
+            "Storybook 으로 공통 컴포넌트를 시각화해 디자이너·기획자와 시안의 변형(상태·상호작용)까지 사전 합의",
+            "Tailwind CSS 디자인 토큰(color · spacing · typography · radius)을 시안과 1:1 매핑해 마크업 단위에서 시각적 일관성 확보",
+            "반응형 · 다크 모드 · 키보드 포커스 · ARIA 등 마크업 단계에서 챙길 디테일을 PR 템플릿 체크리스트로 표준화",
+            "Bitbucket Pipelines 기반 CI/CD 파이프라인 구축 — push 시 lint · type check · build 자동화 후 Vercel 로 자동 배포",
           ],
-          hasDetail: true,
           screenshots: [
             {
               label: "신규 웹 서비스 주요 화면",
@@ -296,19 +248,17 @@ export const T: Record<Lang, Translation> = {
           sub: "국내 랜덤박스 플랫폼",
           period: "2021.03 — 진행 중 (2023.11 전면 리뉴얼 · 이후 유지보수 지속)",
           details: [
-            "jQuery 기반 노후 서비스를 React Native로 전면 리뉴얼",
-            "누적 회원 13.7만 규모 서비스를 사용자 영향 없이 운영 · 회원 수 7,700% 증가 기간 동안 프론트엔드 담당",
-            "Google Play 16KB 정책 준수를 위한 RN v0.70 → v0.76 업그레이드 및 OS 호환성 확보",
-            "사내 공통 HTTP 클라이언트(인증 토큰 · 파라미터 직렬화 · 응답 처리 · 토큰 스토리지 동기화 일원화) 를 활용해 RESTful API 기반 서버-클라이언트 통신 구현",
-            "보물함 화면 개발 — 탭·검색·필터·정렬·잠금 토글이 결합된 복합 리스트 UI 및 페이지네이션 구현",
-            "FlatList 가상 스크롤 + useCallback · React.memo · FastImage 조합으로 수백 개 아이템 무한스크롤 성능 유지",
-            "아이템 상태별 버튼 활성/문구/이동 분기 설계 — 배송·거래·분해·환급 4개 액션을 한 화면에서 일관되게 처리",
-            "거래취소·포인트 환급 등 위험한 액션을 위한 공통 확인 모달 플로우 구현",
-            "월간 이벤트/프로모션 페이지 개발 — 백엔드 저장소(EJS 템플릿) + WebView 구조 위에서 매달 새 이벤트 페이지를 직접 작성, 반응형 UI 로 앱 스토어 검수 없이 즉시 배포",
-            "이벤트 페이지에 순수 CSS 3D transform 기반 인터랙티브 게임 (다이스 보드 · RPS 토너먼트 · 슬롯 머신) 직접 구현, RN ↔ WebView postMessage 로 게임 단계별 네이티브 양방향 연동",
-            "관리자 페이지 개발 및 유지보수",
+            "jQuery 기반 노후 서비스를 React Native 로 전면 리뉴얼하면서 시안 → 마크업 변환 전 과정을 직접 담당",
+            "누적 회원 1,700명 → 14만 명 성장 기간 동안 라이브 UI 의 마크업·인터랙션·반응형 유지보수",
+            "iOS·Android 양 OS 에서 폰트 렌더링·Safe Area·키보드 영역·모달 닫힘 차이를 분기 처리해 시각적 일관성 확보",
+            "보물함 화면 마크업 — 탭·검색·필터·정렬·잠금 토글이 결합된 복합 리스트 UI 와 페이지네이션 구현",
+            "아이템 상태별 4개 액션 버튼(배송·거래·분해·환급) 의 활성/문구/이동 흐름을 시안 의도에 맞게 일관 마크업",
+            "거래취소·포인트 환급 같은 위험 액션을 위한 공통 확인 모달 UI 와 인터랙션 플로우 구현",
+            "월간 이벤트/프로모션 페이지 마크업 — 백엔드 EJS 템플릿 + WebView 구조 위에서 매달 새 시안을 받아 반응형 UI 로 즉시 배포",
+            "이벤트 페이지에 순수 CSS 3D Transform 만으로 인터랙티브 게임 (다이스 보드 · RPS 토너먼트 · 슬롯 머신) 직접 마크업 — 외부 게임 라이브러리 의존 없이 가볍게 운영",
+            "RN ↔ WebView postMessage 양방향 연동으로 게임 단계별 사운드·햅틱·모달 같은 네이티브 효과를 UI 흐름과 자연스럽게 결합",
+            "관리자 페이지 마크업 및 유지보수",
           ],
-          hasBranchStrategy: true,
           screenshots: [
             {
               label: "보물선 앱 주요 화면",
@@ -416,17 +366,17 @@ export const T: Record<Lang, Translation> = {
         },
         {
           title: "GOPANG — 신규 제작",
-          tag: "단독 프론트 개발",
+          tag: "단독 퍼블리셔",
           sub: "인도네시아향 랜덤박스 웹 플랫폼",
           period:
-            "2024.06 — 2025.10 (6개월 내 퍼블리싱 · 프론트 개발 완료 → 2025.02 출시, 이후 유지보수)",
+            "2024.06 — 2025.10 (6개월 내 퍼블리싱 완료 → 2025.02 출시, 이후 유지보수)",
           details: [
-            "보물선(React Native) 서비스 구조를 기반으로, 인도네시아향 랜덤박스 React 웹앱을 단독 신규 구축",
-            "디자인 시안 퍼블리싱부터 React 컴포넌트 구현 · 상태 관리 · API 연동까지 프론트엔드 전 과정 1인 전담",
-            "6개월 내 사용자 화면 40+ · 관리자 화면 30+ 총 70+ 페이지 단독 구축",
-            "다양한 모바일 단말 · 해상도에서 일관된 경험을 제공하는 반응형 퍼블리싱 + 인도네시아 현지 사용자 맥락에 맞춘 UI/UX 설계",
-            "관리자 페이지 UI/UX 디자인 · 퍼블리싱 · 구현 1인 전담 — 시안부터 엔드투엔드",
-            "2025.02 정식 출시 이후 유지보수 및 개선 작업 지속",
+            "보물선(React Native) 서비스 구조를 기반으로, 인도네시아향 랜덤박스 React 웹앱의 마크업·UI 를 단독 신규 구축",
+            "디자인 시안의 픽셀 퍼펙트 마크업부터 컴포넌트 분리 · 반응형 대응 · 인터랙션 구현까지 퍼블리싱 전 과정 1인 전담",
+            "6개월 내 사용자 화면 40+ · 관리자 화면 30+ 총 70+ 페이지 단독 마크업",
+            "다양한 모바일 단말·해상도에서 일관된 시각 경험을 제공하는 반응형 퍼블리싱 + 인도네시아 현지 단말 환경(저속 모바일 위주)을 고려한 이미지·로딩 최적화",
+            "관리자 페이지는 UI/UX 디자인 → 마크업 → 인터랙션을 1인 전담 — 시안부터 엔드투엔드",
+            "2025.02 정식 출시 이후 마크업·UI 유지보수 지속",
           ],
           screenshots: [
             {
@@ -470,58 +420,50 @@ export const T: Record<Lang, Translation> = {
     highlights: [
       {
         slug: "design-engineering-crosskill",
-        title: "디자인-엔지니어링 크로스 스킬",
+        title: "디자인 베이스의 퍼블리싱",
         description:
-          "디자인 커리어 배경이 프론트엔드 업무에 어떻게 녹아드는지 — 시안 리뷰 · 디자인 시스템 · 관리자 페이지 1인 UI/UX 담당 경험을 중심으로 정리했습니다.",
-        tags: ["Design", "Frontend", "Collaboration"],
+          "디자이너 커리어 베이스가 퍼블리싱 작업에 어떻게 녹아드는지 — 시안의 의도 해석, 1px 디테일, 인터랙션 협의, 관리자 페이지 UI/UX 1인 담당 경험을 중심으로 정리했습니다.",
+        tags: ["Design", "Publishing", "Collaboration"],
       },
       {
         slug: "team-process-automation",
-        title: "팀 프로세스 & 자동화",
+        title: "마크업 컨벤션 & 디자인 시스템 정착",
         description:
-          "파트 리더로서 Atomic Design · 코드 리뷰 프로세스를 정착시켰고, Claude Code 기반 AI 페어 프로그래밍을 팀 워크플로우에 통합해 사람과 에이전트가 함께 컨벤션을 자동 강제하도록 설계했습니다.",
-        tags: ["Leadership", "Process", "AI"],
-      },
-      {
-        slug: "rn-upgrade",
-        title: "React Native 0.76 업그레이드 트러블슈팅",
-        description:
-          "Google Play 16KB 정책 대응을 위한 RN 아키텍처 업그레이드와 라이브러리 호환성 문제 해결 과정을 다뤘습니다.",
-        tags: ["Technical", "Problem Solving"],
+          "Atomic Design 5계층과 디자인 토큰 기반 공통 컴포넌트 체계를 팀에 정착시키고, PR 템플릿에 반응형·접근성·시각 일관성 체크리스트를 더해 마크업 품질을 표준화했습니다.",
+        tags: ["Publishing", "Design System", "Process"],
       },
       {
         slug: "bomulsen-treasure-box",
-        title: "보물함 화면 — 복합 상태 리스트 설계",
+        title: "보물함 화면 — 복합 상태 UI 마크업",
         description:
-          "탭 · 검색 · 필터 · 정렬 · 잠금 토글이 동시에 작동하는 단일 화면에서 11종 상태코드 × 타입코드 × 잠금 여부 조합에 따른 버튼 분기 로직과 6종 모달을 하나의 패턴으로 정리했습니다.",
-        tags: ["Technical", "State Machine", "UX"],
+          "탭·검색·필터·정렬·잠금 토글이 동시 작동하는 단일 화면에서, 11종 상태코드 × 타입 × 잠금 조합에 따라 4개 액션 버튼과 6종 모달이 시안 의도대로 일관 동작하도록 마크업·인터랙션을 설계했습니다.",
+        tags: ["Publishing", "Interaction", "UX"],
       },
       {
         slug: "event-webview-games",
-        title: "월간 이벤트 — CSS 3D · 인터랙티브 게임",
+        title: "월간 이벤트 — CSS 3D 인터랙티브 마크업",
         description:
-          "앱 스토어 검수를 우회하기 위해 백엔드 EJS 로 분리한 월간 이벤트 페이지에서, 순수 CSS 3D transform 과 jQuery 기반 게임 로직으로 다이스 보드 · RPS 토너먼트 · 슬롯 머신 등 인터랙티브 게임을 라이브러리 없이 직접 구현했습니다.",
-        tags: ["Frontend", "Interaction", "WebView"],
+          "백엔드 EJS + WebView 구조 위에서 매월 새 디자인의 사용자 참여형 이벤트 화면을 마크업. 외부 게임 라이브러리 없이 순수 CSS 3D Transform 만으로 다이스 보드·RPS 토너먼트·슬롯 머신 같은 인터랙티브 콘텐츠를 직접 구현했습니다.",
+        tags: ["Publishing", "Interaction", "CSS 3D"],
       },
     ],
   },
   en: {
-    role: "UX Engineer",
-    roleSub: "Design → Engineering",
-    title: "Reading Design Intent,\nWriting Code Structure",
+    role: "Publisher",
+    roleSub: "Designer → Publisher",
+    title: "Translating Design Intent\nDown to the Pixel",
     availability: "Open to new roles",
     nav: [
       { label: "About", href: "#about" },
       { label: "Expertise", href: "#highlights" },
       { label: "Experience", href: "#experience" },
       { label: "Education", href: "#education" },
-      { label: "Code", href: "#code-showcase" },
       { label: "Skills", href: "#skills" },
       { label: "Contact", href: "#contact" },
     ],
     aboutLabel: "About",
     about: {
-      heading: "Working at the seam of design and engineering",
+      heading: "Working at the seam of design and markup",
       paragraphs: [
         [
           {
@@ -532,40 +474,40 @@ export const T: Record<Lang, Translation> = {
             emphasis: true,
           },
           {
-            text: " before ",
+            text: " before taking ",
           },
           {
-            text: "taking an intentional path into engineering",
+            text: "the path from designer into publishing and frontend",
             emphasis: true,
           },
           {
-            text: " — Craftsman Web Design, SQL Developer, Engineer Information Processing, and a Bachelor in Computer Science through Korea's Academic Credit Bank System. Since 2021 at H2Biz, I've been growing as a frontend developer who designs and ships React Native mobile apps and Next.js web services, while serving as ",
+            text: " — Craftsman Web Design, SQL Developer, Engineer Information Processing, and a Bachelor in Computer Science through Korea's Academic Credit Bank System. Since 2021 at H2Biz, I've been doing ",
           },
           {
-            text: "an acting tech lead",
+            text: "markup, interactions, and responsive UI for mobile apps and web services",
             emphasis: true,
           },
           {
-            text: " — formalizing team conventions and mentoring juniors.",
+            text: " — translating designs into shipped UI for six years.",
           },
         ],
         [
           {
-            text: "I speak the languages of designers and PMs, and I treat component structure, state design, and code quality ",
+            text: "I speak the language of designers — to me, going from mocks to code isn't a simple conversion but ",
           },
           {
-            text: "on the same bar as UX",
+            text: "honoring 1px details, micro-interactions, and responsive nuance",
             emphasis: true,
           },
           {
-            text: ". I don't just implement design mocks — I co-decide on design systems, component boundaries, and interaction specs from the review stage, and I've ",
+            text: ". I sit with designers and PMs from the review stage to align intent and screen variables, and ",
           },
           {
-            text: "owned full UI/UX end-to-end (design through implementation) for admin surfaces",
+            text: "systemize shared components and design tokens",
             emphasis: true,
           },
           {
-            text: ".",
+            text: " so new screens can ship fast and stay visually consistent.",
           },
         ],
       ],
@@ -574,26 +516,26 @@ export const T: Record<Lang, Translation> = {
     impactMetrics: [
       {
         value: "137K",
-        label: "Operations & maintenance",
-        hint: "Bomulsen registered members · frontend lead through a 7,700% member-growth period",
+        label: "Live UI ops & maintenance",
+        hint: "Bomulsen registered members · markup & UI through 7,700% member growth",
       },
       {
-        value: "0.70 → 0.76",
-        label: "React Native major upgrade",
-        hint: "Google Play 16KB policy · ~2 months",
+        value: "6 yrs",
+        label: "Design → publishing",
+        hint: "Editorial designer 6 yrs + publisher / frontend 6 yrs = 12 yrs of visual & markup craft",
       },
       {
         value: "70+ pages",
-        label: "Solo build · 6 months",
-        hint: "GOPANG · 40+ user + 30+ admin pages",
+        label: "Solo markup · 6 months",
+        hint: "GOPANG · 40+ user + 30+ admin pages translated from mocks",
       },
       {
-        value: "10+ games",
-        label: "Interactive event games",
-        hint: "Bomulsen monthly events · CSS 3D · dice / RPS / slot built from scratch",
+        value: "10+ events",
+        label: "Interactive event screens",
+        hint: "Bomulsen monthly events · pure CSS 3D — interactions hand-crafted from scratch",
       },
     ],
-    highlightsLabel: "Expertise & Leadership",
+    highlightsLabel: "Publishing Highlights",
     viewMore: "View details",
     experienceLabel: "Experience",
     educationLabel: "Education",
@@ -640,47 +582,6 @@ export const T: Record<Lang, Translation> = {
     awardsLabel: "Awards & Recognition",
     // Intentionally empty — the subsection auto-hides.
     awards: [],
-    projectDetailLabel: "View detailed stack & architecture",
-    projectDetailHint:
-      "Next.js 16 · React 19 · TypeScript · rationale for 10+ library choices and the folder layout",
-    branchStrategyLabel: "View branch strategy & deployment flow",
-    branchStrategyHint:
-      "Jira → feature/bugfix → development → master · version branches retained",
-    branchStrategySteps: [
-      {
-        label: "Jira issue / feature registration",
-        desc: 'When an issue or new feature is registered in Jira, branches are created off origin via Jira\'s "Create branch" action.',
-      },
-      {
-        label: "feature / bugfix branch creation",
-        desc: "Branches are prefixed with feature/* or bugfix/* depending on the type of work.",
-      },
-      {
-        label: "Merge to development · integration testing",
-        desc: "Individual branches merge into development, where integration testing runs.",
-      },
-      {
-        label: "Merge to master (production release)",
-        desc: "Once verification passes, branches merge into master to deploy to production.",
-      },
-      {
-        label: "Version branches retained",
-        desc: "A dedicated branch per version is kept, so each version's applied changes can be traced at the branch level.",
-      },
-    ],
-    codeShowcaseLabel: "Clean Code Showcase",
-    codeShowcaseDesc:
-      "Key files from production. See how Atomic Design, Custom Hooks, and Single Responsibility Principle are applied in practice.",
-    codeShowcaseNdaNote:
-      "Public-safe versions of production code with business logic removed.",
-    atomicDesignDesc:
-      "UI is split into 5 layers — Atoms → Molecules → Organisms → Templates → Pages — for reusability and testability.",
-    hooksDesc:
-      "Business logic is extracted into Custom Hooks so components focus solely on rendering.",
-    performanceLabel:
-      "Why This Library? — Tech Choices & Performance Optimizations",
-    commitConventionLabel: "Commit Convention",
-    commitConventionDesc: "Consistent use of feat · fix · chore prefixes.",
     skillsLabel: "Technical Skills",
     portfolioLabel: "2020 Portfolio",
     portfolioDesc: "Early-career work — a static HTML/CSS/JS portfolio (2020)",
@@ -700,13 +601,7 @@ export const T: Record<Lang, Translation> = {
       ],
     },
     colophon:
-      "This portfolio is built with Next.js 16 · React 19 · Tailwind 4, maintained via a Claude Code workflow, and auto-deployed via GitHub Actions.",
-    statsLabels: {
-      cicd: "CI/CD Pipeline",
-      branches: "Branch Strategy",
-    },
-    cicdValue: "lint · type check · build automated",
-    branchesValue: "bugfix / feature branch strategy",
+      "This portfolio is hand-marked-up with Next.js 16 · React 19 · Tailwind 4, and auto-deployed via GitHub Actions.",
     experience: {
       company: "H2Biz Co., Ltd.",
       position: "Senior Research Engineer, Dev Team",
@@ -719,7 +614,7 @@ export const T: Record<Lang, Translation> = {
         note: "Publishing / editorial design practice",
       },
       description:
-        "Owns renewal & maintenance, new project development, and project scheduling. When juniors are on the team, also acts as tech lead of the 3-person frontend group and handles mentoring.",
+        "Owns renewal & maintenance and the markup, interactions, and responsive UI for new projects. When juniors join the team, acts as the senior publisher/frontend and runs code reviews plus markup-convention upkeep.",
       projects: [
         {
           title: "Next.js-based New Project",
@@ -727,13 +622,12 @@ export const T: Record<Lang, Translation> = {
           sub: "Next-generation web service",
           period: "Jan 2026 — Present",
           details: [
-            "Co-decided with the team to adopt the Atomic Design Pattern — improves maintainability and consistency",
-            "Adopted Zustand and TanStack Query to abstract fetch · loading · error handling and standardize caching / auto-refetch — components focus purely on UI rendering",
-            "Designed the App Router-based architecture and folder structure",
-            "Built a CI/CD pipeline on Bitbucket Pipelines — every push runs lint, type check, and build, then ships to Vercel via the Vercel CLI",
-            "Active user of the company-adopted Claude Code AI pair-programming workflow — documented project context in CLAUDE.md, defined custom commands (/review · /lint-check), and maintain 5 code-generation templates (Component · Hook · Screen · ViewModel · RouteHandler) so convention checks, reviews, and lint runs happen alongside the agent",
+            "Broke designs into a 5-layer Atomic Design system (Atoms / Molecules / Organisms / Templates / Pages) and built them as reusable markup components",
+            "Visualized shared components in Storybook to align design variations (states & interactions) with designers and PMs before implementation",
+            "Mapped Tailwind CSS design tokens (color · spacing · typography · radius) 1:1 with the design system so visual consistency is enforced at the markup layer",
+            "Standardized the markup-layer details — responsive, dark mode, keyboard focus, ARIA — as PR template checklists",
+            "Built a CI/CD pipeline on Bitbucket Pipelines — every push runs lint, type check, build, and auto-deploys to Vercel",
           ],
-          hasDetail: true,
           screenshots: [
             {
               label: "New web service — key screens",
@@ -785,23 +679,21 @@ export const T: Record<Lang, Translation> = {
         },
         {
           title: "Bomulsen — Renewal & Maintenance",
-          tag: "Frontend Lead",
+          tag: "Lead Publisher",
           sub: "Domestic random-box platform",
           period: "Mar 2021 — Present (Nov 2023 full rebuild · ongoing maintenance)",
           details: [
-            "Fully migrated legacy jQuery service to React Native",
-            "Owned the frontend for a service with ~137K registered members through a 7,700% member-growth period, with no impact on end users",
-            "Upgraded RN (v0.70 → v0.76) to meet Google Play 16KB policy; handled OS compatibility",
-            "Implemented RESTful API-based client-server integration on top of the in-house shared HTTP client (auth tokens, parameter serialization, response handling, auth-storage sync)",
-            "Built the Treasure Box screen — a complex list UI combining tab, search, filter, sort, and a lock toggle with pagination",
-            "Tuned scroll performance for hundreds-of-items infinite list — FlatList virtualization with useCallback · React.memo · FastImage to keep frames smooth",
-            "Item-level button branching for Ship / Trade / Dismantle / Refund — 4 actions handled consistently on one screen",
-            "Built a shared confirm-modal flow for irreversible actions like trade-cancel and point refund",
-            "Built monthly event / promo pages on top of the existing backend EJS template + WebView setup — wrote each new responsive event page so it could ship without an app-store review cycle",
-            "Built interactive games (dice board, RPS tournament, slot machine) directly in event pages with pure CSS 3D transforms — no game library — and wired stage-by-stage RN ↔ WebView postMessage for native-side effects",
-            "Developed and maintained the admin dashboard",
+            "Fully migrated legacy jQuery service to React Native, owning the entire mocks-to-markup conversion",
+            "Maintained the markup, interactions, and responsive UI of a live service that grew from ~1,700 to ~140K registered members",
+            "Reconciled iOS/Android differences (font rendering, safe area, keyboard area, modal-dismiss behavior) so the visual experience stayed consistent across OSes",
+            "Built the Treasure Box screen markup — a complex list UI combining tab, search, filter, sort, and a lock toggle with pagination",
+            "Mapped item-level 4-action button states (Ship / Trade / Dismantle / Refund) — active/copy/route flows expressed consistently in markup, faithful to the design intent",
+            "Built a shared confirm-modal UI and interaction flow for high-risk actions like trade-cancel and point refund",
+            "Shipped monthly event/promo pages — wrote each new responsive page on top of the existing backend EJS template + WebView setup so it could go live without an app-store review",
+            "Built interactive games (dice board, RPS tournament, slot machine) directly in event pages with pure CSS 3D transforms — no external game library, kept the pages light",
+            "Wired stage-by-stage RN ↔ WebView postMessage so native effects (sound, haptics, modals) flow naturally with the UI",
+            "Built and maintained the admin dashboard markup",
           ],
-          hasBranchStrategy: true,
           screenshots: [
             {
               label: "Bomulsen — key app screens",
@@ -909,17 +801,17 @@ export const T: Record<Lang, Translation> = {
         },
         {
           title: "GOPANG — New Build",
-          tag: "Solo Frontend",
+          tag: "Solo Publisher",
           sub: "Indonesian random-box web platform",
           period:
-            "Jun 2024 — Oct 2025 (6-month publishing + frontend build → launched Feb 2025, ongoing maintenance)",
+            "Jun 2024 — Oct 2025 (6-month publishing build → launched Feb 2025, ongoing maintenance)",
           details: [
-            "Built the Indonesian random-box React web app from scratch as the only frontend engineer, adapting Bomulsen's (React Native) service patterns to a web context",
-            "Sole frontend ownership across the full stack: design-mock publishing, React component implementation, state management, and API integration",
+            "Built the markup and UI of an Indonesian random-box React web app solo, adapting Bomulsen's (React Native) structure to a web context",
+            "Owned the full publishing pipeline: pixel-perfect markup from design mocks, component splitting, responsive handling, and interaction work",
             "Delivered 70+ pages end-to-end in 6 months — 40+ user screens and 30+ admin screens, single-handed",
-            "Responsive publishing for consistent experience across mobile devices and resolutions, with UI/UX tailored to the Indonesian market context",
-            "Owned the admin page UI/UX end-to-end — design, publishing, and implementation, solo",
-            "Continued maintenance and iteration after the official launch in Feb 2025",
+            "Responsive publishing for consistent visual experience across mobile devices and resolutions, with image and loading optimizations tuned to Indonesia's mobile-heavy, low-bandwidth context",
+            "Owned the admin page UI/UX end-to-end — design → markup → interaction, solo",
+            "Continued markup/UI maintenance after the official launch in Feb 2025",
           ],
           screenshots: [
             {
@@ -963,38 +855,31 @@ export const T: Record<Lang, Translation> = {
     highlights: [
       {
         slug: "design-engineering-crosskill",
-        title: "Design–Engineering Cross-Skill",
+        title: "Publishing With a Designer's Eye",
         description:
-          "How a design career shapes my frontend work — design reviews, design systems, and solo UI/UX ownership for admin surfaces.",
-        tags: ["Design", "Frontend", "Collaboration"],
+          "How a designer's career carries into publishing work — reading design intent, owning 1px details, negotiating interaction nuances, and running admin UI/UX solo.",
+        tags: ["Design", "Publishing", "Collaboration"],
       },
       {
         slug: "team-process-automation",
-        title: "Team Process & Automation",
+        title: "Markup Conventions & Design System",
         description:
-          "As part lead, formalized Atomic Design and code review processes, and integrated Claude Code-based AI pair programming — human and agent now enforce conventions together automatically.",
-        tags: ["Leadership", "Process", "AI"],
-      },
-      {
-        slug: "rn-upgrade",
-        title: "React Native 0.76 Upgrade Troubleshooting",
-        description:
-          "Documented the new architecture adoption for the Google Play 16KB policy and library compatibility resolution process.",
-        tags: ["Technical", "Problem Solving"],
+          "Established a 5-layer Atomic Design system and design-token-based shared components, and added responsive · a11y · visual-consistency checklists to the PR template to standardize markup quality.",
+        tags: ["Publishing", "Design System", "Process"],
       },
       {
         slug: "bomulsen-treasure-box",
-        title: "Treasure Box Screen — Complex State List Design",
+        title: "Treasure Box — Complex-State UI Markup",
         description:
-          "Documented how I unified per-button enable/label/navigation rules across 11 states × type code × lock flag, and corralled six distinct modals into one pattern on a single screen where tab, search, filter, sort, and a lock toggle all operate at once.",
-        tags: ["Technical", "State Machine", "UX"],
+          "On a single screen where tab, search, filter, sort, and lock toggle all act at once, designed markup and interactions so 4 action buttons and 6 modals behave consistently across 11 status codes × type × lock combinations — faithful to the design intent.",
+        tags: ["Publishing", "Interaction", "UX"],
       },
       {
         slug: "event-webview-games",
-        title: "Monthly Event — CSS 3D · Interactive Games",
+        title: "Monthly Events — CSS 3D Interactive Markup",
         description:
-          "On monthly event pages separated into the backend repo as EJS (to bypass app-store reviews), built interactive games (dice board, RPS tournament, slot machine) from scratch with pure CSS 3D transforms and jQuery — no game library required.",
-        tags: ["Frontend", "Interaction", "WebView"],
+          "Built each new monthly event screen on the backend EJS + WebView setup. Implemented interactive content like dice boards, RPS tournaments, and slot machines using pure CSS 3D transforms — no external game library.",
+        tags: ["Publishing", "Interaction", "CSS 3D"],
       },
     ],
   },

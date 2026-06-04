@@ -62,9 +62,9 @@ const d2Coding = localFont({
 // /PORTFOLIO_2026 가 두 번 붙어버려서, 여기는 도메인까지만. basePath 는
 // next.config.ts 쪽에서만 한 번 붙도록 분리해놨음.
 // 파비콘/OG 이미지는 app/icon.* 와 app/opengraph-image.* 규약 파일이 자동으로 잡아줌.
-const SITE_TITLE = "허정은 — UX Engineer Portfolio";
+const SITE_TITLE = "허정은 — Publisher Portfolio";
 const SITE_DESC =
-  "디자이너 출신 6년차 UX Engineer. 디자인 의도와 코드 구조를 동시에 이해하는 — 허정은의 포트폴리오.";
+  "디자이너 출신 6년차 퍼블리셔. 시안의 의도를 1px 단위로 옮기는 — 허정은의 포트폴리오.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://jeheo.github.io"),

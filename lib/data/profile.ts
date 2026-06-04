@@ -36,17 +36,23 @@ export type SkillItem = {
 };
 
 export const SKILLS: SkillItem[] = [
-  // Frontend
+  // Markup / Languages — 퍼블리셔 핵심 스킬을 가장 앞에
+  { name: "HTML5", color: "#E34F26", slug: "html5", group: "Frontend" },
+  { name: "CSS3", color: "#1572B6", slug: "css", group: "Frontend" },
+  { name: "JavaScript", color: "#F7DF1E", slug: "javascript", group: "Frontend" },
+  { name: "TypeScript", color: "#3178C6", group: "Frontend" },
   { name: "React", color: "#61DAFB", group: "Frontend" },
   // simpleicons 에 `reactnative` 가 없으므로 React 아이콘(slug: "react") 을 재사용합니다.
   { name: "React Native", color: "#61DAFB", slug: "react", group: "Frontend" },
   { name: "Next.js", color: "current", group: "Frontend" },
-  { name: "TypeScript", color: "#3178C6", group: "Frontend" },
   { name: "jQuery", color: "#0769AD", group: "Frontend" },
 
   // Styling / Design
   { name: "Tailwind CSS", color: "#06B6D4", slug: "tailwindcss", group: "Styling" },
+  { name: "Sass", color: "#CC6699", slug: "sass", group: "Styling" },
   { name: "Figma", color: "#F24E1E", group: "Styling" },
+  { name: "Adobe Photoshop", color: "#31A8FF", slug: "adobephotoshop", group: "Styling" },
+  { name: "Adobe Illustrator", color: "#FF9A00", slug: "adobeillustrator", group: "Styling" },
   { name: "Storybook", color: "#FF4785", group: "Styling" },
 
   // Tools / DevOps
