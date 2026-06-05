@@ -51,6 +51,10 @@ body {
    * 예전엔 첫 폴백을 Arial 로 둬서 Geist 가 덮여버리는 버그가 있었음. */
   font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* 한국어 단어 중간에서 줄 바꿈되는 현상 방지 — 단어 단위로 wrap.
+   * 너무 긴 영문/URL 처럼 끊김이 불가피한 경우는 overflow-wrap 으로 박스 밖 넘침을 막는다. */
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
 /* 코딩 폰트 (D2Coding) 의 ligature 활성화.

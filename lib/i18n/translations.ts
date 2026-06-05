@@ -20,8 +20,9 @@ export const T: Record<Lang, Translation> = {
     availability: "새로운 기회 탐색 중",
     nav: [
       { label: "소개", href: "#about" },
-      { label: "역량", href: "#highlights" },
       { label: "경력", href: "#experience" },
+      { label: "작업물", href: "#practice" },
+      { label: "역량", href: "#highlights" },
       { label: "학력", href: "#education" },
       { label: "기술", href: "#skills" },
       { label: "문의", href: "#contact" },
@@ -148,8 +149,9 @@ export const T: Record<Lang, Translation> = {
     // 의도적으로 비워둠 — 섹션이 자동 숨김됩니다.
     awards: [],
     skillsLabel: "Technical Skills",
-    portfolioLabel: "2020 Portfolio",
-    portfolioDesc: "초기 커리어 작업물 — HTML/CSS/JS 기반 정적 포트폴리오 (2020)",
+    practiceLabel: "Practice Works",
+    practiceDesc:
+      "그린컴퓨터아트학원 2020.06 – 2020.11 시기, 디자인 시안부터 마크업까지 1인 작업한 사이트 리뉴얼 5건입니다. 각 카드에서 컬러 팔레트와 시기를 미리 보고, 클릭하면 작업 의도·폰트·컬러 시스템 상세를 볼 수 있습니다.",
     contactLabel: "Contact",
     contact: {
       links: [
@@ -187,11 +189,8 @@ export const T: Record<Lang, Translation> = {
           sub: "차세대 웹 서비스 구축",
           period: "2026.01 — 진행 중",
           details: [
-            "디자인 시안을 Atomic Design 5계층(Atoms / Molecules / Organisms / Templates / Pages)으로 분해해 재사용 가능한 마크업 컴포넌트로 정착",
-            "Storybook 으로 공통 컴포넌트를 시각화해 디자이너·기획자와 시안의 변형(상태·상호작용)까지 사전 합의",
-            "Tailwind CSS 디자인 토큰(color · spacing · typography · radius)을 시안과 1:1 매핑해 마크업 단위에서 시각적 일관성 확보",
-            "반응형 · 다크 모드 · 키보드 포커스 · ARIA 등 마크업 단계에서 챙길 디테일을 PR 템플릿 체크리스트로 표준화",
-            "Bitbucket Pipelines 기반 CI/CD 파이프라인 구축 — push 시 lint · type check · build 자동화 후 Vercel 로 자동 배포",
+            "Atomic Design 5계층(Atoms / Molecules / Organisms / Templates / Pages) + Storybook 도입 — 컴포넌트 분리 기준을 정리해 재사용 가능한 마크업 구조 구축",
+            "Bitbucket Pipelines → Vercel 자동 배포 (lint · type check · build)",
           ],
           screenshots: [
             {
@@ -248,16 +247,11 @@ export const T: Record<Lang, Translation> = {
           sub: "국내 랜덤박스 플랫폼",
           period: "2021.03 — 진행 중 (2023.11 전면 리뉴얼 · 이후 유지보수 지속)",
           details: [
-            "jQuery 기반 노후 서비스를 React Native 로 전면 리뉴얼하면서 시안 → 마크업 변환 전 과정을 직접 담당",
-            "누적 회원 1,700명 → 14만 명 성장 기간 동안 라이브 UI 의 마크업·인터랙션·반응형 유지보수",
-            "iOS·Android 양 OS 에서 폰트 렌더링·Safe Area·키보드 영역·모달 닫힘 차이를 분기 처리해 시각적 일관성 확보",
-            "보물함 화면 마크업 — 탭·검색·필터·정렬·잠금 토글이 결합된 복합 리스트 UI 와 페이지네이션 구현",
-            "아이템 상태별 4개 액션 버튼(배송·거래·분해·환급) 의 활성/문구/이동 흐름을 시안 의도에 맞게 일관 마크업",
-            "거래취소·포인트 환급 같은 위험 액션을 위한 공통 확인 모달 UI 와 인터랙션 플로우 구현",
-            "월간 이벤트/프로모션 페이지 마크업 — 백엔드 EJS 템플릿 + WebView 구조 위에서 매달 새 시안을 받아 반응형 UI 로 즉시 배포",
-            "이벤트 페이지에 순수 CSS 3D Transform 만으로 인터랙티브 게임 (다이스 보드 · RPS 토너먼트 · 슬롯 머신) 직접 마크업 — 외부 게임 라이브러리 의존 없이 가볍게 운영",
-            "RN ↔ WebView postMessage 양방향 연동으로 게임 단계별 사운드·햅틱·모달 같은 네이티브 효과를 UI 흐름과 자연스럽게 결합",
-            "관리자 페이지 마크업 및 유지보수",
+            "누적 회원 1,700 → 14만 명 성장 기간 동안 라이브 UI 의 마크업·인터랙션·반응형 6년 유지보수 (jQuery → React Native 전면 리뉴얼 포함)",
+            "iOS·Android 양 OS 의 폰트·Safe Area·키보드·모달 차이를 분기 처리해 시각적 일관성 확보",
+            "보물함 화면 — 탭·검색·필터·정렬·잠금이 결합된 복합 리스트와 4개 액션 버튼·6종 모달을 시안 의도대로 일관 마크업",
+            "월간 이벤트 페이지 — EJS + WebView 구조 위에서 매달 새 시안을 반응형 UI 로 즉시 배포, 앱스토어 검수 없이 운영",
+            "순수 CSS 3D Transform 만으로 다이스 보드·RPS·슬롯 머신 인터랙티브 콘텐츠를 직접 마크업하고 RN ↔ WebView 메시징으로 네이티브 효과 연결",
           ],
           screenshots: [
             {
@@ -371,11 +365,9 @@ export const T: Record<Lang, Translation> = {
           period:
             "2024.06 — 2025.10 (6개월 내 퍼블리싱 완료 → 2025.02 출시, 이후 유지보수)",
           details: [
-            "보물선(React Native) 서비스 구조를 기반으로, 인도네시아향 랜덤박스 React 웹앱의 마크업·UI 를 단독 신규 구축",
-            "디자인 시안의 픽셀 퍼펙트 마크업부터 컴포넌트 분리 · 반응형 대응 · 인터랙션 구현까지 퍼블리싱 전 과정 1인 전담",
-            "6개월 내 사용자 화면 40+ · 관리자 화면 30+ 총 70+ 페이지 단독 마크업",
-            "다양한 모바일 단말·해상도에서 일관된 시각 경험을 제공하는 반응형 퍼블리싱 + 인도네시아 현지 단말 환경(저속 모바일 위주)을 고려한 이미지·로딩 최적화",
-            "관리자 페이지는 UI/UX 디자인 → 마크업 → 인터랙션을 1인 전담 — 시안부터 엔드투엔드",
+            "사용자 40+ · 관리자 30+ 총 70+ 페이지를 6개월 안에 단독 마크업 — 시안 픽셀 퍼펙트 변환부터 컴포넌트 분리·반응형·인터랙션까지 1인 전담",
+            "관리자 페이지는 UI/UX 디자인 → 마크업 → 인터랙션까지 시안부터 엔드투엔드 단독 진행",
+            "인도네시아 현지 단말 환경(저속 모바일 위주)을 고려한 이미지·로딩 최적화 + 다양한 해상도 반응형",
             "2025.02 정식 출시 이후 마크업·UI 유지보수 지속",
           ],
           screenshots: [
@@ -455,8 +447,9 @@ export const T: Record<Lang, Translation> = {
     availability: "Open to new roles",
     nav: [
       { label: "About", href: "#about" },
-      { label: "Expertise", href: "#highlights" },
       { label: "Experience", href: "#experience" },
+      { label: "Works", href: "#practice" },
+      { label: "Expertise", href: "#highlights" },
       { label: "Education", href: "#education" },
       { label: "Skills", href: "#skills" },
       { label: "Contact", href: "#contact" },
@@ -583,8 +576,9 @@ export const T: Record<Lang, Translation> = {
     // Intentionally empty — the subsection auto-hides.
     awards: [],
     skillsLabel: "Technical Skills",
-    portfolioLabel: "2020 Portfolio",
-    portfolioDesc: "Early-career work — a static HTML/CSS/JS portfolio (2020)",
+    practiceLabel: "Practice Works",
+    practiceDesc:
+      "Five site-renewal works I designed and marked up solo at Green Computer Art Academy (Jun 2020 – Nov 2020). Each card previews the color palette and period; click in for the brief, typography, and color system.",
     contactLabel: "Contact",
     contact: {
       links: [
@@ -622,11 +616,8 @@ export const T: Record<Lang, Translation> = {
           sub: "Next-generation web service",
           period: "Jan 2026 — Present",
           details: [
-            "Broke designs into a 5-layer Atomic Design system (Atoms / Molecules / Organisms / Templates / Pages) and built them as reusable markup components",
-            "Visualized shared components in Storybook to align design variations (states & interactions) with designers and PMs before implementation",
-            "Mapped Tailwind CSS design tokens (color · spacing · typography · radius) 1:1 with the design system so visual consistency is enforced at the markup layer",
-            "Standardized the markup-layer details — responsive, dark mode, keyboard focus, ARIA — as PR template checklists",
-            "Built a CI/CD pipeline on Bitbucket Pipelines — every push runs lint, type check, build, and auto-deploys to Vercel",
+            "Introduced Atomic Design 5 layers (Atoms / Molecules / Organisms / Templates / Pages) and Storybook — established clear component boundaries and a reusable markup structure",
+            "Bitbucket Pipelines → Vercel auto-deploy (lint · type check · build)",
           ],
           screenshots: [
             {
@@ -683,16 +674,11 @@ export const T: Record<Lang, Translation> = {
           sub: "Domestic random-box platform",
           period: "Mar 2021 — Present (Nov 2023 full rebuild · ongoing maintenance)",
           details: [
-            "Fully migrated legacy jQuery service to React Native, owning the entire mocks-to-markup conversion",
-            "Maintained the markup, interactions, and responsive UI of a live service that grew from ~1,700 to ~140K registered members",
-            "Reconciled iOS/Android differences (font rendering, safe area, keyboard area, modal-dismiss behavior) so the visual experience stayed consistent across OSes",
-            "Built the Treasure Box screen markup — a complex list UI combining tab, search, filter, sort, and a lock toggle with pagination",
-            "Mapped item-level 4-action button states (Ship / Trade / Dismantle / Refund) — active/copy/route flows expressed consistently in markup, faithful to the design intent",
-            "Built a shared confirm-modal UI and interaction flow for high-risk actions like trade-cancel and point refund",
-            "Shipped monthly event/promo pages — wrote each new responsive page on top of the existing backend EJS template + WebView setup so it could go live without an app-store review",
-            "Built interactive games (dice board, RPS tournament, slot machine) directly in event pages with pure CSS 3D transforms — no external game library, kept the pages light",
-            "Wired stage-by-stage RN ↔ WebView postMessage so native effects (sound, haptics, modals) flow naturally with the UI",
-            "Built and maintained the admin dashboard markup",
+            "Maintained markup · interaction · responsive UI of a live service for 6 years as it grew from 1,700 → ~140K members (including the full jQuery → React Native migration)",
+            "Reconciled iOS/Android differences (font, safe-area, keyboard, modal-dismiss) so the visual experience stays consistent across OSes",
+            "Treasure Box screen — markup for a complex list (tab · search · filter · sort · lock) with 4 action buttons and 6 modals, all consistent with the design intent",
+            "Monthly event pages — shipped fresh responsive markup on top of the existing EJS + WebView setup without app-store reviews",
+            "Built interactive content (dice board, RPS tournament, slot machine) in pure CSS 3D transforms — no game library — and wired RN ↔ WebView messaging for native-side effects",
           ],
           screenshots: [
             {
@@ -806,12 +792,10 @@ export const T: Record<Lang, Translation> = {
           period:
             "Jun 2024 — Oct 2025 (6-month publishing build → launched Feb 2025, ongoing maintenance)",
           details: [
-            "Built the markup and UI of an Indonesian random-box React web app solo, adapting Bomulsen's (React Native) structure to a web context",
-            "Owned the full publishing pipeline: pixel-perfect markup from design mocks, component splitting, responsive handling, and interaction work",
-            "Delivered 70+ pages end-to-end in 6 months — 40+ user screens and 30+ admin screens, single-handed",
-            "Responsive publishing for consistent visual experience across mobile devices and resolutions, with image and loading optimizations tuned to Indonesia's mobile-heavy, low-bandwidth context",
-            "Owned the admin page UI/UX end-to-end — design → markup → interaction, solo",
-            "Continued markup/UI maintenance after the official launch in Feb 2025",
+            "Delivered 70+ pages (40+ user · 30+ admin) end-to-end in 6 months — pixel-perfect markup from mocks, component splitting, responsive, and interaction all single-handed",
+            "Admin UI/UX owned end-to-end from design → markup → interaction, solo",
+            "Image + loading optimizations tuned to Indonesia's mobile-heavy, low-bandwidth context, with responsive markup across device resolutions",
+            "Ongoing markup / UI maintenance since the Feb 2025 launch",
           ],
           screenshots: [
             {

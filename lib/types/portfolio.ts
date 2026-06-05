@@ -155,9 +155,9 @@ export type Translation = {
   awardsLabel: string;
   awards: AwardItem[];
   skillsLabel: string;
-  portfolioLabel: string;
-  /** Legacy Portfolio 섹션 보조 설명 */
-  portfolioDesc: string;
+  /** Practice Works 섹션 라벨 (학원 시기 1인 디자인+퍼블 작업) */
+  practiceLabel: string;
+  practiceDesc: string;
   contactLabel: string;
   contact: ContactContent;
   /** 맨 아래 footer 에 들어가는 meta 시그널 (이 포트폴리오가 어떻게 빌드됐는지). */

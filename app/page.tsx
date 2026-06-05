@@ -21,7 +21,7 @@ import {
   HOME_SCROLL_KEY,
 } from "@/components/sections/HighlightsSection";
 import { ImpactStrip } from "@/components/sections/ImpactStrip";
-import { LegacyPortfolioSection } from "@/components/sections/LegacyPortfolioSection";
+import { PracticeWorksSection } from "@/components/sections/PracticeWorksSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import {
   toggleLang as doToggleLang,
@@ -77,12 +77,12 @@ export default function Home() {
         <HeaderSection t={t} />
         <AboutSection t={t} />
         <ImpactStrip t={t} />
-        <HighlightsSection t={t} />
         <ExperienceSection t={t} />
+        <PracticeWorksSection t={t} />
+        <HighlightsSection t={t} />
         <EducationSection t={t} />
         <CertificationsSection t={t} />
         <SkillsSection t={t} />
-        <LegacyPortfolioSection t={t} />
         <ContactSection t={t} />
         <ColophonFooter t={t} />
       </main>

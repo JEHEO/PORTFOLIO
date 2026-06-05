@@ -61,8 +61,3 @@ export const SKILLS: SkillItem[] = [
   { name: "Jira", color: "#0052CC", group: "Tools" },
 ];
 
-/** 2020 레거시 포트폴리오 링크 */
-export const PORTFOLIO_LINKS = {
-  github: "https://github.com/JEHEO/PORTFOLIO_2020",
-  demo: "https://jeheo.github.io/PORTFOLIO_2020/",
-} as const;
