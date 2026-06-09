@@ -26,12 +26,16 @@ export const SKILL_GROUP_ORDER: readonly SkillGroup[] = [
  * - `slug` 가 지정되지 않으면 `name` 을 소문자로 변환해 simpleicons.org 슬러그로 사용합니다.
  * - simpleicons 에 고유 슬러그가 없거나 표기가 다른 경우(예: React Native 는 React 와 같은 아이콘)
  *   `slug` 를 직접 지정해 주세요.
+ * - simpleicons 에 호스팅되지 않는 아이콘(예: Adobe 제품군 — 2022 년 브랜드 정책으로
+ *   simpleicons 에서 제거됨)은 `iconUrl` 로 로컬 SVG 경로를 직접 지정합니다.
  * - `group` 은 SkillsSection 에서 카테고리 레이블로 묶여 렌더됩니다.
  */
 export type SkillItem = {
   name: string;
   color: string;
   slug?: string;
+  /** simpleicons 가 아닌 직접 호스팅하는 아이콘 URL (지정 시 slug 보다 우선). */
+  iconUrl?: string;
   group: SkillGroup;
 };
 
@@ -51,8 +55,9 @@ export const SKILLS: SkillItem[] = [
   { name: "Tailwind CSS", color: "#06B6D4", slug: "tailwindcss", group: "Styling" },
   { name: "Sass", color: "#CC6699", slug: "sass", group: "Styling" },
   { name: "Figma", color: "#F24E1E", group: "Styling" },
-  { name: "Adobe Photoshop", color: "#31A8FF", slug: "adobephotoshop", group: "Styling" },
-  { name: "Adobe Illustrator", color: "#FF9A00", slug: "adobeillustrator", group: "Styling" },
+  // Adobe 제품군은 simpleicons 에서 2022 년 브랜드 정책으로 제거되어 로컬 SVG 사용.
+  { name: "Adobe Photoshop", color: "#31A8FF", iconUrl: "/icons/photoshop.svg", group: "Styling" },
+  { name: "Adobe Illustrator", color: "#FF9A00", iconUrl: "/icons/illustrator.svg", group: "Styling" },
   { name: "Storybook", color: "#FF4785", group: "Styling" },
 
   // Tools / DevOps
