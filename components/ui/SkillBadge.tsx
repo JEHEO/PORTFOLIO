@@ -13,6 +13,8 @@
 
 import React from "react";
 
+import { asset } from "@/lib/utils/asset-path";
+
 function autoSlug(name: string): string {
   return name.toLowerCase().replace(/\./g, "dot").replace(/\s+/g, "");
 }
@@ -31,8 +33,11 @@ export function SkillBadge({
   const isCustom = color !== "current";
   const iconSlug = slug ?? autoSlug(name);
   const iconColor = isCustom ? color.replace("#", "") : "888";
-  const src =
-    iconUrl ?? `https://cdn.simpleicons.org/${iconSlug}/${iconColor}`;
+  // 로컬 SVG 경로는 GitHub Pages basePath 가 붙도록 asset() 으로 감싼다.
+  // 외부 simpleicons CDN URL 은 asset() 이 자동으로 그대로 통과시킨다.
+  const src = asset(
+    iconUrl ?? `https://cdn.simpleicons.org/${iconSlug}/${iconColor}`,
+  );
   return (
     <div
       className={`flex items-center gap-2 rounded-lg px-3 py-2 ${
